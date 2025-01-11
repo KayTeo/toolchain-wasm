@@ -57,6 +57,7 @@ OTHER_FLAGS="${@:5}"
 
 # Default compilation flags
 EMCC_FLAGS=(
+    -pthread 
     -s WASM=1                    # Enable WebAssembly output
     -s NO_EXIT_RUNTIME=0         # Allow the runtime to be exited
     -s "EXPORTED_RUNTIME_METHODS=['ccall', 'cwrap']"  # Export common runtime methods

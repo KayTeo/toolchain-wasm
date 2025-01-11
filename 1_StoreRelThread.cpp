@@ -4,7 +4,7 @@
 #include <random>
 
 constexpr size_t NUM_THREADS = 4;
-constexpr size_t NUM_ITERATIONS = 1'000'000;
+constexpr size_t NUM_ITERATIONS = 1'0'000;
 
 // Shared variables to operate on
 std::atomic<bool> start_flag{false};
@@ -21,11 +21,12 @@ void wait_for_start() {
 void benchmark_atomic_rel(std::vector<double>& times) {
 	std::vector<std::thread> threads;
 	volatile std::atomic<int> shared_counter{0};
-
+	
 	for (size_t t = 0; t < NUM_THREADS; t++) {
 		threads.emplace_back( [&times, t, &shared_counter](){
-	                std::mt19937 gen(std::random_device{}());		
+	                //std::mt19937 gen(std::random_device{}());		
 			//Threading code
+			printf("Starting thread\n");
 			wait_for_start();
 
 			auto start = std::chrono::high_resolution_clock::now();
@@ -33,7 +34,7 @@ void benchmark_atomic_rel(std::vector<double>& times) {
 				//Benchmarked atomic
 				
 				//shared_counter.store(gen() + shared_counter.load(), std::memory_order_release);
-				shared_counter.store(1, std::memory_order_release);
+				shared_counter.store(31415);
 			}
 			auto end = std::chrono::high_resolution_clock::now();
 
