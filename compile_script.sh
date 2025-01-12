@@ -59,9 +59,6 @@ OTHER_FLAGS="${@:5}"
 EMCC_FLAGS=(
     -pthread 
     -s WASM=1                    # Enable WebAssembly output
-    -s NO_EXIT_RUNTIME=0         # Allow the runtime to be exited
-    -s "EXPORTED_RUNTIME_METHODS=['ccall', 'cwrap']"  # Export common runtime methods
-    -s ALLOW_MEMORY_GROWTH=1     # Allow dynamic memory growth
     -s USE_PTHREADS=1 \
     -s PTHREAD_POOL_SIZE=4 \
     -s SHARED_MEMORY=1 \
