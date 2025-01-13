@@ -92,8 +92,8 @@ void test_seq_cst(int iterations) {
 }
 
 int main() {
-    const int iterations = 1;
-    printf("Starting test...");    
+    const int iterations = 543;
+    printf("Starting test...\n");    
     std::cout << "Testing with relaxed memory ordering...\n";
     test_relaxed(iterations);
     

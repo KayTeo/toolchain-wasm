@@ -34,7 +34,7 @@ void benchmark_atomic_rel(std::vector<double>& times) {
 				//Benchmarked atomic
 				
 				//shared_counter.store(gen() + shared_counter.load(), std::memory_order_release);
-				shared_counter.store(31415);
+				shared_counter.store(shared_counter.load() + 1);
 			}
 			auto end = std::chrono::high_resolution_clock::now();
 
