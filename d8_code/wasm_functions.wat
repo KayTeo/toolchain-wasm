@@ -107,7 +107,7 @@
       ;; Store value atomically
       (i32.atomic.store
         (local.get $mem_offset)
-        (i32.const 1)
+        (i32.const 31415)
       )
     
       (local.set $i (i32.add (local.get $i) (i32.const 1)))
