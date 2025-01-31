@@ -5,21 +5,21 @@
 
 std::atomic<int> global_value{0};  // Global atomic variable
 
+void threadFunction() {
+	for(int i = 0; i < 10000000; i++){
+		global_value.store(314159, std::memory_order_release);
+	}
+}
+
 int main() {
 	
 	std::vector<std::thread> threads;
 
-	threads.emplace_back( [](){
-		global_value.store(314159, std::memory_order_release);
-	});
-
-	threads.emplace_back( [](){
-		global_value.store(271828, std::memory_order_release);
-	});
-
-	// Store operation with sequential consistency
-	global_value.store(1618033, std::memory_order_release);
-    
+	threads.emplace_back(threadFunction);
+	threads.emplace_back(threadFunction);
+	threads.emplace_back(threadFunction);
+	threads.emplace_back(threadFunction);
+	
 	for(auto& thread : threads){
 		thread.join();
 	}

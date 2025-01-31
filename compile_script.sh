@@ -75,6 +75,18 @@ emcc "${SOURCE_FILE}" \
     "${EMCC_FLAGS[@]}" \
     -o "${BUILD_DIR}/modified/${BASENAME}.html" 
 
+emcc "${SOURCE_FILE}" \
+    "${EMCC_FLAGS[@]}" \
+    -g -S \
+    -o "${BUILD_DIR}/original/${BASENAME}.ll" 
+
+emcc "${SOURCE_FILE}" \
+    "${EMCC_FLAGS[@]}" \
+    -g -S \
+    -o "${BUILD_DIR}/original/${BASENAME}.ll" 
+
+
+
 cp ${BUILD_DIR}/modified/${BASENAME}.wasm /tmp/wasm_replacement
 
 replace_hex_in_wasm "/tmp/wasm_replacement" "${BUILD_DIR}/modified/${BASENAME}.wasm" "$3" "$4"

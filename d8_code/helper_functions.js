@@ -12,9 +12,13 @@ function workerCode() {
             let result = 0;
             const start = performance.now()      
             //result = instance.exports.atomic_add_one_loop(0, 20000);
-            //result = instance.exports.atomic_store_and_load(0, 10000);
-            result = instance.exports.atomic_store(0, 500000);
-            
+            //result = instance.exports.atomic_store_and_load(0, 100000);
+            result = instance.exports.atomic_store(0, 5000000);
+            //result = instance.exports.atomic_add_one_and_store(0, 1000000);
+	    //result = instance.exports.atomic_store_no_input();
+	    //for(let i = 0; i < 10000; i++) {
+		//result = instance.exports.just_store(0);
+	    //}   
             const end = performance.now()
             postMessage({
                 data: instance.exports.getValue(0),
@@ -22,7 +26,8 @@ function workerCode() {
             });
         } catch(e) {
             console.log("Error occured in workerCode()");
-            postMessage('ERROR: ' + e);
+            console.log("ERROR: " + e);
+	    postMessage('ERROR: ' + e);
         }
     }
 }

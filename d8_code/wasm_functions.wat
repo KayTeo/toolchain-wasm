@@ -97,7 +97,65 @@
     (local.get $result)
   )
   
+  (func $just_store (param $mem_offset i32) (result i32)
+	(local $result i32)
+
+	(i32.atomic.store
+		(local.get $mem_offset)
+	       	(i32.const 5)
+	)
+
+	local.get $mem_offset
+  )
+
   (func $atomic_store (param $mem_offset i32) (param $num_loops i32) (result i32)
+    (local $i i32)
+    (local $result i32)
+    (local.set $i (i32.const 0))
+
+    (loop $loop
+
+      ;; Store value atomically
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 31414)
+      )
+       ;; Store value atomically
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 161)
+      )
+ 
+      ;; Store value atomically
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 31414)
+      )
+       ;; Store value atomically
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 161)
+      )
+ 
+      ;; Store value atomically
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 31414)
+      )
+       ;; Store value atomically
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 161)
+      )
+ 
+      (local.set $i (i32.add (local.get $i) (i32.const 1)))
+      (br_if $loop (i32.lt_u (local.get $i) (local.get $num_loops)))
+
+    )
+
+    (local.get $result)
+  )
+   (func $atomic_store_many (param $mem_offset i32) (param $num_loops i32) (result i32)
     (local $i i32)
     (local $result i32)
     (local.set $i (i32.const 0))
@@ -109,6 +167,69 @@
         (local.get $mem_offset)
         (i32.const 31415)
       )
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 31415)
+      )     
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 1618)
+      ) 
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 217)
+      )
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 314)
+      )     (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.const 314315)
+      )  
+      (local.set $i (i32.add (local.get $i) (i32.const 1)))
+      (br_if $loop (i32.lt_u (local.get $i) (local.get $num_loops)))
+
+    )
+
+    (local.get $result)
+  )
+ 
+  (func $atomic_store_no_input (result i32)
+    (local $i i32)
+    (local $result i32)
+    (local.set $i (i32.const 0))
+
+    (loop $loop
+
+      ;; Store value atomically
+      (i32.atomic.store
+        (i32.const 0)
+        (i32.const 31415)
+      )
+    
+      (local.set $i (i32.add (local.get $i) (i32.const 1)))
+      (br_if $loop (i32.lt_u (local.get $i) (i32.const 50000)))
+
+    )
+
+    (local.get $result)
+  )
+
+  (func $atomic_add_one_and_store (param $mem_offset i32) (param $num_loops i32) (result i32)
+    (local $i i32)
+    (local $result i32)
+    (local.set $i (i32.const 0))
+
+    (loop $loop
+
+      ;; Store value atomically
+      (i32.atomic.store
+        (local.get $mem_offset)
+        (i32.add
+		(local.get $mem_offset)
+     		(i32.const 16)		
+	)
+      )
     
       (local.set $i (i32.add (local.get $i) (i32.const 1)))
       (br_if $loop (i32.lt_u (local.get $i) (local.get $num_loops)))
@@ -118,10 +239,15 @@
     (local.get $result)
   )
 
+
   (export "add_one_and_read" (func $add_one_and_read))
   (export "atomic_add_one_and_read" (func $atomic_add_one_and_read))
   (export "atomic_add_one_loop" (func $atomic_add_one_loop))
   (export "getValue" (func $getValue))
+  (export "just_store" (func $just_store))
   (export "atomic_store_and_load" (func $atomic_store_and_load))
-  (export "atomic_store" (func $atomic_store))
+  (export "atomic_store" (func $atomic_store))  
+  (export "atomic_store_many" (func $atomic_store_many))   
+  (export "atomic_store_no_input" (func $atomic_store_no_input))
+  (export "atomic_add_one_and_store" (func $atomic_add_one_and_store))
 )

@@ -1,0 +1,489 @@
+   1: ~+0(this=0x21c500081a25 <JSGlobalProxy>) {
+   2:  ~+0(this=0x21c500081a25 <JSGlobalProxy>) {
+   2:  } -> 0x21c500000011 <undefined>
+00 61 73 6d 01 00 00 00 01 Section: Type
+Decode Section 0x5b69d68b7f5a - 0x5b69d68b7f66
+DecodeType[0] module+1
+60   +13  value type          : 1 bytes
+  +15  value type          : 1 bytes
+DecodeType[1] module+6
+60   +18  value type          : 1 bytes
+  +19  value type          : 1 bytes
+  +21  value type          : 1 bytes
+  +10  skip                : 12 bytes
+02 Section: Import
+Decode Section 0x5b69d68b7f68 - 0x5b69d68b7f78
+DecodeImportTable[0] module+1
+  +26  module name         : 3 bytes
+  +30  field name          : 6 bytes
+02   +37  memory limits flags : 03 = 3
+  +24  skip                : 16 bytes
+03 Section: Function
+Decode Section 0x5b69d68b7f7a - 0x5b69d68b7f83
+  +43  signature index     : 00 = 0
+  +44  signature index     : 00 = 0
+  +45  signature index     : 01 = 1
+  +46  signature index     : 00 = 0
+  +47  signature index     : 01 = 1
+  +48  signature index     : 00 = 0
+  +49  signature index     : 01 = 1
+  +50  signature index     : 01 = 1
+  +42  skip                : 9 bytes
+07 Section: Export
+Decode Section 0x5b69d68b7f86 - 0x5b69d68b8024
+DecodeExportTable[0] module+1
+  +56  field name          : 16 bytes
+00 DecodeExportTable[1] module+20
+  +75  field name          : 23 bytes
+00 DecodeExportTable[2] module+46
+  +101  field name          : 19 bytes
+00 DecodeExportTable[3] module+68
+  +123  field name          : 8 bytes
+00 DecodeExportTable[4] module+79
+  +134  field name          : 10 bytes
+00 DecodeExportTable[5] module+92
+  +147  field name          : 21 bytes
+00 DecodeExportTable[6] module+116
+  +171  field name          : 12 bytes
+00 DecodeExportTable[7] module+131
+  +186  field name          : 24 bytes
+00   +54  skip                : 158 bytes
+0a Section: Code
+Decode Section 0x5b69d68b8027 - 0x5b69d68b8109
+  +217  function body       : 20 bytes
+  +238  function body       : 10 bytes
+  +249  function body       : 40 bytes
+  +290  function body       : 8 bytes
+  +299  function body       : 50 bytes
+  +350  function body       : 14 bytes
+  +365  function body       : 37 bytes
+  +403  function body       : 38 bytes
+  +215  skip                : 226 bytes
+  +0  module header       : 8 bytes
+  +8  uint8_t             : 01 = 1
+  +9  section size        : 0c = 12
+  +10  section payload     : 12 bytes
+  +22  uint8_t             : 02 = 2
+  +23  section size        : 10 = 16
+  +24  section payload     : 16 bytes
+  +40  uint8_t             : 03 = 3
+  +41  section size        : 09 = 9
+  +42  section payload     : 9 bytes
+  +51  uint8_t             : 07 = 7
+  +52  section size        : 9e 01 = 158
+  +54  section payload     : 158 bytes
+  +212  uint8_t             : 0a = 10
+  +213  section size        : e2 01 = 226
+local decls count: 0
+local decls count: 0
+  +238  skip                : 1 bytes
+local decls count: 1
+local decls count: 0
+wasm-decode 0x5b69d68b803e...0x5b69d68b8048 (module+239, 10 bytes)
+  +290  skip                : 1 bytes
+  +249  skip                : 3 bytes
+wasm-decode 0x5b69d68b8072...0x5b69d68b807a (module+291, 8 bytes)
+  +217  skip                : 1 bytes
+wasm-decode 0x5b69d68b8029...0x5b69d68b803d (module+218, 20 bytes)
+wasm-decode 0x5b69d68b8049...0x5b69d68b8071 (module+252, 40 bytes)
+  @1        #local.get                     | B1 |  i
+  @1        #local.get                     | B1 |  i
+  @3        #i32.const                     | B1 |  i
+  @1        #local.get                     | B1 |  i
+  @3        #local.get                     | B1 |  i i
+  @3        #i32.const                     | B1 |  i i
+  @5        #local.set                     | B1 | 
+  @5        #i32.load                      | B1 |  i i
+  @5        #i32.atomic.rmw.add            | B1 |  i
+  @3        #i32.atomic.load               | B1 |  i
+  @8        #i32.const                     | B1 |  i i i
+  @10       #i32.add                       | B1 |  i i
+  @7        #end                           |
+  @7        #(implicit) return             |  | 
+  @9        #end                           |
+  @9        #(implicit) return             |  | 
+wasm-decode ok
+
+local decls count: 1
+  +299  skip                : 3 bytes
+wasm-decode 0x5b69d68b807b...0x5b69d68b80ad (module+302, 50 bytes)
+  @3        #i32.const                     | B1 |  i
+  @5        #local.set                     | B1 | 
+  @7        #loop                          | B1L0 | 
+  @9        #local.get                     | B1L0 |  i
+  @11       #i32.atomic.load               | B1L0 |  i
+  @15       #local.set                     | B1L0 | 
+  @17       #local.get                     | B1L0 |  i
+  @19       #i32.const                     | B1L0 |  i i
+  @21       #i32.add                       | B1L0 |  i
+  @22       #local.set                     | B1L0 | 
+  @24       #local.get                     | B1L0 |  i
+  @26       #local.get                     | B1L0 |  i i
+  @28       #i32.atomic.store              | B1L0 | 
+  @32       #local.get                     | B1L0 |  i
+  @34       #i32.const                     | B1L0 |  i i
+  @36       #i32.add                       | B1L0 |  i
+  @37       #local.set                     | B1L0 | 
+  @39       #local.get                     | B1L0 |  i
+  @41       #local.get                     | B1L0 |  i i
+  @43       #i32.lt_u                      | B1L0 |  i
+  @44       #br_if                         | B1L0 | 
+  @46       #end                           | B1 | 
+  @47       #local.get                     | B1 |  i
+  @49       #end                           |
+  @49       #(implicit) return             |  | 
+wasm-decode ok
+
+local decls count: 1
+  +350  skip                : 3 bytes
+wasm-decode 0x5b69d68b80ae...0x5b69d68b80bc (module+353, 14 bytes)
+  @3        #local.get                     | B1 |  i
+  @5        #i32.const                     | B1 |  i i
+  @7        #i32.atomic.store              | B1 | 
+  @11       #local.get                     | B1 |  i
+  @13       #end                           |
+  @13       #(implicit) return             |  | 
+wasm-decode ok
+
+local decls count: 1
+  +365  skip                : 3 bytes
+wasm-decode 0x5b69d68b80bd...0x5b69d68b80e2 (module+368, 37 bytes)
+  @3        #i32.const                     | B1 |  i
+  @5        #local.set                     | B1 | 
+  @7        #loop                          | B1L0 | 
+  @9        #local.get                     | B1L0 |  i
+  @11       #i32.const                     | B1L0 |  i i
+  @15       #i32.atomic.store              | B1L0 | 
+wasm-decode ok
+
+  @19       #local.get                     | B1L0 |  i
+  @21       #i32.const                     | B1L0 |  i i
+  @11       #i32.store                     | B1 | 
+  @7        #loop                          | B1L0 | 
+  @23       #i32.add                       | B1L0 |  i
+  @24       #local.set                     | B1L0 | 
+local decls count: 1
+  @14       #local.get                     | B1 |  i
+  @26       #local.get                     | B1L0 |  i
+  @16       #i32.load                      | B1 |  i
+  @9        #local.get                     | B1L0 |  i
+  +403  skip                : 3 bytes
+  @28       #local.get                     | B1L0 |  i i
+wasm-decode 0x5b69d68b80e3...0x5b69d68b8109 (module+406, 38 bytes)
+  @19       #end                           |
+  @19       #(implicit) return             |  | 
+  @11       #i32.const                     | B1L0 |  i i
+wasm-decode ok
+
+  @30       #i32.lt_u                      | B1L0 |  i
+  @3        #i32.const                     | B1 |  i
+  @31       #br_if                         | B1L0 | 
+  @33       #end                           | B1 | 
+  @5        #local.set                     | B1 | 
+  @34       #local.get                     | B1 |  i
+  @13       #i32.atomic.rmw.add            | B1L0 |  i
+  @36       #end                           |
+  @36       #(implicit) return             |  | 
+wasm-decode ok
+
+  @7        #loop                          | B1L0 | 
+  @17       #drop                          | B1L0 | 
+  @9        #local.get                     | B1L0 |  i
+  @18       #local.get                     | B1L0 |  i
+  @11       #local.get                     | B1L0 |  i i
+  @20       #i32.const                     | B1L0 |  i i
+  @13       #i32.const                     | B1L0 |  i i i
+  @22       #i32.add                       | B1L0 |  i
+  @15       #i32.add                       | B1L0 |  i i
+  @23       #local.set                     | B1L0 | 
+  @25       #local.get                     | B1L0 |  i
+  @16       #i32.atomic.store              | B1L0 | 
+  @27       #local.get                     | B1L0 |  i i
+  @20       #local.get                     | B1L0 |  i
+  @29       #i32.lt_u                      | B1L0 |  i
+  @22       #i32.const                     | B1L0 |  i i
+  @30       #br_if                         | B1L0 | 
+  @24       #i32.add                       | B1L0 |  i
+  @32       #end                           | B1 | 
+  @25       #local.set                     | B1L0 | 
+  @33       #local.get                     | B1 |  i
+  @27       #local.get                     | B1L0 |  i
+  @29       #local.get                     | B1L0 |  i i
+  @35       #i32.atomic.load               | B1 |  i
+  @31       #i32.lt_u                      | B1L0 |  i
+  @39       #end                           |
+  @39       #(implicit) return             |  | 
+wasm-decode ok
+
+  @32       #br_if                         | B1L0 | 
+  @34       #end                           | B1 | 
+  @35       #local.get                     | B1 |  i
+  @37       #end                           |
+  @37       #(implicit) return             |  | 
+wasm-decode ok
+
+  +0  module header       : 8 bytes
+  +8  uint8_t             : 01 = 1
+  +9  section size        : 0c = 12
+  +10  section payload     : 12 bytes
+  +22  uint8_t             : 02 = 2
+  +23  section size        : 10 = 16
+  +24  section payload     : 16 bytes
+  +40  uint8_t             : 03 = 3
+  +41  section size        : 09 = 9
+  +42  section payload     : 9 bytes
+  +51  uint8_t             : 07 = 7
+  +52  section size        : 9e 01 = 158
+  +54  section payload     : 158 bytes
+  +212  uint8_t             : 0a = 10
+  +213  section size        : e2 01 = 226
+   2:  ~main+15(this=0x21c500081a25 <JSGlobalProxy>) {
+   3:   ~runWorkers+15(this=0x21c500081a25 <JSGlobalProxy>, 0x21c500289a11 <Module map = 0x21c50008fbb5>, 0x21c500099e0d <Memory map = 0x21c50008ff39>, 0x21c500099c5d <JSFunction workerCode (sfi = 0x21c5000999e9)>, 5) {
+   1: ~+0(this=0x21c500441a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x21c500441a25 <JSGlobalProxy>) {
+   2:  } -> 0x21c500000011 <undefined>
+   1: } -> 0x21c500000011 <undefined>
+   4:    ~sendMessageToWorker+24(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028b5e1 <Object map = 0x21c50009a1ed>, 0x21c500289be1 <Worker map = 0x21c500095ea9>) {
+   6:      ~+9(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028b729 <JSFunction (sfi = 0x21c5002511e5)>, 0x21c50028b745 <JSFunction (sfi = 0x21c500251215)>) {
+   6:      } -> 0x21c500000011 <undefined>
+   4:    } -> 0x21c50028b69d <Promise map = 0x21c5000899ad>
+   4:    ~sendMessageToWorker+24(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028b835 <Object map = 0x21c50009a1ed>, 0x21c50028a151 <Worker map = 0x21c500095ea9>) {
+   6:      ~+9(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028b92d <JSFunction (sfi = 0x21c5002511e5)>, 0x21c50028b949 <JSFunction (sfi = 0x21c500251215)>) {
+   6:      } -> 0x21c500000011 <undefined>
+   4:    } -> 0x21c50028b8a1 <Promise map = 0x21c5000899ad>
+   4:    ~sendMessageToWorker+24(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028b9a5 <Object map = 0x21c50009a1ed>, 0x21c50028a675 <Worker map = 0x21c500095ea9>) {
+   6:      ~   1: ~+9(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028ba9d onmessage+0(this=<JSFunction (sfi = 0x21c5002511e5)>, 0x21c500441a25 0x21c50028bab9 <JSGlobalProxy>, 0x21c5000c900d <JSFunction (sfi = 0x21c500251215)>) {
+<Object map = 0x21c500459b19>) {
+   6:      } -> 0x21c500000011 <undefined>
+   4:    } -> 0x21c50028ba11 <Promise map = 0x21c5000899ad>
+   4:    ~sendMessageToWorker+24(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028bb15 <Object map = 0x21c50009a1ed>, 0x21c50028ab99 <Worker map = 0x21c500095ea9>) {
+   6:      ~+9(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028bc0d <JSFunction (sfi = 0x21c5002511e5)>, 0x21c50028bc29 <JSFunction (sfi = 0x21c500251215)>) {
+   6:      } -> 0x21c500000011 <undefined>
+   4:    } -> 0x21c50028bb81 <Promise map = 0x21c5000899ad>
+   4:    ~sendMessageToWorker+24(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028bc85 <Object map = 0x21c50009a1ed>, 0x21c50028b0bd <Worker map = 0x21c500095ea9>) {
+   6:      ~+9(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028bd7d <JSFunction (sfi = 0x21c5002511e5)>, 0x21c50028bd99 <JSFunction (sfi = 0x21c500251215)>) {
+   6:      } -> 0x21c500000011 <undefined>
+   4:    } -> 0x21c50028bcf1 <Promise map = 0x21c5000899ad>
+   1: } -> 0x21c50028c165 <Promise map = 0x21c5000899ad>
+Error occured in workerCode()
+ERROR: TypeError: instance.exports.atomic_store_no_input is not a function
+   1: } -> 0x21c500000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028c261 <Object map = 0x21c50009a58d>) {
+Resolving worker message
+   1: } -> 0x21c500000011 <undefined>
+   1: ~+0(this=0x21c500841a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x21c500841a25 <JSGlobalProxy>) {
+   2:  } -> 0x21c500000011 <undefined>
+   1: } -> 0x21c500000011 <undefined>
+   1: ~onmessage+0(this=0x21c500841a25 <JSGlobalProxy>, 0x21c50048900d <Object map = 0x21c500859b19>) {
+Error occured in workerCode()
+ERROR: TypeError: instance.exports.atomic_store_no_input is not a function
+   1: } -> 0x21c500000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028c2f1 <Object map = 0x21c50009a58d>) {
+Resolving worker message
+   1: } -> 0x21c500000011 <undefined>
+   1: ~+0(this=0x21c5009c1a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x21c5009c1a25 <JSGlobalProxy>) {
+   2:  } -> 0x21c500000011 <undefined>
+   1: } -> 0x21c500000011 <undefined>
+   1: ~onmessage+0(this=0x21c5009c1a25 <JSGlobalProxy>, 0x21c5005c900d <Object map = 0x21c5009d9b19>) {
+Error occured in workerCode()
+ERROR: TypeError: instance.exports.atomic_store_no_input is not a function
+   1: } -> 0x21c500000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028c365 <Object map = 0x21c50009a58d>) {
+Resolving worker message
+   1: } -> 0x21c500000011 <undefined>
+   1: ~+0(this=0x21c500a01a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x21c500a01a25 <JSGlobalProxy>) {
+   2:  } -> 0x21c500000011 <undefined>
+   1: } -> 0x21c500000011 <undefined>
+   1: ~onmessage+0(this=0x21c500a01a25 <JSGlobalProxy>, 0x21c50070900d <Object map = 0x21c500a19b19>) {
+Error occured in workerCode()
+ERROR: TypeError: instance.exports.atomic_store_no_input is not a function
+   1: } -> 0x21c500000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028c3d9 <Object map = 0x21c50009a58d>) {
+Resolving worker message
+   1: } -> 0x21c500000011 <undefined>
+   1: ~+0(this=0x21c500a41a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x21c500a41a25 <JSGlobalProxy>) {
+   2:  } -> 0x21c500000011 <undefined>
+   1: } -> 0x21c500000011 <undefined>
+   1: ~onmessage+0(this=0x21c500a41a25 <JSGlobalProxy>, 0x21c50088900d <Object map = 0x21c500a59b19>) {
+Error occured in workerCode()
+ERROR: TypeError: instance.exports.atomic_store_no_input is not a function
+   1: } -> 0x21c500000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x21c500081a25 <JSGlobalProxy>, 0x21c50028c44d <Object map = 0x21c50009a58d>) {
+Resolving worker message
+   1: } -> 0x21c500000011 <undefined>
+   2:  } -> 0x21c500289b4d <Promise map = 0x21c5000899ad>
+##Benchmark Start##
+Worker 0 Value: undefined Time (ms): undefined
+Worker 1 Value: undefined Time (ms): undefined
+Worker 2 Value: undefined Time (ms): undefined
+Worker 3 Value: undefined Time (ms): undefined
+Worker 4 Value: undefined Time (ms): undefined
+local decls count: 0
+  +290  skip                : 1 bytes
+wasm-decode 0x5b69d68b8072...0x5b69d68b807a (module+291, 8 bytes)
+[]; [i32:s0x24]
+  @1        #local.get                     | B1 |  i
+[]; [i32:s0x24, i32:rax]
+[DEBUG]AtomicOp called
+  @3        #i32.atomic.load               | B1 |  i
+[]; [i32:s0x24, i32:rdx]
+  @7        #end                           |
+  @7        #(implicit) return             |  | 
+wasm-decode ok
+
+  +0  module header       : 8 bytes
+01   +10  skip                : 12 bytes
+02   +24  skip                : 16 bytes
+03   +42  skip                : 9 bytes
+07   +54  skip                : 158 bytes
+0a   +215  skip                : 226 bytes
+--- WebAssembly code ---
+name: wasm-function[3]
+index: 3
+kind: wasm function
+compiler: Liftoff
+Body (size = 448 = 408 + 40 padding)
+Instructions (size = 392)
+0x1ab7b6df0900     0  55                   push rbp
+0x1ab7b6df0901     1  4889e5               REX.W movq rbp,rsp
+0x1ab7b6df0904     4  6a08                 push 0x8
+0x1ab7b6df0906     6  56                   push rsi
+0x1ab7b6df0907     7  4881ec18000000       REX.W subq rsp,0x18
+0x1ab7b6df090e     e  8bc0                 movl rax,rax
+0x1ab7b6df0910    10  8b4eff               movl rcx,[rsi-0x1]
+0x1ab7b6df0913    13  4903ce               REX.W addq rcx,r14
+0x1ab7b6df0916    16  0fb74907             movzxwl rcx,[rcx+0x7]
+0x1ab7b6df091a    1a  81f9bf000000         cmpl rcx,0xbf
+0x1ab7b6df0920    20  0f8420000000         jz 0x1ab7b6df0946  <+0x46>
+0x1ab7b6df0926    26  bf4a000000           movl rdi,0x4a
+0x1ab7b6df092b    2b  4989e2               REX.W movq r10,rsp
+0x1ab7b6df092e    2e  4883ec08             REX.W subq rsp,0x8
+0x1ab7b6df0932    32  4883e4f0             REX.W andq rsp,0xf0
+0x1ab7b6df0936    36  4c891424             REX.W movq [rsp],r10
+0x1ab7b6df093a    3a  48b8d0b4092d007a0000 REX.W movq rax,0x7a002d09b4d0
+0x1ab7b6df0944    44  ffd0                 call rax
+0x1ab7b6df0946    46  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x1ab7b6df094a    4a  0f86d9000000         jna 0x1ab7b6df0a29  <+0x129>
+0x1ab7b6df0950    50  8945dc               movl [rbp-0x24],rax
+0x1ab7b6df0953    53  e848faffff           call 0x1ab7b6df03a0  (jump table)
+0x1ab7b6df0958    58  8b45dc               movl rax,[rbp-0x24]
+0x1ab7b6df095b    5b  8bc8                 movl rcx,rax
+0x1ab7b6df095d    5d  83e103               andl rcx,0x3
+0x1ab7b6df0960    60  85c9                 testl rcx,rcx
+0x1ab7b6df0962    62  0f85d1000000         jnz 0x1ab7b6df0a39  <+0x139>
+0x1ab7b6df0968    68  41baffffffff         movl r10,0xffffffff
+0x1ab7b6df096e    6e  493bc2               REX.W cmpq rax,r10
+0x1ab7b6df0971    71  761d                 jna 0x1ab7b6df0990  <+0x90>
+0x1ab7b6df0973    73  bf01000000           movl rdi,0x1
+0x1ab7b6df0978    78  4989e2               REX.W movq r10,rsp
+0x1ab7b6df097b    7b  4883ec08             REX.W subq rsp,0x8
+0x1ab7b6df097f    7f  4883e4f0             REX.W andq rsp,0xf0
+0x1ab7b6df0983    83  4c891424             REX.W movq [rsp],r10
+0x1ab7b6df0987    87  488b05aeffffff       REX.W movq rax,[rip+0xffffffae]
+0x1ab7b6df098e    8e  ffd0                 call rax
+0x1ab7b6df0990    90  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x1ab7b6df0994    94  488b561f             REX.W movq rdx,[rsi+0x1f]
+0x1ab7b6df0998    98  b903000000           movl rcx,0x3
+0x1ab7b6df099d    9d  48f7d9               REX.W negq rcx
+0x1ab7b6df09a0    a0  4803ca               REX.W addq rcx,rdx
+0x1ab7b6df09a3    a3  483bc1               REX.W cmpq rax,rcx
+0x1ab7b6df09a6    a6  0f83af000000         jnc 0x1ab7b6df0a5b  <+0x15b>
+0x1ab7b6df09ac    ac  488b4e17             REX.W movq rcx,[rsi+0x17]
+0x1ab7b6df09b0    b0  41baffffffff         movl r10,0xffffffff
+0x1ab7b6df09b6    b6  493bc2               REX.W cmpq rax,r10
+0x1ab7b6df09b9    b9  761d                 jna 0x1ab7b6df09d8  <+0xd8>
+0x1ab7b6df09bb    bb  bf01000000           movl rdi,0x1
+0x1ab7b6df09c0    c0  4989e2               REX.W movq r10,rsp
+0x1ab7b6df09c3    c3  4883ec08             REX.W subq rsp,0x8
+0x1ab7b6df09c7    c7  4883e4f0             REX.W andq rsp,0xf0
+0x1ab7b6df09cb    cb  4c891424             REX.W movq [rsp],r10
+0x1ab7b6df09cf    cf  488b0566ffffff       REX.W movq rax,[rip+0xffffff66]
+0x1ab7b6df09d6    d6  ffd0                 call rax
+0x1ab7b6df09d8    d8  8b1401               movl rdx,[rcx+rax*1]
+0x1ab7b6df09db    db  8955d8               movl [rbp-0x28],rdx
+0x1ab7b6df09de    de  488d45d8             REX.W leaq rax,[rbp-0x28]
+0x1ab7b6df09e2    e2  e8c9f9ffff           call 0x1ab7b6df03b0  (jump table)
+0x1ab7b6df09e7    e7  4c8b55f0             REX.W movq r10,[rbp-0x10]
+0x1ab7b6df09eb    eb  4d8b525f             REX.W movq r10,[r10+0x5f]
+0x1ab7b6df09ef    ef  41816a0c23010000     subl [r10+0xc],0x123
+0x1ab7b6df09f7    f7  0f8880000000         js 0x1ab7b6df0a7d  <+0x17d>
+0x1ab7b6df09fd    fd  8b45d8               movl rax,[rbp-0x28]
+0x1ab7b6df0a00   100  48837df808           REX.W cmpq [rbp-0x8],0x8
+0x1ab7b6df0a05   105  741d                 jz 0x1ab7b6df0a24  <+0x124>
+0x1ab7b6df0a07   107  bf30000000           movl rdi,0x30
+0x1ab7b6df0a0c   10c  4989e2               REX.W movq r10,rsp
+0x1ab7b6df0a0f   10f  4883ec08             REX.W subq rsp,0x8
+0x1ab7b6df0a13   113  4883e4f0             REX.W andq rsp,0xf0
+0x1ab7b6df0a17   117  4c891424             REX.W movq [rsp],r10
+0x1ab7b6df0a1b   11b  488b051affffff       REX.W movq rax,[rip+0xffffff1a]
+0x1ab7b6df0a22   122  ffd0                 call rax
+0x1ab7b6df0a24   124  488be5               REX.W movq rsp,rbp
+0x1ab7b6df0a27   127  5d                   pop rbp
+0x1ab7b6df0a28   128  c3                   retl
+0x1ab7b6df0a29   129  50                   push rax
+0x1ab7b6df0a2a   12a  e8e1f8ffff           call 0x1ab7b6df0310  (jump table)
+0x1ab7b6df0a2f   12f  58                   pop rax
+0x1ab7b6df0a30   130  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x1ab7b6df0a34   134  e917ffffff           jmp 0x1ab7b6df0950  <+0x50>
+0x1ab7b6df0a39   139  e822f6ffff           call 0x1ab7b6df0060  (jump table)
+0x1ab7b6df0a3e   13e  bf3c000000           movl rdi,0x3c
+0x1ab7b6df0a43   143  4989e2               REX.W movq r10,rsp
+0x1ab7b6df0a46   146  4883ec08             REX.W subq rsp,0x8
+0x1ab7b6df0a4a   14a  4883e4f0             REX.W andq rsp,0xf0
+0x1ab7b6df0a4e   14e  4c891424             REX.W movq [rsp],r10
+0x1ab7b6df0a52   152  488b05e3feffff       REX.W movq rax,[rip+0xfffffee3]
+0x1ab7b6df0a59   159  ffd0                 call rax
+0x1ab7b6df0a5b   15b  e8f0f5ffff           call 0x1ab7b6df0050  (jump table)
+0x1ab7b6df0a60   160  bf3c000000           movl rdi,0x3c
+0x1ab7b6df0a65   165  4989e2               REX.W movq r10,rsp
+0x1ab7b6df0a68   168  4883ec08             REX.W subq rsp,0x8
+0x1ab7b6df0a6c   16c  4883e4f0             REX.W andq rsp,0xf0
+0x1ab7b6df0a70   170  4c891424             REX.W movq [rsp],r10
+0x1ab7b6df0a74   174  488b05c1feffff       REX.W movq rax,[rip+0xfffffec1]
+0x1ab7b6df0a7b   17b  ffd0                 call rax
+0x1ab7b6df0a7d   17d  e8def6ffff           call 0x1ab7b6df0160  (jump table)
+0x1ab7b6df0a82   182  e976ffffff           jmp 0x1ab7b6df09fd  <+0xfd>
+0x1ab7b6df0a87   187  90                   nop
+
+Source positions:
+ pc offset  position
+        53         1
+        e2         7
+       12a         0  statement
+       139         3  statement
+       15b         3  statement
+       17d         7  statement
+
+Safepoints (stack slots = 8, entries = 1, byte size = 14)
+0x1ab7b6df0958     58  slots (sp->fp): 00000000
+
+RelocInfo (size = 0)
+
+--- End code ---
+   1: ~wasm-function[3] {
+   1: } -> 0
+Final total count: 0
+##Benchmark End##
+   2:  } -> 0x21c500289a85 <Promise map = 0x21c5000899ad>
+   1: ~+0(this=0x21c500081a25 <JSGlobalProxy>) {
+Finished.
+   1: } -> 0x21c500000011 <undefined>
+  +0  module header       : 8 bytes
+  +8  uint8_t             : 01 = 1
+  +9  section size        : 0c = 12
+  +10  section payload     : 12 bytes
+  +22  uint8_t             : 02 = 2
+  +23  section size        : 10 = 16
+  +24  section payload     : 16 bytes
+  +40  uint8_t             : 03 = 3
+  +41  section size        : 09 = 9
+  +42  section payload     : 9 bytes
+  +51  uint8_t             : 07 = 7
+  +52  section size        : 9e 01 = 158
+  +54  section payload     : 158 bytes
+  +212  uint8_t             : 0a = 10
+  +213  section size        : e2 01 = 226

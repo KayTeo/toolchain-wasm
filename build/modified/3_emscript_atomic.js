@@ -959,7 +959,7 @@ function createExportWrapper(name, nargs) {
 
 var wasmBinaryFile;
 function findWasmBinary() {
-    var f = '1_StoreRelThread.wasm';
+    var f = '3_emscript_atomic.wasm';
     if (!isDataURI(f)) {
       return locateFile(f);
     }
