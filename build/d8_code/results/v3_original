@@ -1,0 +1,500 @@
+--- WebAssembly code ---
+name: wasm-function[5]
+index: 5
+kind: wasm function
+compiler: Liftoff
+Body (size = 512 = 488 + 24 padding)
+Instructions (size = 472)
+0x1debe22e9880     0  41bc05000000         movl r12,0x5
+0x1debe22e9886     6  e8e5f8ffff           call 0x1debe22e9170  (jump table)
+0x1debe22e988b     b  4881ec18000000       REX.W subq rsp,0x18
+0x1debe22e9892    12  8bc0                 movl rax,rax
+0x1debe22e9894    14  8bd2                 movl rdx,rdx
+0x1debe22e9896    16  8b4eff               movl rcx,[rsi-0x1]
+0x1debe22e9899    19  4903ce               REX.W addq rcx,r14
+0x1debe22e989c    1c  0fb74907             movzxwl rcx,[rcx+0x7]
+0x1debe22e98a0    20  81f9bf000000         cmpl rcx,0xbf
+0x1debe22e98a6    26  0f8420000000         jz 0x1debe22e98cc  <+0x4c>
+0x1debe22e98ac    2c  bf4a000000           movl rdi,0x4a
+0x1debe22e98b1    31  4989e2               REX.W movq r10,rsp
+0x1debe22e98b4    34  4883ec08             REX.W subq rsp,0x8
+0x1debe22e98b8    38  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e98bc    3c  4c891424             REX.W movq [rsp],r10
+0x1debe22e98c0    40  48b8d0b409a920750000 REX.W movq rax,0x7520a909b4d0
+0x1debe22e98ca    4a  ffd0                 call rax
+0x1debe22e98cc    4c  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x1debe22e98d0    50  0f8603010000         jna 0x1debe22e99d9  <+0x159>
+0x1debe22e98d6    56  8945dc               movl [rbp-0x24],rax
+0x1debe22e98d9    59  8955d8               movl [rbp-0x28],rdx
+0x1debe22e98dc    5c  c745d400000000       movl [rbp-0x2c],0x0
+0x1debe22e98e3    63  c745d000000000       movl [rbp-0x30],0x0
+0x1debe22e98ea    6a  8b45dc               movl rax,[rbp-0x24]
+0x1debe22e98ed    6d  b9b77a0000           movl rcx,0x7ab7
+0x1debe22e98f2    72  8bd0                 movl rdx,rax
+0x1debe22e98f4    74  83e203               andl rdx,0x3
+0x1debe22e98f7    77  85d2                 testl rdx,rdx
+0x1debe22e98f9    79  0f85ec000000         jnz 0x1debe22e99eb  <+0x16b>
+0x1debe22e98ff    7f  41baffffffff         movl r10,0xffffffff
+0x1debe22e9905    85  493bc2               REX.W cmpq rax,r10
+0x1debe22e9908    88  761d                 jna 0x1debe22e9927  <+0xa7>
+0x1debe22e990a    8a  bf01000000           movl rdi,0x1
+0x1debe22e990f    8f  4989e2               REX.W movq r10,rsp
+0x1debe22e9912    92  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9916    96  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e991a    9a  4c891424             REX.W movq [rsp],r10
+0x1debe22e991e    9e  488b059dffffff       REX.W movq rax,[rip+0xffffff9d]
+0x1debe22e9925    a5  ffd0                 call rax
+0x1debe22e9927    a7  488b5e1f             REX.W movq rbx,[rsi+0x1f]
+0x1debe22e992b    ab  ba03000000           movl rdx,0x3
+0x1debe22e9930    b0  48f7da               REX.W negq rdx
+0x1debe22e9933    b3  4803d3               REX.W addq rdx,rbx
+0x1debe22e9936    b6  483bc2               REX.W cmpq rax,rdx
+0x1debe22e9939    b9  0f83ce000000         jnc 0x1debe22e9a0d  <+0x18d>
+0x1debe22e993f    bf  488b5617             REX.W movq rdx,[rsi+0x17]
+0x1debe22e9943    c3  41baffffffff         movl r10,0xffffffff
+0x1debe22e9949    c9  493bc2               REX.W cmpq rax,r10
+0x1debe22e994c    cc  761d                 jna 0x1debe22e996b  <+0xeb>
+0x1debe22e994e    ce  bf01000000           movl rdi,0x1
+0x1debe22e9953    d3  4989e2               REX.W movq r10,rsp
+0x1debe22e9956    d6  4883ec08             REX.W subq rsp,0x8
+0x1debe22e995a    da  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e995e    de  4c891424             REX.W movq [rsp],r10
+0x1debe22e9962    e2  488b0559ffffff       REX.W movq rax,[rip+0xffffff59]
+0x1debe22e9969    e9  ffd0                 call rax
+0x1debe22e996b    eb  870c02               xchgl rcx,[rdx+rax*1]
+0x1debe22e996e    ee  8b45d4               movl rax,[rbp-0x2c]
+0x1debe22e9971    f1  83c001               addl rax,0x1
+0x1debe22e9974    f4  8b4dd8               movl rcx,[rbp-0x28]
+0x1debe22e9977    f7  8bd8                 movl rbx,rax
+0x1debe22e9979    f9  3bc1                 cmpl rax,rcx
+0x1debe22e997b    fb  0f831a000000         jnc 0x1debe22e999b  <+0x11b>
+0x1debe22e9981   101  4c8b565f             REX.W movq r10,[rsi+0x5f]
+0x1debe22e9985   105  41816a14ab000000     subl [r10+0x14],0xab
+0x1debe22e998d   10d  0f889c000000         js 0x1debe22e9a2f  <+0x1af>
+0x1debe22e9993   113  895dd4               movl [rbp-0x2c],rbx
+0x1debe22e9996   116  e94fffffff           jmp 0x1debe22e98ea  <+0x6a>
+0x1debe22e999b   11b  8b45d0               movl rax,[rbp-0x30]
+0x1debe22e999e   11e  4c8b565f             REX.W movq r10,[rsi+0x5f]
+0x1debe22e99a2   122  41816a145a010000     subl [r10+0x14],0x15a
+0x1debe22e99aa   12a  0f8891000000         js 0x1debe22e9a41  <+0x1c1>
+0x1debe22e99b0   130  48837df808           REX.W cmpq [rbp-0x8],0x8
+0x1debe22e99b5   135  741d                 jz 0x1debe22e99d4  <+0x154>
+0x1debe22e99b7   137  bf30000000           movl rdi,0x30
+0x1debe22e99bc   13c  4989e2               REX.W movq r10,rsp
+0x1debe22e99bf   13f  4883ec08             REX.W subq rsp,0x8
+0x1debe22e99c3   143  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e99c7   147  4c891424             REX.W movq [rsp],r10
+0x1debe22e99cb   14b  488b05f0feffff       REX.W movq rax,[rip+0xfffffef0]
+0x1debe22e99d2   152  ffd0                 call rax
+0x1debe22e99d4   154  488be5               REX.W movq rsp,rbp
+0x1debe22e99d7   157  5d                   pop rbp
+0x1debe22e99d8   158  c3                   retl
+0x1debe22e99d9   159  50                   push rax
+0x1debe22e99da   15a  52                   push rdx
+0x1debe22e99db   15b  e830f9ffff           call 0x1debe22e9310  (jump table)
+0x1debe22e99e0   160  5a                   pop rdx
+0x1debe22e99e1   161  58                   pop rax
+0x1debe22e99e2   162  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x1debe22e99e6   166  e9ebfeffff           jmp 0x1debe22e98d6  <+0x56>
+0x1debe22e99eb   16b  e870f6ffff           call 0x1debe22e9060  (jump table)
+0x1debe22e99f0   170  bf3c000000           movl rdi,0x3c
+0x1debe22e99f5   175  4989e2               REX.W movq r10,rsp
+0x1debe22e99f8   178  4883ec08             REX.W subq rsp,0x8
+0x1debe22e99fc   17c  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9a00   180  4c891424             REX.W movq [rsp],r10
+0x1debe22e9a04   184  488b05b7feffff       REX.W movq rax,[rip+0xfffffeb7]
+0x1debe22e9a0b   18b  ffd0                 call rax
+0x1debe22e9a0d   18d  e83ef6ffff           call 0x1debe22e9050  (jump table)
+0x1debe22e9a12   192  bf3c000000           movl rdi,0x3c
+0x1debe22e9a17   197  4989e2               REX.W movq r10,rsp
+0x1debe22e9a1a   19a  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9a1e   19e  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9a22   1a2  4c891424             REX.W movq [rsp],r10
+0x1debe22e9a26   1a6  488b0595feffff       REX.W movq rax,[rip+0xfffffe95]
+0x1debe22e9a2d   1ad  ffd0                 call rax
+0x1debe22e9a2f   1af  52                   push rdx
+0x1debe22e9a30   1b0  53                   push rbx
+0x1debe22e9a31   1b1  e82af7ffff           call 0x1debe22e9160  (jump table)
+0x1debe22e9a36   1b6  5b                   pop rbx
+0x1debe22e9a37   1b7  5a                   pop rdx
+0x1debe22e9a38   1b8  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x1debe22e9a3c   1bc  e952ffffff           jmp 0x1debe22e9993  <+0x113>
+0x1debe22e9a41   1c1  50                   push rax
+0x1debe22e9a42   1c2  52                   push rdx
+0x1debe22e9a43   1c3  53                   push rbx
+0x1debe22e9a44   1c4  e817f7ffff           call 0x1debe22e9160  (jump table)
+0x1debe22e9a49   1c9  5b                   pop rbx
+0x1debe22e9a4a   1ca  5a                   pop rdx
+0x1debe22e9a4b   1cb  58                   pop rax
+0x1debe22e9a4c   1cc  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x1debe22e9a50   1d0  e95bffffff           jmp 0x1debe22e99b0  <+0x130>
+0x1debe22e9a55   1d5  0f1f00               nop
+
+Source positions:
+ pc offset  position
+       15b         0  statement
+       16b        15  statement
+       18d        15  statement
+       1b1        31  statement
+       1c4        36  statement
+
+Safepoints (stack slots = 11, entries = 1, byte size = 16)
+0x1debe22e99e0    160  slots (sp->fp): 00000000000
+
+RelocInfo (size = 0)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[5]
+index: 5
+kind: wasm function
+compiler: TurboFan
+Body (size = 832 = 784 + 48 padding)
+Instructions (size = 768)
+0x1debe22e9a80     0  55                   push rbp
+0x1debe22e9a81     1  4889e5               REX.W movq rbp,rsp
+0x1debe22e9a84     4  6a08                 push 0x8
+0x1debe22e9a86     6  56                   push rsi
+0x1debe22e9a87     7  4883ec28             REX.W subq rsp,0x28
+0x1debe22e9a8b     b  488b4e17             REX.W movq rcx,[rsi+0x17]
+0x1debe22e9a8f     f  8b7eff               movl rdi,[rsi-0x1]
+0x1debe22e9a92    12  41baffffffff         movl r10,0xffffffff
+0x1debe22e9a98    18  493bfa               REX.W cmpq rdi,r10
+0x1debe22e9a9b    1b  7620                 jna 0x1debe22e9abd  <+0x3d>
+0x1debe22e9a9d    1d  bf01000000           movl rdi,0x1
+0x1debe22e9aa2    22  4989e2               REX.W movq r10,rsp
+0x1debe22e9aa5    25  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9aa9    29  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9aad    2d  4c891424             REX.W movq [rsp],r10
+0x1debe22e9ab1    31  48b8d0b409a920750000 REX.W movq rax,0x7520a909b4d0
+0x1debe22e9abb    3b  ffd0                 call rax
+0x1debe22e9abd    3d  410fb77c3e07         movzxwl rdi,[r14+rdi*1+0x7]
+0x1debe22e9ac3    43  41baffffffff         movl r10,0xffffffff
+0x1debe22e9ac9    49  493bfa               REX.W cmpq rdi,r10
+0x1debe22e9acc    4c  761d                 jna 0x1debe22e9aeb  <+0x6b>
+0x1debe22e9ace    4e  bf01000000           movl rdi,0x1
+0x1debe22e9ad3    53  4989e2               REX.W movq r10,rsp
+0x1debe22e9ad6    56  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9ada    5a  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9ade    5e  4c891424             REX.W movq [rsp],r10
+0x1debe22e9ae2    62  488b05caffffff       REX.W movq rax,[rip+0xffffffca]
+0x1debe22e9ae9    69  ffd0                 call rax
+0x1debe22e9aeb    6b  81ffbf000000         cmpl rdi,0xbf
+0x1debe22e9af1    71  0f85d4010000         jnz 0x1debe22e9ccb  <+0x24b>
+0x1debe22e9af7    77  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x1debe22e9afb    7b  0f1f440000           nop
+0x1debe22e9b00    80  0f86fd010000         jna 0x1debe22e9d03  <+0x283>
+0x1debe22e9b06    86  33ff                 xorl rdi,rdi
+0x1debe22e9b08    88  4c8bc7               REX.W movq r8,rdi
+0x1debe22e9b0b    8b  660f1f840000000000   nop
+0x1debe22e9b14    94  660f1f840000000000   nop
+0x1debe22e9b1d    9d  660f1f840000000000   nop
+0x1debe22e9b26    a6  660f1f840000000000   nop
+0x1debe22e9b2f    af  660f1f840000000000   nop
+0x1debe22e9b38    b8  0f1f840000000000     nop
+0x1debe22e9b40    c0  448bc8               movl r9,rax
+0x1debe22e9b43    c3  41baffffffff         movl r10,0xffffffff
+0x1debe22e9b49    c9  4d3bca               REX.W cmpq r9,r10
+0x1debe22e9b4c    cc  761d                 jna 0x1debe22e9b6b  <+0xeb>
+0x1debe22e9b4e    ce  bf01000000           movl rdi,0x1
+0x1debe22e9b53    d3  4989e2               REX.W movq r10,rsp
+0x1debe22e9b56    d6  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9b5a    da  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9b5e    de  4c891424             REX.W movq [rsp],r10
+0x1debe22e9b62    e2  488b054affffff       REX.W movq rax,[rip+0xffffff4a]
+0x1debe22e9b69    e9  ffd0                 call rax
+0x1debe22e9b6b    eb  4d8d1c09             REX.W leaq r11,[r9+rcx*1]
+0x1debe22e9b6f    ef  4183e303             andl r11,0x3
+0x1debe22e9b73    f3  458bdb               movl r11,r11
+0x1debe22e9b76    f6  41baffffffff         movl r10,0xffffffff
+0x1debe22e9b7c    fc  4d3bda               REX.W cmpq r11,r10
+0x1debe22e9b7f    ff  761d                 jna 0x1debe22e9b9e  <+0x11e>
+0x1debe22e9b81   101  bf01000000           movl rdi,0x1
+0x1debe22e9b86   106  4989e2               REX.W movq r10,rsp
+0x1debe22e9b89   109  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9b8d   10d  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9b91   111  4c891424             REX.W movq [rsp],r10
+0x1debe22e9b95   115  488b0517ffffff       REX.W movq rax,[rip+0xffffff17]
+0x1debe22e9b9c   11c  ffd0                 call rax
+0x1debe22e9b9e   11e  4585db               testl r11,r11
+0x1debe22e9ba1   121  0f85b4010000         jnz 0x1debe22e9d5b  <+0x2db>
+0x1debe22e9ba7   127  41bbb77a0000         movl r11,0x7ab7
+0x1debe22e9bad   12d  4d8bd3               REX.W movq r10,r11
+0x1debe22e9bb0   130  46871409             xchgl r10,[rcx+r9*1]
+0x1debe22e9bb4   134  4183c001             addl r8,0x1
+0x1debe22e9bb8   138  41baffffffff         movl r10,0xffffffff
+0x1debe22e9bbe   13e  4d3bc2               REX.W cmpq r8,r10
+0x1debe22e9bc1   141  761d                 jna 0x1debe22e9be0  <+0x160>
+0x1debe22e9bc3   143  bf01000000           movl rdi,0x1
+0x1debe22e9bc8   148  4989e2               REX.W movq r10,rsp
+0x1debe22e9bcb   14b  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9bcf   14f  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9bd3   153  4c891424             REX.W movq [rsp],r10
+0x1debe22e9bd7   157  488b05d5feffff       REX.W movq rax,[rip+0xfffffed5]
+0x1debe22e9bde   15e  ffd0                 call rax
+0x1debe22e9be0   160  443bc2               cmpl r8,rdx
+0x1debe22e9be3   163  0f83cb000000         jnc 0x1debe22e9cb4  <+0x234>
+0x1debe22e9be9   169  4d8bd3               REX.W movq r10,r11
+0x1debe22e9bec   16c  46871409             xchgl r10,[rcx+r9*1]
+0x1debe22e9bf0   170  4183c001             addl r8,0x1
+0x1debe22e9bf4   174  41baffffffff         movl r10,0xffffffff
+0x1debe22e9bfa   17a  4d3bc2               REX.W cmpq r8,r10
+0x1debe22e9bfd   17d  761d                 jna 0x1debe22e9c1c  <+0x19c>
+0x1debe22e9bff   17f  bf01000000           movl rdi,0x1
+0x1debe22e9c04   184  4989e2               REX.W movq r10,rsp
+0x1debe22e9c07   187  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9c0b   18b  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9c0f   18f  4c891424             REX.W movq [rsp],r10
+0x1debe22e9c13   193  488b0599feffff       REX.W movq rax,[rip+0xfffffe99]
+0x1debe22e9c1a   19a  ffd0                 call rax
+0x1debe22e9c1c   19c  0f1f4000             nop
+0x1debe22e9c20   1a0  443bc2               cmpl r8,rdx
+0x1debe22e9c23   1a3  0f8393000000         jnc 0x1debe22e9cbc  <+0x23c>
+0x1debe22e9c29   1a9  4d8bd3               REX.W movq r10,r11
+0x1debe22e9c2c   1ac  46871409             xchgl r10,[rcx+r9*1]
+0x1debe22e9c30   1b0  4183c001             addl r8,0x1
+0x1debe22e9c34   1b4  41baffffffff         movl r10,0xffffffff
+0x1debe22e9c3a   1ba  4d3bc2               REX.W cmpq r8,r10
+0x1debe22e9c3d   1bd  761d                 jna 0x1debe22e9c5c  <+0x1dc>
+0x1debe22e9c3f   1bf  bf01000000           movl rdi,0x1
+0x1debe22e9c44   1c4  4989e2               REX.W movq r10,rsp
+0x1debe22e9c47   1c7  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9c4b   1cb  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9c4f   1cf  4c891424             REX.W movq [rsp],r10
+0x1debe22e9c53   1d3  488b0559feffff       REX.W movq rax,[rip+0xfffffe59]
+0x1debe22e9c5a   1da  ffd0                 call rax
+0x1debe22e9c5c   1dc  0f1f4000             nop
+0x1debe22e9c60   1e0  443bc2               cmpl r8,rdx
+0x1debe22e9c63   1e3  0f8358000000         jnc 0x1debe22e9cc1  <+0x241>
+0x1debe22e9c69   1e9  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x1debe22e9c6d   1ed  0f86b0000000         jna 0x1debe22e9d23  <+0x2a3>
+0x1debe22e9c73   1f3  4d8bd3               REX.W movq r10,r11
+0x1debe22e9c76   1f6  46871409             xchgl r10,[rcx+r9*1]
+0x1debe22e9c7a   1fa  4183c001             addl r8,0x1
+0x1debe22e9c7e   1fe  41baffffffff         movl r10,0xffffffff
+0x1debe22e9c84   204  4d3bc2               REX.W cmpq r8,r10
+0x1debe22e9c87   207  761d                 jna 0x1debe22e9ca6  <+0x226>
+0x1debe22e9c89   209  bf01000000           movl rdi,0x1
+0x1debe22e9c8e   20e  4989e2               REX.W movq r10,rsp
+0x1debe22e9c91   211  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9c95   215  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9c99   219  4c891424             REX.W movq [rsp],r10
+0x1debe22e9c9d   21d  488b050ffeffff       REX.W movq rax,[rip+0xfffffe0f]
+0x1debe22e9ca4   224  ffd0                 call rax
+0x1debe22e9ca6   226  443bc2               cmpl r8,rdx
+0x1debe22e9ca9   229  0f8291feffff         jc 0x1debe22e9b40  <+0xc0>
+0x1debe22e9caf   22f  e912000000           jmp 0x1debe22e9cc6  <+0x246>
+0x1debe22e9cb4   234  488bc7               REX.W movq rax,rdi
+0x1debe22e9cb7   237  488be5               REX.W movq rsp,rbp
+0x1debe22e9cba   23a  5d                   pop rbp
+0x1debe22e9cbb   23b  c3                   retl
+0x1debe22e9cbc   23c  488bc7               REX.W movq rax,rdi
+0x1debe22e9cbf   23f  ebf6                 jmp 0x1debe22e9cb7  <+0x237>
+0x1debe22e9cc1   241  488bc7               REX.W movq rax,rdi
+0x1debe22e9cc4   244  ebf1                 jmp 0x1debe22e9cb7  <+0x237>
+0x1debe22e9cc6   246  488bc7               REX.W movq rax,rdi
+0x1debe22e9cc9   249  ebec                 jmp 0x1debe22e9cb7  <+0x237>
+0x1debe22e9ccb   24b  498b9570b30000       REX.W movq rdx,[r13+0xb370]
+0x1debe22e9cd2   252  b994000000           movl rcx,0x94
+0x1debe22e9cd7   257  51                   push rcx
+0x1debe22e9cd8   258  48bb20062eaa20750000 REX.W movq rbx,0x7520aa2e0620
+0x1debe22e9ce2   262  b801000000           movl rax,0x1
+0x1debe22e9ce7   267  33f6                 xorl rsi,rsi
+0x1debe22e9ce9   269  49ba0000005c20750000 REX.W movq r10,0x75205c000000
+0x1debe22e9cf3   273  8b5203               movl rdx,[rdx+0x3]
+0x1debe22e9cf6   276  c1ea09               shrl rdx, 9
+0x1debe22e9cf9   279  c1e204               shll rdx, 4
+0x1debe22e9cfc   27c  498b1412             REX.W movq rdx,[r10+rdx*1]
+0x1debe22e9d00   280  ffd2                 call rdx
+0x1debe22e9d02   282  cc                   int3l
+0x1debe22e9d03   283  488955e8             REX.W movq [rbp-0x18],rdx
+0x1debe22e9d07   287  48894dd8             REX.W movq [rbp-0x28],rcx
+0x1debe22e9d0b   28b  488945c8             REX.W movq [rbp-0x38],rax
+0x1debe22e9d0f   28f  e8fcf5ffff           call 0x1debe22e9310  (jump table)
+0x1debe22e9d14   294  8b45c8               movl rax,[rbp-0x38]
+0x1debe22e9d17   297  8b55e8               movl rdx,[rbp-0x18]
+0x1debe22e9d1a   29a  488b4dd8             REX.W movq rcx,[rbp-0x28]
+0x1debe22e9d1e   29e  e9e3fdffff           jmp 0x1debe22e9b06  <+0x86>
+0x1debe22e9d23   2a3  488955e8             REX.W movq [rbp-0x18],rdx
+0x1debe22e9d27   2a7  4c8945e0             REX.W movq [rbp-0x20],r8
+0x1debe22e9d2b   2ab  48894dd8             REX.W movq [rbp-0x28],rcx
+0x1debe22e9d2f   2af  4c894dd0             REX.W movq [rbp-0x30],r9
+0x1debe22e9d33   2b3  488945c8             REX.W movq [rbp-0x38],rax
+0x1debe22e9d37   2b7  e8d4f5ffff           call 0x1debe22e9310  (jump table)
+0x1debe22e9d3c   2bc  33ff                 xorl rdi,rdi
+0x1debe22e9d3e   2be  8b55e8               movl rdx,[rbp-0x18]
+0x1debe22e9d41   2c1  448b45e0             movl r8,[rbp-0x20]
+0x1debe22e9d45   2c5  41bbb77a0000         movl r11,0x7ab7
+0x1debe22e9d4b   2cb  488b4dd8             REX.W movq rcx,[rbp-0x28]
+0x1debe22e9d4f   2cf  4c8b4dd0             REX.W movq r9,[rbp-0x30]
+0x1debe22e9d53   2d3  8b45c8               movl rax,[rbp-0x38]
+0x1debe22e9d56   2d6  e918ffffff           jmp 0x1debe22e9c73  <+0x1f3>
+0x1debe22e9d5b   2db  e800f3ffff           call 0x1debe22e9060  (jump table)
+0x1debe22e9d60   2e0  bf3c000000           movl rdi,0x3c
+0x1debe22e9d65   2e5  4989e2               REX.W movq r10,rsp
+0x1debe22e9d68   2e8  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9d6c   2ec  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9d70   2f0  4c891424             REX.W movq [rsp],r10
+0x1debe22e9d74   2f4  488b0538fdffff       REX.W movq rax,[rip+0xfffffd38]
+0x1debe22e9d7b   2fb  ffd0                 call rax
+0x1debe22e9d7d   2fd  90                   nop
+0x1debe22e9d7e   2fe  6690                 nop
+
+Protected instructions:
+ pc offset
+       130         
+       16c         
+       1ac         
+       1f6         
+
+Source positions:
+ pc offset  position
+       127        15
+       252         0
+       2a3         7
+       2db        15
+
+Safepoints (stack slots = 9, entries = 1, byte size = 16)
+0x1debe22e9d02    282  slots (sp->fp): 000000000
+
+RelocInfo (size = 11)
+0x1debe22e9ab3  external reference (0x7520a909b4d0)
+0x1debe22e9cda  external reference (0x7520aa2e0620)
+0x1debe22e9ceb  external reference (0x75205c000000)
+0x1debe22e9d10  wasm stub call  (0x1debe22e9310)
+0x1debe22e9d38  wasm stub call  (0x1debe22e9310)
+0x1debe22e9d5c  wasm stub call  (0x1debe22e9060)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[3]
+index: 3
+kind: wasm function
+compiler: Liftoff
+Body (size = 448 = 392 + 56 padding)
+Instructions (size = 376)
+0x1debe22e9dc0     0  41bc03000000         movl r12,0x3
+0x1debe22e9dc6     6  e8a5f3ffff           call 0x1debe22e9170  (jump table)
+0x1debe22e9dcb     b  4881ec08000000       REX.W subq rsp,0x8
+0x1debe22e9dd2    12  8bc0                 movl rax,rax
+0x1debe22e9dd4    14  8b4eff               movl rcx,[rsi-0x1]
+0x1debe22e9dd7    17  4903ce               REX.W addq rcx,r14
+0x1debe22e9dda    1a  0fb74907             movzxwl rcx,[rcx+0x7]
+0x1debe22e9dde    1e  81f9bf000000         cmpl rcx,0xbf
+0x1debe22e9de4    24  0f8420000000         jz 0x1debe22e9e0a  <+0x4a>
+0x1debe22e9dea    2a  bf4a000000           movl rdi,0x4a
+0x1debe22e9def    2f  4989e2               REX.W movq r10,rsp
+0x1debe22e9df2    32  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9df6    36  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9dfa    3a  4c891424             REX.W movq [rsp],r10
+0x1debe22e9dfe    3e  48b8d0b409a920750000 REX.W movq rax,0x7520a909b4d0
+0x1debe22e9e08    48  ffd0                 call rax
+0x1debe22e9e0a    4a  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x1debe22e9e0e    4e  0f86b9000000         jna 0x1debe22e9ecd  <+0x10d>
+0x1debe22e9e14    54  8bc8                 movl rcx,rax
+0x1debe22e9e16    56  83e103               andl rcx,0x3
+0x1debe22e9e19    59  85c9                 testl rcx,rcx
+0x1debe22e9e1b    5b  0f85bc000000         jnz 0x1debe22e9edd  <+0x11d>
+0x1debe22e9e21    61  41baffffffff         movl r10,0xffffffff
+0x1debe22e9e27    67  493bc2               REX.W cmpq rax,r10
+0x1debe22e9e2a    6a  761d                 jna 0x1debe22e9e49  <+0x89>
+0x1debe22e9e2c    6c  bf01000000           movl rdi,0x1
+0x1debe22e9e31    71  4989e2               REX.W movq r10,rsp
+0x1debe22e9e34    74  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9e38    78  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9e3c    7c  4c891424             REX.W movq [rsp],r10
+0x1debe22e9e40    80  488b05b9ffffff       REX.W movq rax,[rip+0xffffffb9]
+0x1debe22e9e47    87  ffd0                 call rax
+0x1debe22e9e49    89  488b561f             REX.W movq rdx,[rsi+0x1f]
+0x1debe22e9e4d    8d  b903000000           movl rcx,0x3
+0x1debe22e9e52    92  48f7d9               REX.W negq rcx
+0x1debe22e9e55    95  4803ca               REX.W addq rcx,rdx
+0x1debe22e9e58    98  483bc1               REX.W cmpq rax,rcx
+0x1debe22e9e5b    9b  0f839e000000         jnc 0x1debe22e9eff  <+0x13f>
+0x1debe22e9e61    a1  488b4e17             REX.W movq rcx,[rsi+0x17]
+0x1debe22e9e65    a5  41baffffffff         movl r10,0xffffffff
+0x1debe22e9e6b    ab  493bc2               REX.W cmpq rax,r10
+0x1debe22e9e6e    ae  761d                 jna 0x1debe22e9e8d  <+0xcd>
+0x1debe22e9e70    b0  bf01000000           movl rdi,0x1
+0x1debe22e9e75    b5  4989e2               REX.W movq r10,rsp
+0x1debe22e9e78    b8  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9e7c    bc  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9e80    c0  4c891424             REX.W movq [rsp],r10
+0x1debe22e9e84    c4  488b0575ffffff       REX.W movq rax,[rip+0xffffff75]
+0x1debe22e9e8b    cb  ffd0                 call rax
+0x1debe22e9e8d    cd  8b1401               movl rdx,[rcx+rax*1]
+0x1debe22e9e90    d0  4c8b565f             REX.W movq r10,[rsi+0x5f]
+0x1debe22e9e94    d4  41816a0c0c010000     subl [r10+0xc],0x10c
+0x1debe22e9e9c    dc  0f887f000000         js 0x1debe22e9f21  <+0x161>
+0x1debe22e9ea2    e2  8bc2                 movl rax,rdx
+0x1debe22e9ea4    e4  48837df808           REX.W cmpq [rbp-0x8],0x8
+0x1debe22e9ea9    e9  741d                 jz 0x1debe22e9ec8  <+0x108>
+0x1debe22e9eab    eb  bf30000000           movl rdi,0x30
+0x1debe22e9eb0    f0  4989e2               REX.W movq r10,rsp
+0x1debe22e9eb3    f3  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9eb7    f7  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9ebb    fb  4c891424             REX.W movq [rsp],r10
+0x1debe22e9ebf    ff  488b053affffff       REX.W movq rax,[rip+0xffffff3a]
+0x1debe22e9ec6   106  ffd0                 call rax
+0x1debe22e9ec8   108  488be5               REX.W movq rsp,rbp
+0x1debe22e9ecb   10b  5d                   pop rbp
+0x1debe22e9ecc   10c  c3                   retl
+0x1debe22e9ecd   10d  50                   push rax
+0x1debe22e9ece   10e  e83df4ffff           call 0x1debe22e9310  (jump table)
+0x1debe22e9ed3   113  58                   pop rax
+0x1debe22e9ed4   114  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x1debe22e9ed8   118  e937ffffff           jmp 0x1debe22e9e14  <+0x54>
+0x1debe22e9edd   11d  e87ef1ffff           call 0x1debe22e9060  (jump table)
+0x1debe22e9ee2   122  bf3c000000           movl rdi,0x3c
+0x1debe22e9ee7   127  4989e2               REX.W movq r10,rsp
+0x1debe22e9eea   12a  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9eee   12e  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9ef2   132  4c891424             REX.W movq [rsp],r10
+0x1debe22e9ef6   136  488b0503ffffff       REX.W movq rax,[rip+0xffffff03]
+0x1debe22e9efd   13d  ffd0                 call rax
+0x1debe22e9eff   13f  e84cf1ffff           call 0x1debe22e9050  (jump table)
+0x1debe22e9f04   144  bf3c000000           movl rdi,0x3c
+0x1debe22e9f09   149  4989e2               REX.W movq r10,rsp
+0x1debe22e9f0c   14c  4883ec08             REX.W subq rsp,0x8
+0x1debe22e9f10   150  4883e4f0             REX.W andq rsp,0xf0
+0x1debe22e9f14   154  4c891424             REX.W movq [rsp],r10
+0x1debe22e9f18   158  488b05e1feffff       REX.W movq rax,[rip+0xfffffee1]
+0x1debe22e9f1f   15f  ffd0                 call rax
+0x1debe22e9f21   161  50                   push rax
+0x1debe22e9f22   162  51                   push rcx
+0x1debe22e9f23   163  52                   push rdx
+0x1debe22e9f24   164  e837f2ffff           call 0x1debe22e9160  (jump table)
+0x1debe22e9f29   169  5a                   pop rdx
+0x1debe22e9f2a   16a  59                   pop rcx
+0x1debe22e9f2b   16b  58                   pop rax
+0x1debe22e9f2c   16c  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x1debe22e9f30   170  e96dffffff           jmp 0x1debe22e9ea2  <+0xe2>
+0x1debe22e9f35   175  0f1f00               nop
+
+Source positions:
+ pc offset  position
+       10e         0  statement
+       11d         3  statement
+       13f         3  statement
+       164         7  statement
+
+Safepoints (stack slots = 9, entries = 1, byte size = 16)
+0x1debe22e9ed3    113  slots (sp->fp): 000000000
+
+RelocInfo (size = 0)
+
+--- End code ---
+Resolving worker message
+Resolving worker message
+Resolving worker message
+Resolving worker message
+Resolving worker message
+##Benchmark Start##
+Worker 0 Value: 31415 Time (ms): 37.34899999999993
+Worker 1 Value: 31415 Time (ms): 28.10699999999997
+Worker 2 Value: 31415 Time (ms): 28.42700000000002
+Worker 3 Value: 31415 Time (ms): 29.1099999999999
+Worker 4 Value: 31415 Time (ms): 29.00499999999988
+Final total count: 31415
+##Benchmark End##
+Finished.

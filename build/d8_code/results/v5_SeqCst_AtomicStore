@@ -1,0 +1,998 @@
+   1: ~+0(this=0x209d00081a25 <JSGlobalProxy>) {
+   2:  ~+0(this=0x209d00081a25 <JSGlobalProxy>) {
+   2:  } -> 0x209d00000011 <undefined>
+00 61 73 6d 01 00 00 00 01 Section: Type
+Decode Section 0x60cb754a0f5a - 0x60cb754a0f66
+DecodeType[0] module+1
+60   +13  value type          : 1 bytes
+  +15  value type          : 1 bytes
+DecodeType[1] module+6
+60   +18  value type          : 1 bytes
+  +19  value type          : 1 bytes
+  +21  value type          : 1 bytes
+  +10  skip                : 12 bytes
+02 Section: Import
+Decode Section 0x60cb754a0f68 - 0x60cb754a0f78
+DecodeImportTable[0] module+1
+  +26  module name         : 3 bytes
+  +30  field name          : 6 bytes
+02   +37  memory limits flags : 03 = 3
+  +24  skip                : 16 bytes
+03 Section: Function
+Decode Section 0x60cb754a0f7a - 0x60cb754a0f83
+  +43  signature index     : 00 = 0
+  +44  signature index     : 00 = 0
+  +45  signature index     : 01 = 1
+  +46  signature index     : 00 = 0
+  +47  signature index     : 01 = 1
+  +48  signature index     : 00 = 0
+  +49  signature index     : 01 = 1
+  +50  signature index     : 01 = 1
+  +42  skip                : 9 bytes
+07 Section: Export
+Decode Section 0x60cb754a0f86 - 0x60cb754a1024
+DecodeExportTable[0] module+1
+  +56  field name          : 16 bytes
+00 DecodeExportTable[1] module+20
+  +75  field name          : 23 bytes
+00 DecodeExportTable[2] module+46
+  +101  field name          : 19 bytes
+00 DecodeExportTable[3] module+68
+  +123  field name          : 8 bytes
+00 DecodeExportTable[4] module+79
+  +134  field name          : 10 bytes
+00 DecodeExportTable[5] module+92
+  +147  field name          : 21 bytes
+00 DecodeExportTable[6] module+116
+  +171  field name          : 12 bytes
+00 DecodeExportTable[7] module+131
+  +186  field name          : 24 bytes
+00   +54  skip                : 158 bytes
+0a Section: Code
+Decode Section 0x60cb754a1027 - 0x60cb754a1109
+  +217  function body       : 20 bytes
+  +238  function body       : 10 bytes
+  +249  function body       : 40 bytes
+  +290  function body       : 8 bytes
+  +299  function body       : 50 bytes
+  +350  function body       : 14 bytes
+  +365  function body       : 37 bytes
+  +403  function body       : 38 bytes
+  +215  skip                : 226 bytes
+  +0  module header       : 8 bytes
+  +8  uint8_t             : 01 = 1
+  +9  section size        : 0c = 12
+  +10  section payload     : 12 bytes
+  +22  uint8_t             : 02 = 2
+  +23  section size        : 10 = 16
+  +24  section payload     : 16 bytes
+  +40  uint8_t             : 03 = 3
+  +41  section size        : 09 = 9
+  +42  section payload     : 9 bytes
+  +51  uint8_t             : 07 = 7
+  +52  section size        : 9e 01 = 158
+  +54  section payload     : 158 bytes
+  +212  uint8_t             : 0a = 10
+  +213  section size        : e2 01 = 226
+local decls count: 0
+local decls count: 0
+  +217  skip                : 1 bytes
+  +238  skip                : 1 bytes
+wasm-decode 0x60cb754a1029...0x60cb754a103d (module+218, 20 bytes)
+wasm-decode 0x60cb754a103e...0x60cb754a1048 (module+239, 10 bytes)
+local decls count: 1
+local decls count: 0
+  +290  skip                : 1 bytes
+wasm-decode 0x60cb754a1072...0x60cb754a107a (module+291, 8 bytes)
+  +249  skip                : 3 bytes
+wasm-decode 0x60cb754a1049...0x60cb754a1071 (module+252, 40 bytes)
+  @1        #local.get                     | B1 |  i
+  @1        #local.get                     | B1 |  i
+  @3        #i32.const                     | B1 |  i
+  @3        #local.get                     | B1 |  i i
+  @1        #local.get                     | B1 |  i
+  @3        #i32.const                     | B1 |  i i
+  @5        #local.set                     | B1 | 
+  @5        #i32.load                      | B1 |  i i
+  @5        #i32.atomic.rmw.add            | B1 |  i
+  @8        #i32.const                     | B1 |  i i i
+  @3        #i32.atomic.load               | B1 |  i
+  @10       #i32.add                       | B1 |  i i
+  @9        #end                           |
+  @9        #(implicit) return             |  | 
+  @7        #end                           |
+  @7        #(implicit) return             |  | 
+wasm-decode ok
+
+local decls count: 1
+  +299  skip                : 3 bytes
+wasm-decode 0x60cb754a107b...0x60cb754a10ad (module+302, 50 bytes)
+  @3        #i32.const                     | B1 |  i
+  @5        #local.set                     | B1 | 
+  @7        #loop                          | B1L0 | 
+  @9        #local.get                     | B1L0 |  i
+wasm-decode ok
+
+  @11       #i32.atomic.load               | B1L0 |  i
+  @15       #local.set                     | B1L0 | 
+  @17       #local.get                     | B1L0 |  i
+  @19       #i32.const                     | B1L0 |  i i
+  @21       #i32.add                       | B1L0 |  i
+  @22       #local.set                     | B1L0 | 
+  @11       #i32.store                     | B1 | 
+local decls count: 1
+  @14       #local.get                     | B1 |  i
+  +350  skip                : 3 bytes
+  @7        #loop                          | B1L0 | 
+wasm-decode 0x60cb754a10ae...0x60cb754a10bc (module+353, 14 bytes)
+  @16       #i32.load                      | B1 |  i
+  @19       #end                           |
+  @19       #(implicit) return             |  | 
+wasm-decode ok
+
+  @24       #local.get                     | B1L0 |  i
+  @3        #local.get                     | B1 |  i
+  @9        #local.get                     | B1L0 |  i
+  @5        #i32.const                     | B1 |  i i
+  @11       #i32.const                     | B1L0 |  i i
+  @26       #local.get                     | B1L0 |  i i
+local decls count: 1
+  +365  skip                : 3 bytes
+wasm-decode 0x60cb754a10bd...0x60cb754a10e2 (module+368, 37 bytes)
+  @28       #i32.atomic.store              | B1L0 | 
+  @13       #i32.atomic.rmw.add            | B1L0 |  i
+  @32       #local.get                     | B1L0 |  i
+  @34       #i32.const                     | B1L0 |  i i
+  @17       #drop                          | B1L0 | 
+  @18       #local.get                     | B1L0 |  i
+  @36       #i32.add                       | B1L0 |  i
+  @7        #i32.atomic.store              | B1 | 
+  @20       #i32.const                     | B1L0 |  i i
+  @37       #local.set                     | B1L0 | 
+  @3        #i32.const                     | B1 |  i
+  @22       #i32.add                       | B1L0 |  i
+  @39       #local.get                     | B1L0 |  i
+  @11       #local.get                     | B1 |  i
+  @5        #local.set                     | B1 | 
+  @23       #local.set                     | B1L0 | 
+  @13       #end                           |
+  @13       #(implicit) return             |  | 
+wasm-decode ok
+
+  @41       #local.get                     | B1L0 |  i i
+  @7        #loop                          | B1L0 | 
+  @25       #local.get                     | B1L0 |  i
+  @9        #local.get                     | B1L0 |  i
+  @43       #i32.lt_u                      | B1L0 |  i
+  @27       #local.get                     | B1L0 |  i i
+local decls count: 1
+  +403  skip                : 3 bytes
+wasm-decode 0x60cb754a10e3...0x60cb754a1109 (module+406, 38 bytes)
+  @44       #br_if                         | B1L0 | 
+  @29       #i32.lt_u                      | B1L0 |  i
+  @30       #br_if                         | B1L0 | 
+  @11       #i32.const                     | B1L0 |  i i
+  @32       #end                           | B1 | 
+  @3        #i32.const                     | B1 |  i
+  @46       #end                           | B1 | 
+  @5        #local.set                     | B1 | 
+  @33       #local.get                     | B1 |  i
+  @47       #local.get                     | B1 |  i
+  @49       #end                           |
+  @49       #(implicit) return             |  | 
+wasm-decode ok
+
+  @7        #loop                          | B1L0 | 
+  @15       #i32.atomic.store              | B1L0 | 
+  @35       #i32.atomic.load               | B1 |  i
+  @39       #end                           |
+  @39       #(implicit) return             |  | 
+  @9        #local.get                     | B1L0 |  i
+wasm-decode ok
+
+  @19       #local.get                     | B1L0 |  i
+  @21       #i32.const                     | B1L0 |  i i
+  @11       #local.get                     | B1L0 |  i i
+  @23       #i32.add                       | B1L0 |  i
+  @13       #i32.const                     | B1L0 |  i i i
+  @24       #local.set                     | B1L0 | 
+  @26       #local.get                     | B1L0 |  i
+  @15       #i32.add                       | B1L0 |  i i
+  @28       #local.get                     | B1L0 |  i i
+  @30       #i32.lt_u                      | B1L0 |  i
+  @16       #i32.atomic.store              | B1L0 | 
+  @31       #br_if                         | B1L0 | 
+  @20       #local.get                     | B1L0 |  i
+  @33       #end                           | B1 | 
+  @34       #local.get                     | B1 |  i
+  @22       #i32.const                     | B1L0 |  i i
+  @36       #end                           |
+  @36       #(implicit) return             |  | 
+wasm-decode ok
+
+  @24       #i32.add                       | B1L0 |  i
+  @25       #local.set                     | B1L0 | 
+  @27       #local.get                     | B1L0 |  i
+  @29       #local.get                     | B1L0 |  i i
+  @31       #i32.lt_u                      | B1L0 |  i
+  @32       #br_if                         | B1L0 | 
+  @34       #end                           | B1 | 
+  @35       #local.get                     | B1 |  i
+  @37       #end                           |
+  @37       #(implicit) return             |  | 
+wasm-decode ok
+
+  +0  module header       : 8 bytes
+  +8  uint8_t             : 01 = 1
+  +9  section size        : 0c = 12
+  +10  section payload     : 12 bytes
+  +22  uint8_t             : 02 = 2
+  +23  section size        : 10 = 16
+  +24  section payload     : 16 bytes
+  +40  uint8_t             : 03 = 3
+  +41  section size        : 09 = 9
+  +42  section payload     : 9 bytes
+  +51  uint8_t             : 07 = 7
+  +52  section size        : 9e 01 = 158
+  +54  section payload     : 158 bytes
+  +212  uint8_t             : 0a = 10
+  +213  section size        : e2 01 = 226
+   2:  ~main+15(this=0x209d00081a25 <JSGlobalProxy>) {
+   3:   ~runWorkers+15(this=0x209d00081a25 <JSGlobalProxy>, 0x209d002899dd <Module map = 0x209d0008fbb5>, 0x209d00099e0d <Memory map = 0x209d0008ff39>, 0x209d00099c5d <JSFunction workerCode (sfi = 0x209d000999e9)>, 5) {
+   1: ~+0(this=0x209d00441a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x209d00441a25 <JSGlobalProxy>) {
+   2:  } -> 0x209d00000011 <undefined>
+   1: } -> 0x209d00000011 <undefined>
+   4:    ~sendMessageToWorker+24(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028b4a9 <Object map = 0x209d0009a1ed>, 0x209d00289bad <Worker map = 0x209d00095ea9>) {
+   6:      ~+9(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028b5f1 <JSFunction (sfi = 0x209d002511e5)>, 0x209d0028b60d <JSFunction (sfi = 0x209d00251215)>) {
+   6:      } -> 0x209d00000011 <undefined>
+   4:    } -> 0x209d0028b565 <Promise map = 0x209d000899ad>
+   4:    ~sendMessageToWorker+24(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028b6fd <Object map = 0x209d0009a1ed>, 0x209d0028a0e9 <Worker map = 0x209d00095ea9>) {
+   6:      ~+9(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028b7f5 <JSFunction (sfi = 0x209d002511e5)>, 0x209d0028b811 <JSFunction (sfi = 0x209d00251215)>) {
+   6:      } -> 0x209d00000011 <undefined>
+   4:    } -> 0x209d0028b769 <Promise map = 0x209d000899ad>
+   4:    ~sendMessageToWorker+24(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028b86d <Object map = 0x209d0009a1ed>, 0x209d0028a5d9 <Worker map = 0x209d00095ea9>) {
+   6:      ~+9(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028b965 <JSFunction (sfi = 0x209d002511e5)>, 0x209d0028b981 <JSFunction (sfi = 0x209d00251215)>) {
+   1: ~onmessage+0(this=0x209d00441a25 <JSGlobalProxy>, 0x209d000c8fd9 <Object map = 0x209d00459b19>) {
+   6:      } -> 0x209d00000011 <undefined>
+   4:    } -> 0x209d0028b8d9 <Promise map = 0x209d000899ad>
+   4:    ~sendMessageToWorker+24(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028b9dd <Object map = 0x209d0009a1ed>, 0x209d0028aac9 <Worker map = 0x209d00095ea9>) {
+   6:      ~+9(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028bad5 <JSFunction (sfi = 0x209d002511e5)>, 0x209d0028baf1 <JSFunction (sfi = 0x209d00251215)>) {
+   6:      } -> 0x209d00000011 <undefined>
+   4:    } -> 0x209d0028ba49 <Promise map = 0x209d000899ad>
+   4:    ~sendMessageToWorker+24(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028bb4d <Object map = 0x209d0009a1ed>, 0x209d0028afb9 <Worker map = 0x209d00095ea9>) {
+   6:      ~+9(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028bc45 <JSFunction (sfi = 0x209d002511e5)>, 0x209d0028bc61 <JSFunction (sfi = 0x209d00251215)>) {
+   6:      } -> 0x209d00000011 <undefined>
+   4:    } -> 0x209d0028bbb9 <Promise map = 0x209d000899ad>
+   1: } -> 0x209d0028c02d <Promise map = 0x209d000899ad>
+local decls count: 1
+  +365  skip                : 3 bytes
+wasm-decode 0x60cb754a10bd...0x60cb754a10e2 (module+368, 37 bytes)
+[]; [i32:s0x24, i32:s0x28, i32:c0, i32:c0]
+  @3        #i32.const                     | B1 |  i
+[]; [i32:s0x24, i32:s0x28, i32:c0, i32:c0, i32:c0]
+  @5        #local.set                     | B1 | 
+[]; [i32:s0x24, i32:s0x28, i32:c0, i32:c0]
+  @7        #loop                          | B1L0 | 
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]
+  @9        #local.get                     | B1L0 |  i
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30, i32:rax]
+  @11       #i32.const                     | B1L0 |  i i
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30, i32:rax, i32:c31415]
+[DEBUG]AtomicOp called
+[DEBUG] AtomicStore emitting xchgl
+  @15       #i32.atomic.store              | B1L0 | 
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]
+  @19       #local.get                     | B1L0 |  i
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30, i32:rax]
+  @21       #i32.const                     | B1L0 |  i i
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30, i32:rax, i32:c1]
+  @23       #i32.add                       | B1L0 |  i
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30, i32:rax]
+  @24       #local.set                     | B1L0 | 
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:rax, i32:s0x30]
+  @26       #local.get                     | B1L0 |  i
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:rax, i32:s0x30, i32:rax]
+  @28       #local.get                     | B1L0 |  i i
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:rax, i32:s0x30, i32:rax, i32:rcx]
+  @30       #i32.lt_u                      | B1L0 |  i
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:rax, i32:s0x30, i32:rax, i32:rcx]
+  @31       #br_if                         | B1L0 | 
+[]; [i32:s0x24, i32:s0x28, i32:s0x2c, i32:s0x30]; [i32:s0x24, i32:s0x28, i32:rbx, i32:s0x30]
+  @33       #end                           | B1 | 
+[]; [i32:s0x24, i32:s0x28, i32:rbx, i32:s0x30]
+  @34       #local.get                     | B1 |  i
+[]; [i32:s0x24, i32:s0x28, i32:rbx, i32:s0x30, i32:rax]
+  @36       #end                           |
+  @36       #(implicit) return             |  | 
+wasm-decode ok
+
+  +0  module header       : 8 bytes
+01   +10  skip                : 12 bytes
+02   +24  skip                : 16 bytes
+03   +42  skip                : 9 bytes
+07   +54  skip                : 158 bytes
+0a   +215  skip                : 226 bytes
+--- WebAssembly code ---
+name: wasm-function[6]
+index: 6
+kind: wasm function
+compiler: Liftoff
+Body (size = 512 = 504 + 8 padding)
+Instructions (size = 488)
+0x3fe0e79b900     0  55                   push rbp
+0x3fe0e79b901     1  4889e5               REX.W movq rbp,rsp
+0x3fe0e79b904     4  6a08                 push 0x8
+0x3fe0e79b906     6  56                   push rsi
+0x3fe0e79b907     7  4881ec28000000       REX.W subq rsp,0x28
+0x3fe0e79b90e     e  8bc0                 movl rax,rax
+0x3fe0e79b910    10  8bd2                 movl rdx,rdx
+0x3fe0e79b912    12  8b4eff               movl rcx,[rsi-0x1]
+0x3fe0e79b915    15  4903ce               REX.W addq rcx,r14
+0x3fe0e79b918    18  0fb74907             movzxwl rcx,[rcx+0x7]
+0x3fe0e79b91c    1c  81f9bf000000         cmpl rcx,0xbf
+0x3fe0e79b922    22  0f8420000000         jz 0x3fe0e79b948  <+0x48>
+0x3fe0e79b928    28  bf4a000000           movl rdi,0x4a
+0x3fe0e79b92d    2d  4989e2               REX.W movq r10,rsp
+0x3fe0e79b930    30  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79b934    34  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79b938    38  4c891424             REX.W movq [rsp],r10
+0x3fe0e79b93c    3c  48b8d0b449b022760000 REX.W movq rax,0x7622b049b4d0
+0x3fe0e79b946    46  ffd0                 call rax
+0x3fe0e79b948    48  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x3fe0e79b94c    4c  0f8622010000         jna 0x3fe0e79ba74  <+0x174>
+0x3fe0e79b952    52  8945dc               movl [rbp-0x24],rax
+0x3fe0e79b955    55  8955d8               movl [rbp-0x28],rdx
+0x3fe0e79b958    58  e843faffff           call 0x3fe0e79b3a0  (jump table)
+0x3fe0e79b95d    5d  c745d400000000       movl [rbp-0x2c],0x0
+0x3fe0e79b964    64  c745d000000000       movl [rbp-0x30],0x0
+0x3fe0e79b96b    6b  8b45dc               movl rax,[rbp-0x24]
+0x3fe0e79b96e    6e  b9b77a0000           movl rcx,0x7ab7
+0x3fe0e79b973    73  8bd0                 movl rdx,rax
+0x3fe0e79b975    75  83e203               andl rdx,0x3
+0x3fe0e79b978    78  85d2                 testl rdx,rdx
+0x3fe0e79b97a    7a  0f8506010000         jnz 0x3fe0e79ba86  <+0x186>
+0x3fe0e79b980    80  41baffffffff         movl r10,0xffffffff
+0x3fe0e79b986    86  493bc2               REX.W cmpq rax,r10
+0x3fe0e79b989    89  761d                 jna 0x3fe0e79b9a8  <+0xa8>
+0x3fe0e79b98b    8b  bf01000000           movl rdi,0x1
+0x3fe0e79b990    90  4989e2               REX.W movq r10,rsp
+0x3fe0e79b993    93  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79b997    97  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79b99b    9b  4c891424             REX.W movq [rsp],r10
+0x3fe0e79b99f    9f  488b0598ffffff       REX.W movq rax,[rip+0xffffff98]
+0x3fe0e79b9a6    a6  ffd0                 call rax
+0x3fe0e79b9a8    a8  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x3fe0e79b9ac    ac  488b5e1f             REX.W movq rbx,[rsi+0x1f]
+0x3fe0e79b9b0    b0  ba03000000           movl rdx,0x3
+0x3fe0e79b9b5    b5  48f7da               REX.W negq rdx
+0x3fe0e79b9b8    b8  4803d3               REX.W addq rdx,rbx
+0x3fe0e79b9bb    bb  483bc2               REX.W cmpq rax,rdx
+0x3fe0e79b9be    be  0f83e4000000         jnc 0x3fe0e79baa8  <+0x1a8>
+0x3fe0e79b9c4    c4  488b5617             REX.W movq rdx,[rsi+0x17]
+0x3fe0e79b9c8    c8  41baffffffff         movl r10,0xffffffff
+0x3fe0e79b9ce    ce  493bc2               REX.W cmpq rax,r10
+0x3fe0e79b9d1    d1  761d                 jna 0x3fe0e79b9f0  <+0xf0>
+0x3fe0e79b9d3    d3  bf01000000           movl rdi,0x1
+0x3fe0e79b9d8    d8  4989e2               REX.W movq r10,rsp
+0x3fe0e79b9db    db  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79b9df    df  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79b9e3    e3  4c891424             REX.W movq [rsp],r10
+0x3fe0e79b9e7    e7  488b0550ffffff       REX.W movq rax,[rip+0xffffff50]
+0x3fe0e79b9ee    ee  ffd0                 call rax
+0x3fe0e79b9f0    f0  870c02               xchgl rcx,[rdx+rax*1] //One place x-chg becomes movl
+0x3fe0e79b9f3    f3  8b45d4               movl rax,[rbp-0x2c]
+0x3fe0e79b9f6    f6  83c001               addl rax,0x1
+0x3fe0e79b9f9    f9  8b4dd8               movl rcx,[rbp-0x28]
+0x3fe0e79b9fc    fc  8bd8                 movl rbx,rax
+0x3fe0e79b9fe    fe  3bc1                 cmpl rax,rcx
+0x3fe0e79ba00   100  0f831a000000         jnc 0x3fe0e79ba20  <+0x120>
+0x3fe0e79ba06   106  4c8b565f             REX.W movq r10,[rsi+0x5f]
+0x3fe0e79ba0a   10a  41816a18af000000     subl [r10+0x18],0xaf
+0x3fe0e79ba12   112  0f88b2000000         js 0x3fe0e79baca  <+0x1ca>
+0x3fe0e79ba18   118  895dd4               movl [rbp-0x2c],rbx
+0x3fe0e79ba1b   11b  e94bffffff           jmp 0x3fe0e79b96b  <+0x6b>
+0x3fe0e79ba20   120  8b45d0               movl rax,[rbp-0x30]
+0x3fe0e79ba23   123  895dd4               movl [rbp-0x2c],rbx
+0x3fe0e79ba26   126  8945cc               movl [rbp-0x34],rax
+0x3fe0e79ba29   129  488d45cc             REX.W leaq rax,[rbp-0x34]
+0x3fe0e79ba2d   12d  e87ef9ffff           call 0x3fe0e79b3b0  (jump table)
+0x3fe0e79ba32   132  4c8b55f0             REX.W movq r10,[rbp-0x10]
+0x3fe0e79ba36   136  4d8b525f             REX.W movq r10,[r10+0x5f]
+0x3fe0e79ba3a   13a  41816a186e010000     subl [r10+0x18],0x16e
+0x3fe0e79ba42   142  0f8894000000         js 0x3fe0e79badc  <+0x1dc>
+0x3fe0e79ba48   148  8b45cc               movl rax,[rbp-0x34]
+0x3fe0e79ba4b   14b  48837df808           REX.W cmpq [rbp-0x8],0x8
+0x3fe0e79ba50   150  741d                 jz 0x3fe0e79ba6f  <+0x16f>
+0x3fe0e79ba52   152  bf30000000           movl rdi,0x30
+0x3fe0e79ba57   157  4989e2               REX.W movq r10,rsp
+0x3fe0e79ba5a   15a  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79ba5e   15e  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79ba62   162  4c891424             REX.W movq [rsp],r10
+0x3fe0e79ba66   166  488b05d1feffff       REX.W movq rax,[rip+0xfffffed1]
+0x3fe0e79ba6d   16d  ffd0                 call rax
+0x3fe0e79ba6f   16f  488be5               REX.W movq rsp,rbp
+0x3fe0e79ba72   172  5d                   pop rbp
+0x3fe0e79ba73   173  c3                   retl
+0x3fe0e79ba74   174  50                   push rax
+0x3fe0e79ba75   175  52                   push rdx
+0x3fe0e79ba76   176  e895f8ffff           call 0x3fe0e79b310  (jump table)
+0x3fe0e79ba7b   17b  5a                   pop rdx
+0x3fe0e79ba7c   17c  58                   pop rax
+0x3fe0e79ba7d   17d  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x3fe0e79ba81   181  e9ccfeffff           jmp 0x3fe0e79b952  <+0x52>
+0x3fe0e79ba86   186  e8d5f5ffff           call 0x3fe0e79b060  (jump table)
+0x3fe0e79ba8b   18b  bf3c000000           movl rdi,0x3c
+0x3fe0e79ba90   190  4989e2               REX.W movq r10,rsp
+0x3fe0e79ba93   193  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79ba97   197  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79ba9b   19b  4c891424             REX.W movq [rsp],r10
+0x3fe0e79ba9f   19f  488b0598feffff       REX.W movq rax,[rip+0xfffffe98]
+0x3fe0e79baa6   1a6  ffd0                 call rax
+0x3fe0e79baa8   1a8  e8a3f5ffff           call 0x3fe0e79b050  (jump table)
+0x3fe0e79baad   1ad  bf3c000000           movl rdi,0x3c
+0x3fe0e79bab2   1b2  4989e2               REX.W movq r10,rsp
+0x3fe0e79bab5   1b5  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bab9   1b9  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79babd   1bd  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bac1   1c1  488b0576feffff       REX.W movq rax,[rip+0xfffffe76]
+0x3fe0e79bac8   1c8  ffd0                 call rax
+0x3fe0e79baca   1ca  52                   push rdx
+0x3fe0e79bacb   1cb  53                   push rbx
+0x3fe0e79bacc   1cc  e88ff6ffff           call 0x3fe0e79b160  (jump table)
+0x3fe0e79bad1   1d1  5b                   pop rbx
+0x3fe0e79bad2   1d2  5a                   pop rdx
+0x3fe0e79bad3   1d3  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x3fe0e79bad7   1d7  e93cffffff           jmp 0x3fe0e79ba18  <+0x118>
+0x3fe0e79badc   1dc  e87ff6ffff           call 0x3fe0e79b160  (jump table)
+0x3fe0e79bae1   1e1  e962ffffff           jmp 0x3fe0e79ba48  <+0x148>
+0x3fe0e79bae6   1e6  6690                 nop
+
+Source positions:
+ pc offset  position
+        58         3
+       12d        36
+       176         0  statement
+       186        15  statement
+       1a8        15  statement
+       1cc        31  statement
+       1dc        36  statement
+
+Safepoints (stack slots = 11, entries = 1, byte size = 15)
+0x3fe0e79b95d     5d  slots (sp->fp): 00000000000
+
+RelocInfo (size = 0)
+
+--- End code ---
+   1: ~wasm-function[6] {
+local decls count: 1
+  +365  skip                : 3 bytes
+wasm-decode 0x60cb754a10bd...0x60cb754a10e2 (module+368, 37 bytes)
+  @3        #i32.const                     | B1 |  i
+  @5        #local.set                     | B1 | 
+  @7        #loop                          | B1L0 | 
+  @9        #local.get                     | B1L0 |  i
+  @11       #i32.const                     | B1L0 |  i i
+  @15       #i32.atomic.store              | B1L0 | 
+  @19       #local.get                     | B1L0 |  i
+  @21       #i32.const                     | B1L0 |  i i
+  @23       #i32.add                       | B1L0 |  i
+  @24       #local.set                     | B1L0 | 
+  @26       #local.get                     | B1L0 |  i
+  @28       #local.get                     | B1L0 |  i i
+  @30       #i32.lt_u                      | B1L0 |  i
+  @31       #br_if                         | B1L0 | 
+  @33       #end                           | B1 | 
+  @34       #local.get                     | B1 |  i
+  @36       #end                           |
+  @36       #(implicit) return             |  | 
+wasm-decode ok
+
+--- WebAssembly code ---
+name: wasm-function[6]
+index: 6
+kind: wasm function
+compiler: TurboFan
+Body (size = 1024 = 1020 + 4 padding)
+Instructions (size = 1004)
+0x3fe0e79bb00     0  55                   push rbp
+0x3fe0e79bb01     1  4889e5               REX.W movq rbp,rsp
+0x3fe0e79bb04     4  6a08                 push 0x8
+0x3fe0e79bb06     6  56                   push rsi
+0x3fe0e79bb07     7  4883ec48             REX.W subq rsp,0x48
+0x3fe0e79bb0b     b  488b4e17             REX.W movq rcx,[rsi+0x17]
+0x3fe0e79bb0f     f  8b7eff               movl rdi,[rsi-0x1]
+0x3fe0e79bb12    12  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bb18    18  493bfa               REX.W cmpq rdi,r10
+0x3fe0e79bb1b    1b  7620                 jna 0x3fe0e79bb3d  <+0x3d>
+0x3fe0e79bb1d    1d  bf01000000           movl rdi,0x1
+0x3fe0e79bb22    22  4989e2               REX.W movq r10,rsp
+0x3fe0e79bb25    25  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bb29    29  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bb2d    2d  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bb31    31  48b8d0b449b022760000 REX.W movq rax,0x7622b049b4d0
+0x3fe0e79bb3b    3b  ffd0                 call rax
+0x3fe0e79bb3d    3d  410fb77c3e07         movzxwl rdi,[r14+rdi*1+0x7]
+0x3fe0e79bb43    43  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bb49    49  493bfa               REX.W cmpq rdi,r10
+0x3fe0e79bb4c    4c  761d                 jna 0x3fe0e79bb6b  <+0x6b>
+0x3fe0e79bb4e    4e  bf01000000           movl rdi,0x1
+0x3fe0e79bb53    53  4989e2               REX.W movq r10,rsp
+0x3fe0e79bb56    56  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bb5a    5a  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bb5e    5e  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bb62    62  488b05caffffff       REX.W movq rax,[rip+0xffffffca]
+0x3fe0e79bb69    69  ffd0                 call rax
+0x3fe0e79bb6b    6b  488945a8             REX.W movq [rbp-0x58],rax
+0x3fe0e79bb6f    6f  488955c8             REX.W movq [rbp-0x38],rdx
+0x3fe0e79bb73    73  48894db8             REX.W movq [rbp-0x48],rcx
+0x3fe0e79bb77    77  660f1f840000000000   nop
+0x3fe0e79bb80    80  81ffbf000000         cmpl rdi,0xbf
+0x3fe0e79bb86    86  0f85d8020000         jnz 0x3fe0e79be64  <+0x364>
+0x3fe0e79bb8c    8c  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x3fe0e79bb90    90  0f8603030000         jna 0x3fe0e79be99  <+0x399>
+0x3fe0e79bb96    96  498bbd70b30000       REX.W movq rdi,[r13+0xb370]
+0x3fe0e79bb9d    9d  33c0                 xorl rax,rax
+0x3fe0e79bb9f    9f  33f6                 xorl rsi,rsi
+0x3fe0e79bba1    a1  48bb0054f7b122760000 REX.W movq rbx,0x7622b1f75400
+0x3fe0e79bbab    ab  4c8bc0               REX.W movq r8,rax
+0x3fe0e79bbae    ae  49ba0000006822760000 REX.W movq r10,0x762268000000
+0x3fe0e79bbb8    b8  8b7f03               movl rdi,[rdi+0x3]
+0x3fe0e79bbbb    bb  c1ef09               shrl rdi, 9
+0x3fe0e79bbbe    be  c1e704               shll rdi, 4
+0x3fe0e79bbc1    c1  498b3c3a             REX.W movq rdi,[r10+rdi*1]
+0x3fe0e79bbc5    c5  ffd7                 call rdi
+0x3fe0e79bbc7    c7  33d2                 xorl rdx,rdx
+0x3fe0e79bbc9    c9  488b4db8             REX.W movq rcx,[rbp-0x48]
+0x3fe0e79bbcd    cd  660f1f840000000000   nop
+0x3fe0e79bbd6    d6  660f1f840000000000   nop
+0x3fe0e79bbdf    df  660f1f840000000000   nop
+0x3fe0e79bbe8    e8  660f1f840000000000   nop
+0x3fe0e79bbf1    f1  660f1f840000000000   nop
+0x3fe0e79bbfa    fa  660f1f440000         nop
+0x3fe0e79bc00   100  8b7da8               movl rdi,[rbp-0x58] //Start of loop jump
+0x3fe0e79bc03   103  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bc09   109  493bfa               REX.W cmpq rdi,r10
+0x3fe0e79bc0c   10c  761d                 jna 0x3fe0e79bc2b  <+0x12b>
+0x3fe0e79bc0e   10e  bf01000000           movl rdi,0x1
+0x3fe0e79bc13   113  4989e2               REX.W movq r10,rsp
+0x3fe0e79bc16   116  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bc1a   11a  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bc1e   11e  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bc22   122  488b050affffff       REX.W movq rax,[rip+0xffffff0a]
+0x3fe0e79bc29   129  ffd0                 call rax
+0x3fe0e79bc2b   12b  4c8d040f             REX.W leaq r8,[rdi+rcx*1] //Loads target atomic store value to r8
+0x3fe0e79bc2f   12f  4183e003             andl r8,0x3 //Last 2 bit mask
+0x3fe0e79bc33   133  458bc0               movl r8,r8 //Nop??
+0x3fe0e79bc36   136  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bc3c   13c  4d3bc2               REX.W cmpq r8,r10 //r8 - r10
+0x3fe0e79bc3f   13f  761d                 jna 0x3fe0e79bc5e  <+0x15e> //Jump if r10 > r8, which is always true. Strange
+0x3fe0e79bc41   141  bf01000000           movl rdi,0x1
+0x3fe0e79bc46   146  4989e2               REX.W movq r10,rsp
+0x3fe0e79bc49   149  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bc4d   14d  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bc51   151  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bc55   155  488b05d7feffff       REX.W movq rax,[rip+0xfffffed7]
+0x3fe0e79bc5c   15c  ffd0                 call rax
+0x3fe0e79bc5e   15e  4585c0               testl r8,r8
+0x3fe0e79bc61   161  0f855f020000         jnz 0x3fe0e79bec6  <+0x3c6> //jump if r8 is not zero
+0x3fe0e79bc67   167  41b8b77a0000         movl r8,0x7ab7
+0x3fe0e79bc6d   16d  4d8bd0               REX.W movq r10,r8
+0x3fe0e79bc70   170  44871439             xchgl r10,[rcx+rdi*1]
+0x3fe0e79bc74   174  83c201               addl rdx,0x1 //Loop increment
+0x3fe0e79bc77   177  41baffffffff         movl r10,0xffffffff //Check if greater than max 32 bit value, possibly out of bounds check
+0x3fe0e79bc7d   17d  493bd2               REX.W cmpq rdx,r10 //rdx - r10
+0x3fe0e79bc80   180  761d                 jna 0x3fe0e79bc9f  <+0x19f> //Jump if rdx <= r10, ie memory check passed
+0x3fe0e79bc82   182  bf01000000           movl rdi,0x1
+0x3fe0e79bc87   187  4989e2               REX.W movq r10,rsp
+0x3fe0e79bc8a   18a  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bc8e   18e  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bc92   192  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bc96   196  488b0596feffff       REX.W movq rax,[rip+0xfffffe96]
+0x3fe0e79bc9d   19d  ffd0                 call rax
+0x3fe0e79bc9f   19f  90                   nop
+0x3fe0e79bca0   1a0  3b55c8               cmpl rdx,[rbp-0x38] //Likely check loop counter vs loop termination value
+0x3fe0e79bca3   1a3  0f83ca000000         jnc 0x3fe0e79bd73  <+0x273> //Jumps if rdx > [rbp-0x38] ie loop ended, else continue
+0x3fe0e79bca9   1a9  4d8bd0               REX.W movq r10,r8
+0x3fe0e79bcac   1ac  44871439             xchgl r10,[rcx+rdi*1] //Atomic store
+0x3fe0e79bcb0   1b0  83c201               addl rdx,0x1 
+0x3fe0e79bcb3   1b3  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bcb9   1b9  493bd2               REX.W cmpq rdx,r10 //Check if counter exceeds max val - but no memory access with rdx involved?
+0x3fe0e79bcbc   1bc  761d                 jna 0x3fe0e79bcdb  <+0x1db> //Jump if rdx <= 0xffffffff, continue normally
+0x3fe0e79bcbe   1be  bf01000000           movl rdi,0x1
+0x3fe0e79bcc3   1c3  4989e2               REX.W movq r10,rsp
+0x3fe0e79bcc6   1c6  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bcca   1ca  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bcce   1ce  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bcd2   1d2  488b055afeffff       REX.W movq rax,[rip+0xfffffe5a]
+0x3fe0e79bcd9   1d9  ffd0                 call rax
+0x3fe0e79bcdb   1db  0f1f440000           nop //Arrive here if continue as normal
+0x3fe0e79bce0   1e0  3b55c8               cmpl rdx,[rbp-0x38] //Check again as rdx added one at 1b0
+0x3fe0e79bce3   1e3  0f83ca000000         jnc 0x3fe0e79bdb3  <+0x2b3> //Jmp if rdx (counter) exceeds loop termination value
+0x3fe0e79bce9   1e9  4d8bd0               REX.W movq r10,r8
+0x3fe0e79bcec   1ec  44871439             xchgl r10,[rcx+rdi*1]
+0x3fe0e79bcf0   1f0  83c201               addl rdx,0x1
+0x3fe0e79bcf3   1f3  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bcf9   1f9  493bd2               REX.W cmpq rdx,r10
+0x3fe0e79bcfc   1fc  761d                 jna 0x3fe0e79bd1b  <+0x21b> //Jump if normal
+0x3fe0e79bcfe   1fe  bf01000000           movl rdi,0x1
+0x3fe0e79bd03   203  4989e2               REX.W movq r10,rsp
+0x3fe0e79bd06   206  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bd0a   20a  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bd0e   20e  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bd12   212  488b051afeffff       REX.W movq rax,[rip+0xfffffe1a]
+0x3fe0e79bd19   219  ffd0                 call rax
+0x3fe0e79bd1b   21b  0f1f440000           nop //Arrive here after jump
+0x3fe0e79bd20   220  3b55c8               cmpl rdx,[rbp-0x38] //Check if loop counter exceeded yet
+0x3fe0e79bd23   223  0f83c4000000         jnc 0x3fe0e79bded  <+0x2ed>
+0x3fe0e79bd29   229  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x3fe0e79bd2d   22d  0f8670010000         jna 0x3fe0e79bea3  <+0x3a3>
+0x3fe0e79bd33   233  4d8bd0               REX.W movq r10,r8
+0x3fe0e79bd36   236  44871439             xchgl r10,[rcx+rdi*1] //Last xchgl
+0x3fe0e79bd3a   23a  83c201               addl rdx,0x1
+0x3fe0e79bd3d   23d  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bd43   243  493bd2               REX.W cmpq rdx,r10
+0x3fe0e79bd46   246  761d                 jna 0x3fe0e79bd65  <+0x265>
+0x3fe0e79bd48   248  bf01000000           movl rdi,0x1
+0x3fe0e79bd4d   24d  4989e2               REX.W movq r10,rsp
+0x3fe0e79bd50   250  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bd54   254  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bd58   258  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bd5c   25c  488b05d0fdffff       REX.W movq rax,[rip+0xfffffdd0]
+0x3fe0e79bd63   263  ffd0                 call rax
+0x3fe0e79bd65   265  3b55c8               cmpl rdx,[rbp-0x38]
+0x3fe0e79bd68   268  0f8292feffff         jc 0x3fe0e79bc00  <+0x100> //jmp back to previous instr 0x100 if rdx < [rbp-0x38]
+0x3fe0e79bd6e   26e  e9b4000000           jmp 0x3fe0e79be27  <+0x327>
+0x3fe0e79bd73   273  488d55d0             REX.W leaq rdx,[rbp-0x30]
+0x3fe0e79bd77   277  c70200000000         movl [rdx],0x0
+0x3fe0e79bd7d   27d  498b8d70b30000       REX.W movq rcx,[r13+0xb370]
+0x3fe0e79bd84   284  52                   push rdx
+0x3fe0e79bd85   285  b801000000           movl rax,0x1
+0x3fe0e79bd8a   28a  48bb905bf7b122760000 REX.W movq rbx,0x7622b1f75b90
+0x3fe0e79bd94   294  33f6                 xorl rsi,rsi
+0x3fe0e79bd96   296  4c8b1513feffff       REX.W movq r10,[rip+0xfffffe13]
+0x3fe0e79bd9d   29d  8b4903               movl rcx,[rcx+0x3]
+0x3fe0e79bda0   2a0  c1e909               shrl rcx, 9
+0x3fe0e79bda3   2a3  c1e104               shll rcx, 4
+0x3fe0e79bda6   2a6  498b0c0a             REX.W movq rcx,[r10+rcx*1]
+0x3fe0e79bdaa   2aa  ffd1                 call rcx
+0x3fe0e79bdac   2ac  33c0                 xorl rax,rax
+0x3fe0e79bdae   2ae  488be5               REX.W movq rsp,rbp
+0x3fe0e79bdb1   2b1  5d                   pop rbp
+0x3fe0e79bdb2   2b2  c3                   retl
+0x3fe0e79bdb3   2b3  488d55d8             REX.W leaq rdx,[rbp-0x28]
+0x3fe0e79bdb7   2b7  c70200000000         movl [rdx],0x0
+0x3fe0e79bdbd   2bd  498b8d70b30000       REX.W movq rcx,[r13+0xb370]
+0x3fe0e79bdc4   2c4  52                   push rdx
+0x3fe0e79bdc5   2c5  488b1dc0ffffff       REX.W movq rbx,[rip+0xffffffc0]
+0x3fe0e79bdcc   2cc  b801000000           movl rax,0x1
+0x3fe0e79bdd1   2d1  33f6                 xorl rsi,rsi
+0x3fe0e79bdd3   2d3  4c8b15d6fdffff       REX.W movq r10,[rip+0xfffffdd6]
+0x3fe0e79bdda   2da  8b4903               movl rcx,[rcx+0x3]
+0x3fe0e79bddd   2dd  c1e909               shrl rcx, 9
+0x3fe0e79bde0   2e0  c1e104               shll rcx, 4
+0x3fe0e79bde3   2e3  498b0c0a             REX.W movq rcx,[r10+rcx*1]
+0x3fe0e79bde7   2e7  ffd1                 call rcx
+0x3fe0e79bde9   2e9  33c0                 xorl rax,rax
+0x3fe0e79bdeb   2eb  ebc1                 jmp 0x3fe0e79bdae  <+0x2ae>
+0x3fe0e79bded   2ed  488d55e0             REX.W leaq rdx,[rbp-0x20]
+0x3fe0e79bdf1   2f1  c70200000000         movl [rdx],0x0
+0x3fe0e79bdf7   2f7  498b8d70b30000       REX.W movq rcx,[r13+0xb370]
+0x3fe0e79bdfe   2fe  52                   push rdx
+0x3fe0e79bdff   2ff  488b1d86ffffff       REX.W movq rbx,[rip+0xffffff86]
+0x3fe0e79be06   306  b801000000           movl rax,0x1
+0x3fe0e79be0b   30b  33f6                 xorl rsi,rsi
+0x3fe0e79be0d   30d  4c8b159cfdffff       REX.W movq r10,[rip+0xfffffd9c]
+0x3fe0e79be14   314  8b4903               movl rcx,[rcx+0x3]
+0x3fe0e79be17   317  c1e909               shrl rcx, 9
+0x3fe0e79be1a   31a  c1e104               shll rcx, 4
+0x3fe0e79be1d   31d  498b0c0a             REX.W movq rcx,[r10+rcx*1]
+0x3fe0e79be21   321  ffd1                 call rcx
+0x3fe0e79be23   323  33c0                 xorl rax,rax
+0x3fe0e79be25   325  eb87                 jmp 0x3fe0e79bdae  <+0x2ae>
+0x3fe0e79be27   327  488d55e8             REX.W leaq rdx,[rbp-0x18]
+0x3fe0e79be2b   32b  c70200000000         movl [rdx],0x0
+0x3fe0e79be31   331  498b8d70b30000       REX.W movq rcx,[r13+0xb370]
+0x3fe0e79be38   338  52                   push rdx
+0x3fe0e79be39   339  488b1d4cffffff       REX.W movq rbx,[rip+0xffffff4c]
+0x3fe0e79be40   340  b801000000           movl rax,0x1
+0x3fe0e79be45   345  33f6                 xorl rsi,rsi
+0x3fe0e79be47   347  4c8b1562fdffff       REX.W movq r10,[rip+0xfffffd62]
+0x3fe0e79be4e   34e  8b4903               movl rcx,[rcx+0x3]
+0x3fe0e79be51   351  c1e909               shrl rcx, 9
+0x3fe0e79be54   354  c1e104               shll rcx, 4
+0x3fe0e79be57   357  498b0c0a             REX.W movq rcx,[r10+rcx*1]
+0x3fe0e79be5b   35b  ffd1                 call rcx
+0x3fe0e79be5d   35d  33c0                 xorl rax,rax
+0x3fe0e79be5f   35f  488be5               REX.W movq rsp,rbp
+0x3fe0e79be62   362  5d                   pop rbp
+0x3fe0e79be63   363  c3                   retl
+0x3fe0e79be64   364  498b9570b30000       REX.W movq rdx,[r13+0xb370]
+0x3fe0e79be6b   36b  b994000000           movl rcx,0x94
+0x3fe0e79be70   370  51                   push rcx
+0x3fe0e79be71   371  48bb20066eb122760000 REX.W movq rbx,0x7622b16e0620
+0x3fe0e79be7b   37b  b801000000           movl rax,0x1
+0x3fe0e79be80   380  33f6                 xorl rsi,rsi
+0x3fe0e79be82   382  4c8b1527fdffff       REX.W movq r10,[rip+0xfffffd27]
+0x3fe0e79be89   389  8b5203               movl rdx,[rdx+0x3]
+0x3fe0e79be8c   38c  c1ea09               shrl rdx, 9
+0x3fe0e79be8f   38f  c1e204               shll rdx, 4
+0x3fe0e79be92   392  498b1412             REX.W movq rdx,[r10+rdx*1]
+0x3fe0e79be96   396  ffd2                 call rdx
+0x3fe0e79be98   398  cc                   int3l
+0x3fe0e79be99   399  e872f4ffff           call 0x3fe0e79b310  (jump table)
+0x3fe0e79be9e   39e  e9f3fcffff           jmp 0x3fe0e79bb96  <+0x96>
+0x3fe0e79bea3   3a3  488955c0             REX.W movq [rbp-0x40],rdx
+0x3fe0e79bea7   3a7  48897db0             REX.W movq [rbp-0x50],rdi
+0x3fe0e79beab   3ab  e860f4ffff           call 0x3fe0e79b310  (jump table)
+0x3fe0e79beb0   3b0  8b55c0               movl rdx,[rbp-0x40]
+0x3fe0e79beb3   3b3  41b8b77a0000         movl r8,0x7ab7
+0x3fe0e79beb9   3b9  488b4db8             REX.W movq rcx,[rbp-0x48]
+0x3fe0e79bebd   3bd  488b7db0             REX.W movq rdi,[rbp-0x50]
+0x3fe0e79bec1   3c1  e96dfeffff           jmp 0x3fe0e79bd33  <+0x233>
+0x3fe0e79bec6   3c6  e895f1ffff           call 0x3fe0e79b060  (jump table)
+0x3fe0e79becb   3cb  bf3c000000           movl rdi,0x3c
+0x3fe0e79bed0   3d0  4989e2               REX.W movq r10,rsp
+0x3fe0e79bed3   3d3  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bed7   3d7  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bedb   3db  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bedf   3df  488b054dfcffff       REX.W movq rax,[rip+0xfffffc4d]
+0x3fe0e79bee6   3e6  ffd0                 call rax
+0x3fe0e79bee8   3e8  90                   nop
+0x3fe0e79bee9   3e9  0f1f00               nop
+
+Protected instructions:
+ pc offset
+       170         
+       1ac         
+       1ec         
+       236         
+
+Source positions:
+ pc offset  position
+        9d         3
+       167        15
+       284        36
+       36b         0
+       3a3         7
+       3c6        15
+
+Safepoints (stack slots = 13, entries = 1, byte size = 15)
+0x3fe0e79bbc7     c7  slots (sp->fp): 0000000000000
+
+RelocInfo (size = 19)
+0x3fe0e79bb33  external reference (0x7622b049b4d0)
+0x3fe0e79bba3  external reference (0x7622b1f75400)
+0x3fe0e79bbb0  external reference (0x762268000000)
+0x3fe0e79bd8c  external reference (0x7622b1f75b90)
+0x3fe0e79be73  external reference (0x7622b16e0620)
+0x3fe0e79be9a  wasm stub call  (0x3fe0e79b310)
+0x3fe0e79beac  wasm stub call  (0x3fe0e79b310)
+0x3fe0e79bec7  wasm stub call  (0x3fe0e79b060)
+
+--- End code ---
+   1: ~+0(this=0x209d00841a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x209d00841a25 <JSGlobalProxy>) {
+   2:  } -> 0x209d00000011 <undefined>
+   1: } -> 0x209d00000011 <undefined>
+   1: ~onmessage+0(this=0x209d00841a25 <JSGlobalProxy>, 0x209d00488fd9 <Object map = 0x209d00859b19>) {
+   1: *wasm-function[6] {
+   1: ~+0(this=0x209d009c1a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x209d009c1a25 <JSGlobalProxy>) {
+   2:  } -> 0x209d00000011 <undefined>
+   1: } -> 0x209d00000011 <undefined>
+   1: ~onmessage+0(this=0x209d009c1a25 <JSGlobalProxy>, 0x209d005c8fd9 <Object map = 0x209d009d9b19>) {
+   1: *wasm-function[6] {
+   1: ~+0(this=0x209d00a01a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x209d00a01a25 <JSGlobalProxy>) {
+   2:  } -> 0x209d00000011 <undefined>
+   1: } -> 0x209d00000011 <undefined>
+   1: ~onmessage+0(this=0x209d00a01a25 <JSGlobalProxy>, 0x209d00708fd9 <Object map = 0x209d00a19b19>) {
+   1: *wasm-function[6] {
+   1: ~+0(this=0x209d00a41a25 <JSGlobalProxy>) {
+   2:  ~workerCode+0(this=0x209d00a41a25 <JSGlobalProxy>) {
+   2:  } -> 0x209d00000011 <undefined>
+   1: } -> 0x209d00000011 <undefined>
+   1: ~onmessage+0(this=0x209d00a41a25 <JSGlobalProxy>, 0x209d00888fd9 <Object map = 0x209d00a59b19>) {
+   1: *wasm-function[6] {
+   1: } -> 0
+local decls count: 0
+  +290  skip                : 1 bytes
+wasm-decode 0x60cb754a1072...0x60cb754a107a (module+291, 8 bytes)
+[]; [i32:s0x24]
+  @1        #local.get                     | B1 |  i
+[]; [i32:s0x24, i32:rax]
+[DEBUG]AtomicOp called
+  @3        #i32.atomic.load               | B1 |  i
+[]; [i32:s0x24, i32:rdx]
+  @7        #end                           |
+  @7        #(implicit) return             |  | 
+wasm-decode ok
+
+--- WebAssembly code ---
+name: wasm-function[3]
+index: 3
+kind: wasm function
+compiler: Liftoff
+Body (size = 448 = 408 + 40 padding)
+Instructions (size = 392)
+0x3fe0e79bf00     0  55                   push rbp
+0x3fe0e79bf01     1  4889e5               REX.W movq rbp,rsp
+0x3fe0e79bf04     4  6a08                 push 0x8
+0x3fe0e79bf06     6  56                   push rsi
+0x3fe0e79bf07     7  4881ec18000000       REX.W subq rsp,0x18
+0x3fe0e79bf0e     e  8bc0                 movl rax,rax
+0x3fe0e79bf10    10  8b4eff               movl rcx,[rsi-0x1]
+0x3fe0e79bf13    13  4903ce               REX.W addq rcx,r14
+0x3fe0e79bf16    16  0fb74907             movzxwl rcx,[rcx+0x7]
+0x3fe0e79bf1a    1a  81f9bf000000         cmpl rcx,0xbf
+0x3fe0e79bf20    20  0f8420000000         jz 0x3fe0e79bf46  <+0x46>
+0x3fe0e79bf26    26  bf4a000000           movl rdi,0x4a
+0x3fe0e79bf2b    2b  4989e2               REX.W movq r10,rsp
+0x3fe0e79bf2e    2e  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bf32    32  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bf36    36  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bf3a    3a  48b8d0b449b022760000 REX.W movq rax,0x7622b049b4d0
+0x3fe0e79bf44    44  ffd0                 call rax
+0x3fe0e79bf46    46  493b65a0             REX.W cmpq rsp,[r13-0x60]
+0x3fe0e79bf4a    4a  0f86d9000000         jna 0x3fe0e79c029  <+0x129>
+0x3fe0e79bf50    50  8945dc               movl [rbp-0x24],rax
+0x3fe0e79bf53    53  e848f4ffff           call 0x3fe0e79b3a0  (jump table)
+0x3fe0e79bf58    58  8b45dc               movl rax,[rbp-0x24]
+0x3fe0e79bf5b    5b  8bc8                 movl rcx,rax
+0x3fe0e79bf5d    5d  83e103               andl rcx,0x3
+0x3fe0e79bf60    60  85c9                 testl rcx,rcx
+0x3fe0e79bf62    62  0f85d1000000         jnz 0x3fe0e79c039  <+0x139>
+0x3fe0e79bf68    68  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bf6e    6e  493bc2               REX.W cmpq rax,r10
+0x3fe0e79bf71    71  761d                 jna 0x3fe0e79bf90  <+0x90>
+0x3fe0e79bf73    73  bf01000000           movl rdi,0x1
+0x3fe0e79bf78    78  4989e2               REX.W movq r10,rsp
+0x3fe0e79bf7b    7b  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bf7f    7f  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bf83    83  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bf87    87  488b05aeffffff       REX.W movq rax,[rip+0xffffffae]
+0x3fe0e79bf8e    8e  ffd0                 call rax
+0x3fe0e79bf90    90  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x3fe0e79bf94    94  488b561f             REX.W movq rdx,[rsi+0x1f]
+0x3fe0e79bf98    98  b903000000           movl rcx,0x3
+0x3fe0e79bf9d    9d  48f7d9               REX.W negq rcx
+0x3fe0e79bfa0    a0  4803ca               REX.W addq rcx,rdx
+0x3fe0e79bfa3    a3  483bc1               REX.W cmpq rax,rcx
+0x3fe0e79bfa6    a6  0f83af000000         jnc 0x3fe0e79c05b  <+0x15b>
+0x3fe0e79bfac    ac  488b4e17             REX.W movq rcx,[rsi+0x17]
+0x3fe0e79bfb0    b0  41baffffffff         movl r10,0xffffffff
+0x3fe0e79bfb6    b6  493bc2               REX.W cmpq rax,r10
+0x3fe0e79bfb9    b9  761d                 jna 0x3fe0e79bfd8  <+0xd8>
+0x3fe0e79bfbb    bb  bf01000000           movl rdi,0x1
+0x3fe0e79bfc0    c0  4989e2               REX.W movq r10,rsp
+0x3fe0e79bfc3    c3  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79bfc7    c7  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79bfcb    cb  4c891424             REX.W movq [rsp],r10
+0x3fe0e79bfcf    cf  488b0566ffffff       REX.W movq rax,[rip+0xffffff66]
+0x3fe0e79bfd6    d6  ffd0                 call rax
+0x3fe0e79bfd8    d8  8b1401               movl rdx,[rcx+rax*1]
+0x3fe0e79bfdb    db  8955d8               movl [rbp-0x28],rdx
+0x3fe0e79bfde    de  488d45d8             REX.W leaq rax,[rbp-0x28]
+0x3fe0e79bfe2    e2  e8c9f3ffff           call 0x3fe0e79b3b0  (jump table)
+0x3fe0e79bfe7    e7  4c8b55f0             REX.W movq r10,[rbp-0x10]
+0x3fe0e79bfeb    eb  4d8b525f             REX.W movq r10,[r10+0x5f]
+0x3fe0e79bfef    ef  41816a0c23010000     subl [r10+0xc],0x123
+0x3fe0e79bff7    f7  0f8880000000         js 0x3fe0e79c07d  <+0x17d>
+0x3fe0e79bffd    fd  8b45d8               movl rax,[rbp-0x28]
+0x3fe0e79c000   100  48837df808           REX.W cmpq [rbp-0x8],0x8
+0x3fe0e79c005   105  741d                 jz 0x3fe0e79c024  <+0x124>
+0x3fe0e79c007   107  bf30000000           movl rdi,0x30
+0x3fe0e79c00c   10c  4989e2               REX.W movq r10,rsp
+0x3fe0e79c00f   10f  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79c013   113  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79c017   117  4c891424             REX.W movq [rsp],r10
+0x3fe0e79c01b   11b  488b051affffff       REX.W movq rax,[rip+0xffffff1a]
+0x3fe0e79c022   122  ffd0                 call rax
+0x3fe0e79c024   124  488be5               REX.W movq rsp,rbp
+0x3fe0e79c027   127  5d                   pop rbp
+0x3fe0e79c028   128  c3                   retl
+0x3fe0e79c029   129  50                   push rax
+0x3fe0e79c02a   12a  e8e1f2ffff           call 0x3fe0e79b310  (jump table)
+0x3fe0e79c02f   12f  58                   pop rax
+0x3fe0e79c030   130  488b75f0             REX.W movq rsi,[rbp-0x10]
+0x3fe0e79c034   134  e917ffffff           jmp 0x3fe0e79bf50  <+0x50>
+0x3fe0e79c039   139  e822f0ffff           call 0x3fe0e79b060  (jump table)
+0x3fe0e79c03e   13e  bf3c000000           movl rdi,0x3c
+0x3fe0e79c043   143  4989e2               REX.W movq r10,rsp
+0x3fe0e79c046   146  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79c04a   14a  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79c04e   14e  4c891424             REX.W movq [rsp],r10
+0x3fe0e79c052   152  488b05e3feffff       REX.W movq rax,[rip+0xfffffee3]
+0x3fe0e79c059   159  ffd0                 call rax
+0x3fe0e79c05b   15b  e8f0efffff           call 0x3fe0e79b050  (jump table)
+0x3fe0e79c060   160  bf3c000000           movl rdi,0x3c
+0x3fe0e79c065   165  4989e2               REX.W movq r10,rsp
+0x3fe0e79c068   168  4883ec08             REX.W subq rsp,0x8
+0x3fe0e79c06c   16c  4883e4f0             REX.W andq rsp,0xf0
+0x3fe0e79c070   170  4c891424             REX.W movq [rsp],r10
+0x3fe0e79c074   174  488b05c1feffff       REX.W movq rax,[rip+0xfffffec1]
+0x3fe0e79c07b   17b  ffd0                 call rax
+0x3fe0e79c07d   17d  e8def0ffff           call 0x3fe0e79b160  (jump table)
+0x3fe0e79c082   182  e976ffffff           jmp 0x3fe0e79bffd  <+0xfd>
+0x3fe0e79c087   187  90                   nop
+
+Source positions:
+ pc offset  position
+        53         1
+        e2         7
+       12a         0  statement
+       139         3  statement
+       15b         3  statement
+       17d         7  statement
+
+Safepoints (stack slots = 8, entries = 1, byte size = 14)
+0x3fe0e79bf58     58  slots (sp->fp): 00000000
+
+RelocInfo (size = 0)
+
+--- End code ---
+   1: ~wasm-function[3] {
+   1: } -> 31415
+   1: } -> 0x209d00000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028c1c9 <Object map = 0x209d0009a58d>) {
+Resolving worker message
+   1: } -> 0x209d00000011 <undefined>
+   1: } -> 0
+   1: ~wasm-function[3] {
+   1: } -> 31415
+   1: ~workerN.onmessage+0(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028c279 <Object map = 0x209d0009a58d>) {
+Resolving worker message
+   1: } -> 0x209d00000011 <undefined>
+   1: } -> 0x209d00000011 <undefined>
+   1: } -> 0
+   1: ~wasm-function[3] {
+   1: } -> 31415
+   1: } -> 0x209d00000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028c329 <Object map = 0x209d0009a58d>) {
+Resolving worker message
+   1: } -> 0x209d00000011 <undefined>
+   1: } -> 0
+   1: ~wasm-function[3] {
+   1: } -> 31415
+   1: } -> 0x209d00000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028c3d9 <Object map = 0x209d0009a58d>) {
+Resolving worker message
+   1: } -> 0x209d00000011 <undefined>
+   1: } -> 0
+   1: ~wasm-function[3] {
+   1: } -> 31415
+   1: } -> 0x209d00000011 <undefined>
+   1: ~workerN.onmessage+0(this=0x209d00081a25 <JSGlobalProxy>, 0x209d0028c489 <Object map = 0x209d0009a58d>) {
+Resolving worker message
+   1: } -> 0x209d00000011 <undefined>
+   2:  } -> 0x209d00289b19 <Promise map = 0x209d000899ad>
+##Benchmark Start##
+Worker 0 Value: 31415 Time (ms): 2682.038
+Worker 1 Value: 31415 Time (ms): 2814.642
+Worker 2 Value: 31415 Time (ms): 3317.2710000000006
+Worker 3 Value: 31415 Time (ms): 3166.8329999999996
+Worker 4 Value: 31415 Time (ms): 2739.576
+   1: ~wasm-function[3] {
+   1: } -> 31415
+Final total count: 31415
+##Benchmark End##
+   2:  } -> 0x209d00289a51 <Promise map = 0x209d000899ad>
+   1: ~+0(this=0x209d00081a25 <JSGlobalProxy>) {
+Finished.
+   1: } -> 0x209d00000011 <undefined>
+  +0  module header       : 8 bytes
+  +8  uint8_t             : 01 = 1
+  +9  section size        : 0c = 12
+  +10  section payload     : 12 bytes
+  +22  uint8_t             : 02 = 2
+  +23  section size        : 10 = 16
+  +24  section payload     : 16 bytes
+  +40  uint8_t             : 03 = 3
+  +41  section size        : 09 = 9
+  +42  section payload     : 9 bytes
+  +51  uint8_t             : 07 = 7
+  +52  section size        : 9e 01 = 158
+  +54  section payload     : 158 bytes
+  +212  uint8_t             : 0a = 10
+  +213  section size        : e2 01 = 226

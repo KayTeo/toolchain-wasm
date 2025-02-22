@@ -4,7 +4,7 @@
 	.file	3 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__atomic/memory_order.h"
 	.file	4 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__atomic/atomic.h"
 	.file	5 "/home/kay/Documents/Code/toolchain-wasm/code/AtomicBenchCode" "1_StoreRelThread.cpp"
-	.file	6 "/home/kay/Documents/Code/toolchain-wasm" "llvm-project/build/lib/clang/20/include/__stddef_size_t.h"
+	.file	6 "/home/kay/Documents/Code/toolchain-wasm" "llvm-project/build_llvm/lib/clang/20/include/__stddef_size_t.h"
 	.file	7 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__thread/thread.h"
 	.file	8 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/vector"
 	.file	9 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/new"
@@ -19,7 +19,7 @@
 	.file	18 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__type_traits/type_identity.h"
 	.file	19 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__iterator/wrap_iter.h"
 	.file	20 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__iterator/iterator_traits.h"
-	.file	21 "/home/kay/Documents/Code/toolchain-wasm" "llvm-project/build/lib/clang/20/include/__stddef_ptrdiff_t.h"
+	.file	21 "/home/kay/Documents/Code/toolchain-wasm" "llvm-project/build_llvm/lib/clang/20/include/__stddef_ptrdiff_t.h"
 	.file	22 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__split_buffer"
 	.file	23 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_reference.h"
 	.file	24 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__type_traits/integral_constant.h"
@@ -305,7 +305,7 @@ _Z14wait_for_startv:                    # @_Z14wait_for_startv
 .Lfunc_begin0:
 	.functype	_Z14wait_for_startv () -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	.loc	5 15 16 prologue_end            # 1_StoreRelThread.cpp:15:16
 	i32.const	threads_ready
 	local.set	0
@@ -318,7 +318,8 @@ _Z14wait_for_startv:                    # @_Z14wait_for_startv
 	local.get	2
 	call	_ZNSt3__213__atomic_baseIiLb1EE9fetch_addB8ne190106EiNS_12memory_orderE
 	drop
-.LBB0_1:                                # =>This Inner Loop Header: Depth=1
+.LBB0_1:                                # %while.cond
+                                        # =>This Inner Loop Header: Depth=1
 	.loc	5 16 21                         # 1_StoreRelThread.cpp:16:21
 	block   	
 	loop    	                                # label1:
@@ -347,9 +348,10 @@ _Z14wait_for_startv:                    # @_Z14wait_for_startv
 	local.get	9
 	i32.eqz
 	br_if   	1                               # 1: down to label0
-# %bb.2:                                #   in Loop: Header=BB0_1 Depth=1
+# %bb.2:                                # %while.body
+                                        #   in Loop: Header=BB0_1 Depth=1
 	br      	0                               # 0: up to label1
-.LBB0_3:
+.LBB0_3:                                # %while.end
 	end_loop
 	end_block                               # label0:
 	.loc	5 19 1 is_stmt 1                # 1_StoreRelThread.cpp:19:1
@@ -367,7 +369,7 @@ _ZNSt3__213__atomic_baseIiLb1EE9fetch_addB8ne190106EiNS_12memory_orderE: # @_ZNS
 	.loc	2 145 0                         # emscripten/cache/sysroot/include/c++/v1/__atomic/atomic_base.h:145:0
 	.functype	_ZNSt3__213__atomic_baseIiLb1EE9fetch_addB8ne190106EiNS_12memory_orderE (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -429,7 +431,7 @@ _ZNKSt3__213__atomic_baseIbLb0EE4loadB8ne190106ENS_12memory_orderE: # @_ZNKSt3__
 	.loc	2 58 0 is_stmt 1                # emscripten/cache/sysroot/include/c++/v1/__atomic/atomic_base.h:58:0
 	.functype	_ZNKSt3__213__atomic_baseIbLb0EE4loadB8ne190106ENS_12memory_orderE (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -489,7 +491,7 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	.loc	5 21 0 is_stmt 1                # 1_StoreRelThread.cpp:21:0
 	.functype	_Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	64
@@ -538,7 +540,8 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	local.get	3
 	local.get	10
 	i32.store	40
-.LBB3_1:                                # =>This Inner Loop Header: Depth=1
+.LBB3_1:                                # %for.cond
+                                        # =>This Inner Loop Header: Depth=1
 .Ltmp7:
 	.loc	5 25 21 is_stmt 0               # 1_StoreRelThread.cpp:25:21
 	block   	
@@ -564,7 +567,8 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	local.get	15
 	i32.eqz
 	br_if   	1                               # 1: down to label2
-# %bb.2:                                #   in Loop: Header=BB3_1 Depth=1
+# %bb.2:                                # %for.body
+                                        #   in Loop: Header=BB3_1 Depth=1
 .Ltmp9:
 	.loc	5 26 27 is_stmt 1               # 1_StoreRelThread.cpp:26:27
 	local.get	3
@@ -615,7 +619,8 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	call	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE12emplace_backIJZ20benchmark_atomic_relRNS0_IdNS2_IdEEEEE3$_0EEERS1_DpOT_
 	drop
 .Ltmp10:
-# %bb.3:                                #   in Loop: Header=BB3_1 Depth=1
+# %bb.3:                                # %for.inc
+                                        #   in Loop: Header=BB3_1 Depth=1
 	.loc	5 25 39 is_stmt 1               # 1_StoreRelThread.cpp:25:39
 	local.get	3
 	i32.load	40
@@ -632,7 +637,7 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	.loc	5 25 2 is_stmt 0                # 1_StoreRelThread.cpp:25:2
 	br      	0                               # 0: up to label3
 .Ltmp11:
-.LBB3_4:
+.LBB3_4:                                # %for.end
 	.loc	5 25 2                          # 1_StoreRelThread.cpp:25:2
 	end_loop
 	end_block                               # label2:
@@ -693,7 +698,8 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	local.get	3
 	local.get	42
 	i32.store	16
-.LBB3_5:                                # =>This Inner Loop Header: Depth=1
+.LBB3_5:                                # %for.cond8
+                                        # =>This Inner Loop Header: Depth=1
 	block   	
 	loop    	                                # label5:
 	i32.const	20
@@ -725,7 +731,8 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	local.get	51
 	i32.eqz
 	br_if   	1                               # 1: down to label4
-# %bb.6:                                #   in Loop: Header=BB3_5 Depth=1
+# %bb.6:                                # %for.body10
+                                        #   in Loop: Header=BB3_5 Depth=1
 .Ltmp14:
 	.loc	5 70 20                         # 1_StoreRelThread.cpp:70:20
 	i32.const	20
@@ -752,7 +759,8 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	local.get	56
 	call	_ZNSt3__26thread4joinEv
 .Ltmp16:
-# %bb.7:                                #   in Loop: Header=BB3_5 Depth=1
+# %bb.7:                                # %for.inc12
+                                        #   in Loop: Header=BB3_5 Depth=1
 	.loc	5 70 20 is_stmt 1               # 1_StoreRelThread.cpp:70:20
 	i32.const	20
 	local.set	57
@@ -766,7 +774,7 @@ _Z20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEE: # @_Z20benchmark_a
 	call	_ZNSt3__211__wrap_iterIPNS_6threadEEppB8ne190106Ev
 	drop
 	br      	0                               # 0: up to label5
-.LBB3_8:
+.LBB3_8:                                # %for.end14
 	end_loop
 	end_block                               # label4:
 .Ltmp17:
@@ -819,7 +827,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEEC2B8ne190106Ev: # @_ZNSt3__26vec
 	.loc	8 431 0                         # emscripten/cache/sysroot/include/c++/v1/vector:431:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEEC2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -906,7 +914,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE12emplace_backIJZ20benchmark_ato
 	.loc	8 1552 0                        # emscripten/cache/sysroot/include/c++/v1/vector:1552:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE12emplace_backIJZ20benchmark_atomic_relRNS0_IdNS2_IdEEEEE3$_0EEERS1_DpOT_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -963,7 +971,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE12emplace_backIJZ20benchmark_ato
 	local.get	12
 	i32.eqz
 	br_if   	0                               # 0: down to label7
-# %bb.1:
+# %bb.1:                                # %if.then
 .Ltmp23:
 	.loc	8 1555 48 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/vector:1555:48
 	local.get	4
@@ -989,7 +997,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE12emplace_backIJZ20benchmark_ato
 	.loc	8 1557 3                        # emscripten/cache/sysroot/include/c++/v1/vector:1557:3
 	br      	1                               # 1: down to label6
 .Ltmp24:
-.LBB5_2:
+.LBB5_2:                                # %if.else
 	.loc	8 0 3 is_stmt 0                 # emscripten/cache/sysroot/include/c++/v1/vector:0:3
 	end_block                               # label7:
 .Ltmp25:
@@ -1007,7 +1015,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE12emplace_backIJZ20benchmark_ato
 	local.get	18
 	i32.store	4
 .Ltmp26:
-.LBB5_3:
+.LBB5_3:                                # %if.end
 	.loc	8 0 11                          # emscripten/cache/sysroot/include/c++/v1/vector:0:11
 	end_block                               # label6:
 	.loc	8 1560 18 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/vector:1560:18
@@ -1053,7 +1061,7 @@ _ZNSt3__26atomicIiEaSB8ne190106Ei:      # @_ZNSt3__26atomicIiEaSB8ne190106Ei
 	.loc	4 53 0 is_stmt 1                # emscripten/cache/sysroot/include/c++/v1/__atomic/atomic.h:53:0
 	.functype	_ZNSt3__26atomicIiEaSB8ne190106Ei (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -1113,7 +1121,7 @@ _ZNSt3__26atomicIbEaSB8ne190106Eb:      # @_ZNSt3__26atomicIbEaSB8ne190106Eb
 	.loc	4 53 0 is_stmt 1                # emscripten/cache/sysroot/include/c++/v1/__atomic/atomic.h:53:0
 	.functype	_ZNSt3__26atomicIbEaSB8ne190106Eb (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -1187,7 +1195,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE5beginB8ne190106Ev: # @_ZNSt3__2
 	.loc	8 1411 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:1411:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE5beginB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -1244,7 +1252,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE3endB8ne190106Ev: # @_ZNSt3__26v
 	.loc	8 1423 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:1423:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE3endB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -1301,7 +1309,7 @@ _ZNSt3__2neB8ne190106IPNS_6threadEEEbRKNS_11__wrap_iterIT_EES7_: # @_ZNSt3__2neB
 	.loc	19 139 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__iterator/wrap_iter.h:139:0
 	.functype	_ZNSt3__2neB8ne190106IPNS_6threadEEEbRKNS_11__wrap_iterIT_EES7_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -1369,7 +1377,7 @@ _ZNKSt3__211__wrap_iterIPNS_6threadEEdeB8ne190106Ev: # @_ZNKSt3__211__wrap_iterI
 	.loc	19 50 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__iterator/wrap_iter.h:50:0
 	.functype	_ZNKSt3__211__wrap_iterIPNS_6threadEEdeB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -1405,7 +1413,7 @@ _ZNSt3__211__wrap_iterIPNS_6threadEEppB8ne190106Ev: # @_ZNSt3__211__wrap_iterIPN
 	.loc	19 54 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__iterator/wrap_iter.h:54:0
 	.functype	_ZNSt3__211__wrap_iterIPNS_6threadEEppB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -1450,7 +1458,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEED2B8ne190106Ev: # @_ZNSt3__26vec
 	.loc	8 541 0                         # emscripten/cache/sysroot/include/c++/v1/vector:541:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEED2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -1516,7 +1524,7 @@ __original_main:                        # @__original_main
 	.loc	5 79 0 is_stmt 1                # 1_StoreRelThread.cpp:79:0
 	.functype	__original_main () -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, f64, i32, f64, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, f64, f64, f64, i32, i32, i32, i32, i32, i32, f64, i32, i32, i32, i32, i32, f64, f64, f64, i32, i32, i32, i32, i32, i32, f64, f64, f64, f64, f64, f64, f64, f64, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	0
 	i32.const	96
@@ -1602,7 +1610,8 @@ __original_main:                        # @__original_main
 	local.get	2
 	local.get	20
 	i32.store	52
-.LBB14_1:                               # =>This Inner Loop Header: Depth=1
+.LBB14_1:                               # %for.cond
+                                        # =>This Inner Loop Header: Depth=1
 .Ltmp47:
 	.loc	5 84 17 is_stmt 0               # 1_StoreRelThread.cpp:84:17
 	block   	
@@ -1638,7 +1647,8 @@ __original_main:                        # @__original_main
 	local.get	28
 	i32.eqz
 	br_if   	1                               # 1: down to label8
-# %bb.2:                                #   in Loop: Header=BB14_1 Depth=1
+# %bb.2:                                # %for.body
+                                        #   in Loop: Header=BB14_1 Depth=1
 .Ltmp49:
 	.loc	5 85 16 is_stmt 1               # 1_StoreRelThread.cpp:85:16
 	local.get	2
@@ -1745,7 +1755,8 @@ __original_main:                        # @__original_main
 	call	printf
 	drop
 .Ltmp50:
-# %bb.3:                                #   in Loop: Header=BB14_1 Depth=1
+# %bb.3:                                # %for.inc
+                                        #   in Loop: Header=BB14_1 Depth=1
 	.loc	5 84 36 is_stmt 1               # 1_StoreRelThread.cpp:84:36
 	local.get	2
 	i32.load	52
@@ -1762,7 +1773,7 @@ __original_main:                        # @__original_main
 	.loc	5 84 2 is_stmt 0                # 1_StoreRelThread.cpp:84:2
 	br      	0                               # 0: up to label9
 .Ltmp51:
-.LBB14_4:
+.LBB14_4:                               # %for.end
 	.loc	5 84 2                          # 1_StoreRelThread.cpp:84:2
 	end_loop
 	end_block                               # label8:
@@ -1859,7 +1870,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEEC2B8ne190106EmRKd: # @_ZNSt3__26vectorIdNS_9
 	.loc	8 462 0                         # emscripten/cache/sysroot/include/c++/v1/vector:462:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEEC2B8ne190106EmRKd (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	48
@@ -1984,7 +1995,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEEC2B8ne190106EmRKd: # @_ZNSt3__26vectorIdNS_9
 	local.get	29
 	i32.eqz
 	br_if   	0                               # 0: down to label10
-# %bb.1:
+# %bb.1:                                # %if.then
 .Ltmp57:
 	.loc	8 465 19 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:465:19
 	local.get	5
@@ -2008,7 +2019,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEEC2B8ne190106EmRKd: # @_ZNSt3__26vectorIdNS_9
 	local.get	32
 	call	_ZNSt3__26vectorIdNS_9allocatorIdEEE18__construct_at_endEmRKd
 .Ltmp58:
-.LBB15_2:
+.LBB15_2:                               # %if.end
 	.loc	8 0 7                           # emscripten/cache/sysroot/include/c++/v1/vector:0:7
 	end_block                               # label10:
 	.loc	8 468 13 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:468:13
@@ -2061,7 +2072,7 @@ _ZNKSt3__26vectorIdNS_9allocatorIdEEE4sizeB8ne190106Ev: # @_ZNKSt3__26vectorIdNS
 	.loc	8 634 0                         # emscripten/cache/sysroot/include/c++/v1/vector:634:0
 	.functype	_ZNKSt3__26vectorIdNS_9allocatorIdEEE4sizeB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -2112,7 +2123,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEEixB8ne190106Em: # @_ZNSt3__26vectorIdNS_9all
 	.loc	8 1435 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:1435:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEEixB8ne190106Em (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -2166,7 +2177,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEED2B8ne190106Ev: # @_ZNSt3__26vectorIdNS_9all
 	.loc	8 541 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:541:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEED2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -2232,7 +2243,7 @@ _ZNSt3__2eqB8ne190106IPNS_6threadEEEbRKNS_11__wrap_iterIT_EES7_: # @_ZNSt3__2eqB
 	.loc	19 114 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__iterator/wrap_iter.h:114:0
 	.functype	_ZNSt3__2eqB8ne190106IPNS_6threadEEEbRKNS_11__wrap_iterIT_EES7_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -2301,7 +2312,7 @@ _ZNKSt3__211__wrap_iterIPNS_6threadEE4baseB8ne190106Ev: # @_ZNKSt3__211__wrap_it
 	.loc	19 93 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__iterator/wrap_iter.h:93:0
 	.functype	_ZNKSt3__211__wrap_iterIPNS_6threadEE4baseB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -2337,7 +2348,7 @@ _ZNSt3__222__cxx_atomic_fetch_addB8ne190106IiEET_PNS_22__cxx_atomic_base_implIS1
 	.loc	1 416 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:416:0
 	.functype	_ZNSt3__222__cxx_atomic_fetch_addB8ne190106IiEET_PNS_22__cxx_atomic_base_implIS1_EES1_NS_12memory_orderE (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	32
@@ -2396,7 +2407,7 @@ _ZNSt3__222__cxx_atomic_fetch_addB8ne190106IiEET_PNS_22__cxx_atomic_base_implIS1
                                         # 3: down to label13
                                         # 4: down to label12
                                         # 0: down to label16
-.LBB21_1:
+.LBB21_1:                               # %monotonic
 	.loc	1 0 10 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label16:
 	.loc	1 417 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:417:10
@@ -2411,7 +2422,7 @@ _ZNSt3__222__cxx_atomic_fetch_addB8ne190106IiEET_PNS_22__cxx_atomic_base_implIS1
 	local.get	13
 	i32.store	12
 	br      	4                               # 4: down to label11
-.LBB21_2:
+.LBB21_2:                               # %acquire
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label15:
 	.loc	1 417 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:417:10
@@ -2426,7 +2437,7 @@ _ZNSt3__222__cxx_atomic_fetch_addB8ne190106IiEET_PNS_22__cxx_atomic_base_implIS1
 	local.get	15
 	i32.store	12
 	br      	3                               # 3: down to label11
-.LBB21_3:
+.LBB21_3:                               # %release
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label14:
 	.loc	1 417 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:417:10
@@ -2441,7 +2452,7 @@ _ZNSt3__222__cxx_atomic_fetch_addB8ne190106IiEET_PNS_22__cxx_atomic_base_implIS1
 	local.get	17
 	i32.store	12
 	br      	2                               # 2: down to label11
-.LBB21_4:
+.LBB21_4:                               # %acqrel
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label13:
 	.loc	1 417 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:417:10
@@ -2456,7 +2467,7 @@ _ZNSt3__222__cxx_atomic_fetch_addB8ne190106IiEET_PNS_22__cxx_atomic_base_implIS1
 	local.get	19
 	i32.store	12
 	br      	1                               # 1: down to label11
-.LBB21_5:
+.LBB21_5:                               # %seqcst
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label12:
 	.loc	1 417 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:417:10
@@ -2470,7 +2481,7 @@ _ZNSt3__222__cxx_atomic_fetch_addB8ne190106IiEET_PNS_22__cxx_atomic_base_implIS1
 	local.get	5
 	local.get	21
 	i32.store	12
-.LBB21_6:
+.LBB21_6:                               # %atomic.continue
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label11:
 	.loc	1 417 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:417:10
@@ -2493,7 +2504,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IbEET_PKNS_22__cxx_atomic_base_implIS1_EEN
 	.loc	1 315 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:315:0
 	.functype	_ZNSt3__217__cxx_atomic_loadB8ne190106IbEET_PKNS_22__cxx_atomic_base_implIS1_EENS_12memory_orderE (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -2538,7 +2549,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IbEET_PKNS_22__cxx_atomic_base_implIS1_EEN
 	br_table 	{1, 1, 0, 0, 2, 0}      # 1: down to label19
                                         # 0: down to label20
                                         # 2: down to label18
-.LBB22_1:
+.LBB22_1:                               # %monotonic
 	.loc	1 0 10 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label20:
 	.loc	1 317 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:317:10
@@ -2549,7 +2560,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IbEET_PKNS_22__cxx_atomic_base_implIS1_EEN
 	local.get	10
 	i32.store8	7
 	br      	2                               # 2: down to label17
-.LBB22_2:
+.LBB22_2:                               # %acquire
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label19:
 	.loc	1 317 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:317:10
@@ -2560,7 +2571,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IbEET_PKNS_22__cxx_atomic_base_implIS1_EEN
 	local.get	11
 	i32.store8	7
 	br      	1                               # 1: down to label17
-.LBB22_3:
+.LBB22_3:                               # %seqcst
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label18:
 	.loc	1 317 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:317:10
@@ -2570,7 +2581,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IbEET_PKNS_22__cxx_atomic_base_implIS1_EEN
 	local.get	4
 	local.get	12
 	i32.store8	7
-.LBB22_4:
+.LBB22_4:                               # %atomic.continue
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label17:
 	.loc	1 317 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:317:10
@@ -2599,7 +2610,7 @@ _ZNSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEEC2B8ne190106IDnNS_1
 	.loc	17 119 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:119:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEEC2B8ne190106IDnNS_18__default_init_tagEEEOT_OT0_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -2660,7 +2671,7 @@ _ZNSt3__222__compressed_pair_elemIPNS_6threadELi0ELb0EEC2B8ne190106IDnTnNS_9enab
 	.loc	17 53 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:53:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPNS_6threadELi0ELb0EEC2B8ne190106IDnTnNS_9enable_ifIXntsr7is_sameIS3_u7__decayIT_EEE5valueEiE4typeELi0EEEOS6_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -2701,7 +2712,7 @@ _ZNSt3__222__compressed_pair_elemINS_9allocatorINS_6threadEEELi1ELb1EEC2B8ne1901
 	.loc	17 77 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:77:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_9allocatorINS_6threadEEELi1ELb1EEC2B8ne190106ENS_18__default_init_tagE (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -2747,7 +2758,7 @@ _ZNSt3__29allocatorINS_6threadEEC2B8ne190106Ev: # @_ZNSt3__29allocatorINS_6threa
 	.loc	15 107 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:107:0
 	.functype	_ZNSt3__29allocatorINS_6threadEEC2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -2793,7 +2804,7 @@ _ZNSt3__216__non_trivial_ifILb1ENS_9allocatorINS_6threadEEEEC2B8ne190106Ev: # @_
 	.loc	15 85 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:85:0
 	.functype	_ZNSt3__216__non_trivial_ifILb1ENS_9allocatorINS_6threadEEEEC2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -2825,7 +2836,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE16__destroy_vectorC2B8ne190106ER
 	.loc	8 526 0                         # emscripten/cache/sysroot/include/c++/v1/vector:526:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE16__destroy_vectorC2B8ne190106ERS4_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -2868,7 +2879,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE16__destroy_vectorclB8ne190106Ev
 	.loc	8 528 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:528:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE16__destroy_vectorclB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -2911,7 +2922,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE16__destroy_vectorclB8ne190106Ev
 	local.get	10
 	i32.eqz
 	br_if   	0                               # 0: down to label21
-# %bb.1:
+# %bb.1:                                # %if.then
 .Ltmp89:
 	.loc	8 530 9 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:530:9
 	local.get	4
@@ -2957,7 +2968,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE16__destroy_vectorclB8ne190106Ev
 	local.get	18
 	call	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE10deallocateB8ne190106ERS3_PS2_m
 .Ltmp90:
-.LBB29_2:
+.LBB29_2:                               # %if.end
 	.loc	8 0 9                           # emscripten/cache/sysroot/include/c++/v1/vector:0:9
 	end_block                               # label21:
 	.loc	8 534 5 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:534:5
@@ -2983,7 +2994,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE7__clearB8ne190106Ev: # @_ZNSt3_
 	.loc	8 978 0                         # emscripten/cache/sysroot/include/c++/v1/vector:978:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE7__clearB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -3032,7 +3043,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE17__annotate_deleteB8ne190106Ev
 	.loc	8 913 0                         # emscripten/cache/sysroot/include/c++/v1/vector:913:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE17__annotate_deleteB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -3060,7 +3071,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE10deallocateB8ne190106ER
 	.loc	16 311 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:311:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE10deallocateB8ne190106ERS3_PS2_m (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -3121,7 +3132,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE7__allocB8ne190106Ev: # @_ZNSt3_
 	.loc	8 965 0                         # emscripten/cache/sysroot/include/c++/v1/vector:965:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE7__allocB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -3174,7 +3185,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE8capacityB8ne190106Ev: # @_ZNKS
 	.loc	8 637 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:637:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE8capacityB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -3238,7 +3249,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE22__base_destruct_at_endB8ne1901
 	.loc	8 982 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:982:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE22__base_destruct_at_endB8ne190106EPS1_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -3267,7 +3278,8 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE22__base_destruct_at_endB8ne1901
 	local.get	4
 	local.get	6
 	i32.store	4
-.LBB35_1:                               # =>This Inner Loop Header: Depth=1
+.LBB35_1:                               # %while.cond
+                                        # =>This Inner Loop Header: Depth=1
 	.loc	8 984 12 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:984:12
 	block   	
 	loop    	                                # label23:
@@ -3293,7 +3305,8 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE22__base_destruct_at_endB8ne1901
 	local.get	11
 	i32.eqz
 	br_if   	1                               # 1: down to label22
-# %bb.2:                                #   in Loop: Header=BB35_1 Depth=1
+# %bb.2:                                # %while.body
+                                        #   in Loop: Header=BB35_1 Depth=1
 	.loc	8 985 31 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:985:31
 	local.get	5
 	call	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE7__allocB8ne190106Ev
@@ -3321,7 +3334,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE22__base_destruct_at_endB8ne1901
 	call	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE7destroyB8ne190106IS2_TnNS_9enable_ifIXsr13__has_destroyIS3_PT_EE5valueEiE4typeELi0EEEvRS3_S8_
 	.loc	8 984 5 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:984:5
 	br      	0                               # 0: up to label23
-.LBB35_3:
+.LBB35_3:                               # %while.end
 	end_loop
 	end_block                               # label22:
 	.loc	8 986 20                        # emscripten/cache/sysroot/include/c++/v1/vector:986:20
@@ -3355,7 +3368,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE7destroyB8ne190106IS2_Tn
 	.loc	16 332 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:332:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE7destroyB8ne190106IS2_TnNS_9enable_ifIXsr13__has_destroyIS3_PT_EE5valueEiE4typeELi0EEEvRS3_S8_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -3409,7 +3422,7 @@ _ZNSt3__212__to_addressB8ne190106INS_6threadEEEPT_S3_: # @_ZNSt3__212__to_addres
 	.loc	38 189 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/pointer_traits.h:189:0
 	.functype	_ZNSt3__212__to_addressB8ne190106INS_6threadEEEPT_S3_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -3442,7 +3455,7 @@ _ZNSt3__29allocatorINS_6threadEE7destroyB8ne190106EPS1_: # @_ZNSt3__29allocatorI
 	.loc	15 168 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:168:0
 	.functype	_ZNSt3__29allocatorINS_6threadEE7destroyB8ne190106EPS1_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -3491,7 +3504,7 @@ _ZNSt3__29allocatorINS_6threadEE10deallocateB8ne190106EPS1_m: # @_ZNSt3__29alloc
 	.loc	15 128 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:128:0
 	.functype	_ZNSt3__29allocatorINS_6threadEE10deallocateB8ne190106EPS1_m (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -3558,7 +3571,7 @@ _ZNSt3__219__libcpp_deallocateB8ne190106EPvmm: # @_ZNSt3__219__libcpp_deallocate
 	.loc	9 302 0                         # emscripten/cache/sysroot/include/c++/v1/new:302:0
 	.functype	_ZNSt3__219__libcpp_deallocateB8ne190106EPvmm (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -3598,7 +3611,7 @@ _ZNSt3__219__libcpp_deallocateB8ne190106EPvmm: # @_ZNSt3__219__libcpp_deallocate
 	local.get	9
 	i32.eqz
 	br_if   	0                               # 0: down to label25
-# %bb.1:
+# %bb.1:                                # %if.then
 .Ltmp114:
 	.loc	9 308 62 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/new:308:62
 	local.get	5
@@ -3628,7 +3641,7 @@ _ZNSt3__219__libcpp_deallocateB8ne190106EPvmm: # @_ZNSt3__219__libcpp_deallocate
 	.loc	9 309 5                         # emscripten/cache/sysroot/include/c++/v1/new:309:5
 	br      	1                               # 1: down to label24
 .Ltmp115:
-.LBB40_2:
+.LBB40_2:                               # %if.else
 	.loc	9 0 5                           # emscripten/cache/sysroot/include/c++/v1/new:0:5
 	end_block                               # label25:
 .Ltmp116:
@@ -3645,7 +3658,7 @@ _ZNSt3__219__libcpp_deallocateB8ne190106EPvmm: # @_ZNSt3__219__libcpp_deallocate
 	local.get	15
 	call	_ZNSt3__227__do_deallocate_handle_sizeB8ne190106IJEEEvPvmDpT_
 .Ltmp117:
-.LBB40_3:
+.LBB40_3:                               # %return
 	.loc	9 0 12                          # emscripten/cache/sysroot/include/c++/v1/new:0:12
 	end_block                               # label24:
 	.loc	9 314 1 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/new:314:1
@@ -3671,7 +3684,7 @@ _ZNSt3__224__is_overaligned_for_newB8ne190106Em: # @_ZNSt3__224__is_overaligned_
 	.loc	9 254 0                         # emscripten/cache/sysroot/include/c++/v1/new:254:0
 	.functype	_ZNSt3__224__is_overaligned_for_newB8ne190106Em (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -3717,7 +3730,7 @@ _ZNSt3__227__do_deallocate_handle_sizeB8ne190106IJSt11align_val_tEEEvPvmDpT_: # 
 	.loc	9 293 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/new:293:0
 	.functype	_ZNSt3__227__do_deallocate_handle_sizeB8ne190106IJSt11align_val_tEEEvPvmDpT_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -3778,7 +3791,7 @@ _ZNSt3__227__do_deallocate_handle_sizeB8ne190106IJEEEvPvmDpT_: # @_ZNSt3__227__d
 	.loc	9 293 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/new:293:0
 	.functype	_ZNSt3__227__do_deallocate_handle_sizeB8ne190106IJEEEvPvmDpT_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -3831,7 +3844,7 @@ _ZNSt3__224__libcpp_operator_deleteB8ne190106IJPvmSt11align_val_tEEEvDpT_: # @_Z
 	.loc	9 272 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/new:272:0
 	.functype	_ZNSt3__224__libcpp_operator_deleteB8ne190106IJPvmSt11align_val_tEEEvDpT_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -3890,7 +3903,7 @@ _ZNSt3__224__libcpp_operator_deleteB8ne190106IJPvmEEEvDpT_: # @_ZNSt3__224__libc
 	.loc	9 272 0                         # emscripten/cache/sysroot/include/c++/v1/new:272:0
 	.functype	_ZNSt3__224__libcpp_operator_deleteB8ne190106IJPvmEEEvDpT_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -3942,7 +3955,7 @@ _ZNSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEE6secondB8ne190106Ev
 	.loc	17 137 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:137:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEE6secondB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -3988,7 +4001,7 @@ _ZNSt3__222__compressed_pair_elemINS_9allocatorINS_6threadEEELi1ELb1EE5__getB8ne
 	.loc	17 91 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:91:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_9allocatorINS_6threadEEELi1ELb1EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -4020,7 +4033,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE9__end_capB8ne190106Ev: # @_ZNK
 	.loc	8 974 0                         # emscripten/cache/sysroot/include/c++/v1/vector:974:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE9__end_capB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -4073,7 +4086,7 @@ _ZNKSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEE5firstB8ne190106Ev
 	.loc	17 133 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:133:0
 	.functype	_ZNKSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -4119,7 +4132,7 @@ _ZNKSt3__222__compressed_pair_elemIPNS_6threadELi0ELb0EE5__getB8ne190106Ev: # @_
 	.loc	17 63 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:63:0
 	.functype	_ZNKSt3__222__compressed_pair_elemIPNS_6threadELi0ELb0EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -4151,7 +4164,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE9__end_capB8ne190106Ev: # @_ZNSt
 	.loc	8 971 0                         # emscripten/cache/sysroot/include/c++/v1/vector:971:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE9__end_capB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -4202,7 +4215,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE22__construct_one_at_endB8ne1901
 	.loc	8 959 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:959:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE22__construct_one_at_endB8ne190106IJZ20benchmark_atomic_relRNS0_IdNS2_IdEEEEE3$_0EEEvDpOT_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	32
@@ -4305,7 +4318,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE24__emplace_back_slow_pathIJZ20b
 	.loc	8 1534 0                        # emscripten/cache/sysroot/include/c++/v1/vector:1534:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE24__emplace_back_slow_pathIJZ20benchmark_atomic_relRNS0_IdNS2_IdEEEEE3$_0EEEPS1_DpOT_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	32
@@ -4440,7 +4453,7 @@ _ZNSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEE5firstB8ne190106Ev:
 	.loc	17 129 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:129:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -4486,7 +4499,7 @@ _ZNSt3__222__compressed_pair_elemIPNS_6threadELi0ELb0EE5__getB8ne190106Ev: # @_Z
 	.loc	17 62 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:62:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPNS_6threadELi0ELb0EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -4518,7 +4531,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE21_ConstructTransactionC2B8ne190
 	.loc	8 935 0                         # emscripten/cache/sysroot/include/c++/v1/vector:935:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE21_ConstructTransactionC2B8ne190106ERS4_m (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -4601,7 +4614,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE9constructB8ne190106IS2_
 	.loc	16 317 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:317:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE9constructB8ne190106IS2_JZ20benchmark_atomic_relRNS_6vectorIdNS1_IdEEEEE3$_0ETnNS_9enable_ifIXsr15__has_constructIS3_PT_DpT0_EE5valueEiE4typeELi0EEEvRS3_SD_DpOSE_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -4662,7 +4675,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE21_ConstructTransactionD2B8ne190
 	.loc	8 941 0                         # emscripten/cache/sysroot/include/c++/v1/vector:941:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE21_ConstructTransactionD2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -4705,7 +4718,7 @@ _ZNSt3__29allocatorINS_6threadEE9constructB8ne190106IS1_JZ20benchmark_atomic_rel
 	.loc	15 164 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:164:0
 	.functype	_ZNSt3__29allocatorINS_6threadEE9constructB8ne190106IS1_JZ20benchmark_atomic_relRNS_6vectorIdNS0_IdEEEEE3$_0EEEvPT_DpOT0_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -4760,7 +4773,7 @@ _ZNSt3__26threadC2IZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0J
 	.loc	7 206 0                         # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:206:0
 	.functype	_ZNSt3__26threadC2IZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0JETnNS_9enable_ifIXntsr7is_sameIu14__remove_cvrefIT_ES0_EE5valueEiE4typeELi0EEEOS9_DpOT0_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	32
@@ -4875,7 +4888,7 @@ _ZNSt3__26threadC2IZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0J
 	block   	
 	local.get	26
 	br_if   	0                               # 0: down to label27
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	7 213 9 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:213:9
 	i32.const	16
 	local.set	27
@@ -4890,7 +4903,7 @@ _ZNSt3__26threadC2IZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0J
 	drop
 	.loc	7 213 5 is_stmt 0               # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:213:5
 	br      	1                               # 1: down to label26
-.LBB60_2:
+.LBB60_2:                               # %if.else
 	.loc	7 0 5                           # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:0:5
 	end_block                               # label27:
 	.loc	7 215 26 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:215:26
@@ -4905,7 +4918,7 @@ _ZNSt3__26threadC2IZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0J
 	call	_ZNSt3__220__throw_system_errorEiPKc
 	unreachable
 .Ltmp160:
-.LBB60_3:
+.LBB60_3:                               # %if.end
 	.loc	7 0 5                           # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:0:5
 	end_block                               # label26:
 	.loc	7 216 1 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:216:1
@@ -4954,7 +4967,7 @@ _ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEEC2B8ne19010
 	.loc	25 200 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:200:0
 	.functype	_ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEEC2B8ne190106ILb1EvEEPS1_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -5019,7 +5032,7 @@ _ZNSt3__25tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEE
 	.loc	30 620 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/tuple:620:0
 	.functype	_ZNSt3__25tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEC2B8ne190106IJS5_SB_ETnNS_9enable_ifIXsr4_AndINS_17integral_constantIbXeqsZT_sZT_EEENSC_17_EnableUTypesCtorIJDpT_EEEEE5valueEiE4typeELi0EEEDpOSI_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -5078,7 +5091,7 @@ _ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS
 	.loc	25 200 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:200:0
 	.functype	_ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS3_ISC_EEEC2B8ne190106ILb1EvEEPSC_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -5145,7 +5158,7 @@ _ZNSt3__222__libcpp_thread_createB8ne190106EPmPFPvS1_ES1_: # @_ZNSt3__222__libcp
 	.loc	14 181 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__thread/support/pthread.h:181:0
 	.functype	_ZNSt3__222__libcpp_thread_createB8ne190106EPmPFPvS1_ES1_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -5209,7 +5222,7 @@ _ZNSt3__214__thread_proxyB8ne190106INS_5tupleIJNS_10unique_ptrINS_15__thread_str
 	.loc	7 196 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:196:0
 	.functype	_ZNSt3__214__thread_proxyB8ne190106INS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEEEEPvSE_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -5318,7 +5331,7 @@ _ZNKSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteI
 	.loc	25 273 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:273:0
 	.functype	_ZNKSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS3_ISC_EEE3getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -5365,7 +5378,7 @@ _ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS
 	.loc	25 282 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:282:0
 	.functype	_ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS3_ISC_EEE7releaseB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -5430,7 +5443,7 @@ _ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS
 	.loc	25 261 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:261:0
 	.functype	_ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS3_ISC_EEED2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -5479,7 +5492,7 @@ _ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEED2B8ne19010
 	.loc	25 261 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:261:0
 	.functype	_ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEED2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -5528,7 +5541,7 @@ _ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEEC2B
 	.loc	17 119 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:119:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEEC2B8ne190106IRS2_NS_16__value_init_tagEEEOT_OT0_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -5589,7 +5602,7 @@ _ZNSt3__222__compressed_pair_elemIPNS_15__thread_structELi0ELb0EEC2B8ne190106IRS
 	.loc	17 53 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:53:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPNS_15__thread_structELi0ELb0EEC2B8ne190106IRS2_TnNS_9enable_ifIXntsr7is_sameIS3_u7__decayIT_EEE5valueEiE4typeELi0EEEOS7_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -5636,7 +5649,7 @@ _ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_15__thread_structEEELi1
 	.loc	17 78 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:78:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_15__thread_structEEELi1ELb1EEC2B8ne190106ENS_16__value_init_tagE (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -5666,7 +5679,7 @@ _ZNSt3__212__tuple_implINS_15__tuple_indicesIJLm0ELm1EEEEJNS_10unique_ptrINS_15_
 	.loc	30 471 0                        # emscripten/cache/sysroot/include/c++/v1/tuple:471:0
 	.functype	_ZNSt3__212__tuple_implINS_15__tuple_indicesIJLm0ELm1EEEEJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS4_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEC2B8ne190106IJLm0ELm1EEJS7_SD_ETpTnmJEJEJS7_SD_EEENS1_IJXspT_EEEENS_13__tuple_typesIJDpT0_EEENS1_IJXspT1_EEEENSH_IJDpT2_EEEDpOT3_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -5740,7 +5753,7 @@ _ZNSt3__212__tuple_leafILm0ENS_10unique_ptrINS_15__thread_structENS_14default_de
 	.loc	30 340 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/tuple:340:0
 	.functype	_ZNSt3__212__tuple_leafILm0ENS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEELb0EEC2B8ne190106IS5_TnNS_9enable_ifIXsr4_AndINS_17integral_constantIbXntu9__is_sameu14__remove_cvrefIT_ES6_EEEENS_16is_constructibleIS5_JSA_EEEEE5valueEiE4typeELi0EEEOSA_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -5792,7 +5805,7 @@ _ZNSt3__212__tuple_leafILm1EZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdE
 	.loc	30 340 0                        # emscripten/cache/sysroot/include/c++/v1/tuple:340:0
 	.functype	_ZNSt3__212__tuple_leafILm1EZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0Lb0EEC2B8ne190106IS6_TnNS_9enable_ifIXsr4_AndINS_17integral_constantIbXntu9__is_sameu14__remove_cvrefIT_ES7_EEEENS_16is_constructibleIS6_JSB_EEEEE5valueEiE4typeELi0EEEOSB_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i64, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -5854,7 +5867,7 @@ _ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEEC2B8ne19010
 	.loc	25 216 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:216:0
 	.functype	_ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEEC2B8ne190106EOS4_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -5933,7 +5946,7 @@ _ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEE7releaseB8n
 	.loc	25 282 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:282:0
 	.functype	_ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEE7releaseB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6000,7 +6013,7 @@ _ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEE11get_delet
 	.loc	25 274 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:274:0
 	.functype	_ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEE11get_deleterB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6046,7 +6059,7 @@ _ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEEC2B
 	.loc	17 119 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:119:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEEC2B8ne190106IS2_S4_EEOT_OT0_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -6112,7 +6125,7 @@ _ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEE5fi
 	.loc	17 129 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:129:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6158,7 +6171,7 @@ _ZNSt3__222__compressed_pair_elemIPNS_15__thread_structELi0ELb0EE5__getB8ne19010
 	.loc	17 62 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:62:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPNS_15__thread_structELi0ELb0EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6190,7 +6203,7 @@ _ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEE6se
 	.loc	17 137 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:137:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEE6secondB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6236,7 +6249,7 @@ _ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_15__thread_structEEELi1
 	.loc	17 91 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:91:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_15__thread_structEEELi1ELb1EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6268,7 +6281,7 @@ _ZNSt3__222__compressed_pair_elemIPNS_15__thread_structELi0ELb0EEC2B8ne190106IS2
 	.loc	17 53 0                         # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:53:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPNS_15__thread_structELi0ELb0EEC2B8ne190106IS2_TnNS_9enable_ifIXntsr7is_sameIS3_u7__decayIT_EEE5valueEiE4typeELi0EEEOS6_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -6315,7 +6328,7 @@ _ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_15__thread_structEEELi1
 	.loc	17 82 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:82:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_15__thread_structEEELi1ELb1EEC2B8ne190106IS3_TnNS_9enable_ifIXntsr7is_sameIS4_u7__decayIT_EEE5valueEiE4typeELi0EEEOS7_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -6348,7 +6361,7 @@ _ZNSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS
 	.loc	17 119 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:119:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS4_ISD_EEEC2B8ne190106IRSE_NS_16__value_init_tagEEEOT_OT0_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -6407,7 +6420,7 @@ _ZNSt3__222__compressed_pair_elemIPNS_5tupleIJNS_10unique_ptrINS_15__thread_stru
 	.loc	17 53 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:53:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEELi0ELb0EEC2B8ne190106IRSE_TnNS_9enable_ifIXntsr7is_sameISF_u7__decayIT_EEE5valueEiE4typeELi0EEEOSJ_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -6452,7 +6465,7 @@ _ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_5tupleIJNS_10unique_ptr
 	.loc	17 78 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:78:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_5tupleIJNS_10unique_ptrINS_15__thread_structENS1_IS4_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEEEELi1ELb1EEC2B8ne190106ENS_16__value_init_tagE (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6484,7 +6497,7 @@ _ZNSt3__221__thread_specific_ptrINS_15__thread_structEE11set_pointerEPS1_: # @_Z
 	.loc	7 108 0                         # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:108:0
 	.functype	_ZNSt3__221__thread_specific_ptrINS_15__thread_structEE11set_pointerEPS1_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -6539,7 +6552,7 @@ _ZNSt3__23getB8ne190106ILm0EJNS_10unique_ptrINS_15__thread_structENS_14default_d
 	.loc	30 1064 0                       # emscripten/cache/sysroot/include/c++/v1/tuple:1064:0
 	.functype	_ZNSt3__23getB8ne190106ILm0EJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEERNS_13tuple_elementIXT_ENS_5tupleIJDpT0_EEEE4typeERSG_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6584,7 +6597,7 @@ _ZNSt3__216__thread_executeB8ne190106INS_10unique_ptrINS_15__thread_structENS_14
 	.loc	7 191 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:191:0
 	.functype	_ZNSt3__216__thread_executeB8ne190106INS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0JETpTnmJEEEvRNS_5tupleIJT_T0_DpT1_EEENS_15__tuple_indicesIJXspT2_EEEE (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6633,7 +6646,7 @@ _ZNSt3__216__libcpp_tls_setB8ne190106EjPv: # @_ZNSt3__216__libcpp_tls_setB8ne190
 	.loc	14 215 0                        # emscripten/cache/sysroot/include/c++/v1/__thread/support/pthread.h:215:0
 	.functype	_ZNSt3__216__libcpp_tls_setB8ne190106EjPv (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -6688,7 +6701,7 @@ _ZNSt3__212__tuple_leafILm0ENS_10unique_ptrINS_15__thread_structENS_14default_de
 	.loc	30 382 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/tuple:382:0
 	.functype	_ZNSt3__212__tuple_leafILm0ENS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEELb0EE3getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6719,7 +6732,7 @@ _ZNSt3__28__invokeB8ne190106IZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorId
 	.loc	40 149 0                        # emscripten/cache/sysroot/include/c++/v1/__type_traits/invoke.h:149:0
 	.functype	_ZNSt3__28__invokeB8ne190106IZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0JEEEDTclclsr3stdE7declvalIT_EEspclsr3stdE7declvalIT0_EEEEOS7_DpOS8_ (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6762,7 +6775,7 @@ _ZNSt3__23getB8ne190106ILm1EJNS_10unique_ptrINS_15__thread_structENS_14default_d
 	.loc	30 1064 0 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/tuple:1064:0
 	.functype	_ZNSt3__23getB8ne190106ILm1EJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEERNS_13tuple_elementIXT_ENS_5tupleIJDpT0_EEEE4typeERSG_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -6813,7 +6826,7 @@ _ZZ20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEEENK3$_0clEv: # @"_Z
 	.loc	5 26 0 is_stmt 1                # 1_StoreRelThread.cpp:26:0
 	.functype	_ZZ20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEEENK3$_0clEv (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i64, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i64, i32, i32, i32, i32, i32, i32, i64, i32, i32, i32, i32, i32, i32, i32, f64, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	48
@@ -6876,7 +6889,8 @@ _ZZ20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEEENK3$_0clEv: # @"_Z
 	local.get	3
 	local.get	13
 	i32.store	28
-.LBB96_1:                               # =>This Inner Loop Header: Depth=1
+.LBB96_1:                               # %for.cond
+                                        # =>This Inner Loop Header: Depth=1
 .Ltmp236:
 	.loc	5 34 22 is_stmt 0               # 1_StoreRelThread.cpp:34:22
 	block   	
@@ -6902,7 +6916,8 @@ _ZZ20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEEENK3$_0clEv: # @"_Z
 	local.get	18
 	i32.eqz
 	br_if   	1                               # 1: down to label28
-# %bb.2:                                #   in Loop: Header=BB96_1 Depth=1
+# %bb.2:                                # %for.body
+                                        #   in Loop: Header=BB96_1 Depth=1
 .Ltmp238:
 	.loc	5 39 5 is_stmt 1                # 1_StoreRelThread.cpp:39:5
 	local.get	4
@@ -7485,7 +7500,8 @@ _ZZ20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEEENK3$_0clEv: # @"_Z
 	local.get	158
 	call	_ZNVSt3__213__atomic_baseIiLb0EE5storeB8ne190106EiNS_12memory_orderE
 .Ltmp239:
-# %bb.3:                                #   in Loop: Header=BB96_1 Depth=1
+# %bb.3:                                # %for.inc
+                                        #   in Loop: Header=BB96_1 Depth=1
 	.loc	5 34 43 is_stmt 1               # 1_StoreRelThread.cpp:34:43
 	local.get	3
 	i32.load	28
@@ -7502,7 +7518,7 @@ _ZZ20benchmark_atomic_relRNSt3__26vectorIdNS_9allocatorIdEEEEENK3$_0clEv: # @"_Z
 	.loc	5 34 4 is_stmt 0                # 1_StoreRelThread.cpp:34:4
 	br      	0                               # 0: up to label29
 .Ltmp240:
-.LBB96_4:
+.LBB96_4:                               # %for.end
 	.loc	5 34 4                          # 1_StoreRelThread.cpp:34:4
 	end_loop
 	end_block                               # label28:
@@ -7604,7 +7620,7 @@ _ZNVSt3__213__atomic_baseIiLb0EE5storeB8ne190106EiNS_12memory_orderE: # @_ZNVSt3
 	.loc	2 46 0                          # emscripten/cache/sysroot/include/c++/v1/__atomic/atomic_base.h:46:0
 	.functype	_ZNVSt3__213__atomic_baseIiLb0EE5storeB8ne190106EiNS_12memory_orderE (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -7664,7 +7680,7 @@ _ZNVKSt3__213__atomic_baseIiLb0EE4loadB8ne190106ENS_12memory_orderE: # @_ZNVKSt3
 	.loc	2 54 0                          # emscripten/cache/sysroot/include/c++/v1/__atomic/atomic_base.h:54:0
 	.functype	_ZNVKSt3__213__atomic_baseIiLb0EE4loadB8ne190106ENS_12memory_orderE (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -7718,7 +7734,7 @@ _ZNSt3__26chronomiB8ne190106INS0_12steady_clockENS0_8durationIxNS_5ratioILx1ELx1
 	.loc	37 210 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__chrono/time_point.h:210:0
 	.functype	_ZNSt3__26chronomiB8ne190106INS0_12steady_clockENS0_8durationIxNS_5ratioILx1ELx1000000000EEEEES6_EENS_11common_typeIJT0_T1_EE4typeERKNS0_10time_pointIT_S8_EERKNSC_ISD_S9_EE (i32, i32) -> (i64)
 	.local  	i32, i32, i32, i32, i64, i32, i64, i32, i32, i32, i32, i64, i64, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	32
@@ -7803,7 +7819,7 @@ _ZNSt3__26chrono8durationIdNS_5ratioILx1ELx1000000000EEEEC2B8ne190106IxS3_TnNS_9
 	.loc	32 220 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h:220:0
 	.functype	_ZNSt3__26chrono8durationIdNS_5ratioILx1ELx1000000000EEEEC2B8ne190106IxS3_TnNS_9enable_ifIXaasr13__no_overflowIT0_S3_EE5valueooL_ZNS_17integral_constantIbLb1EE5valueEEaaeqsr13__no_overflowIS7_S3_E4typeE3denLi1Entsr23treat_as_floating_pointIT_EE5valueEiE4typeELi0EEERKNS1_ISA_S7_EE (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, f64, i32, f64, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -7869,7 +7885,7 @@ _ZNKSt3__26chrono8durationIdNS_5ratioILx1ELx1000000000EEEE5countB8ne190106Ev: # 
 	.loc	32 224 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h:224:0
 	.functype	_ZNKSt3__26chrono8durationIdNS_5ratioILx1ELx1000000000EEEE5countB8ne190106Ev (i32) -> (f64)
 	.local  	i32, i32, i32, i32, f64
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -7905,7 +7921,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPVNS_22__cxx_atomic_base_implIT_EES2
 	.loc	1 298 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:298:0
 	.functype	_ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPVNS_22__cxx_atomic_base_implIT_EES2_NS_12memory_orderE (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -7959,7 +7975,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPVNS_22__cxx_atomic_base_implIT_EES2
 	local.get	10
 	br_table 	{1, 0, 2, 0}            # 0: down to label33
                                         # 2: down to label31
-.LBB102_1:
+.LBB102_1:                              # %monotonic
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label33:
 	.loc	1 299 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:299:3
@@ -7970,7 +7986,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPVNS_22__cxx_atomic_base_implIT_EES2
 	local.get	12
 	i32.atomic.store	0
 	br      	2                               # 2: down to label30
-.LBB102_2:
+.LBB102_2:                              # %release
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label32:
 	.loc	1 299 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:299:3
@@ -7981,7 +7997,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPVNS_22__cxx_atomic_base_implIT_EES2
 	local.get	13
 	i32.atomic.store	0
 	br      	1                               # 1: down to label30
-.LBB102_3:
+.LBB102_3:                              # %seqcst
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label31:
 	.loc	1 299 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:299:3
@@ -7991,7 +8007,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPVNS_22__cxx_atomic_base_implIT_EES2
 	local.get	6
 	local.get	14
 	i32.atomic.store	0
-.LBB102_4:
+.LBB102_4:                              # %atomic.continue
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label30:
 	.loc	1 300 1 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:300:1
@@ -8009,7 +8025,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IiEET_PVKNS_22__cxx_atomic_base_implIS1_EE
 	.loc	1 309 0                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:309:0
 	.functype	_ZNSt3__217__cxx_atomic_loadB8ne190106IiEET_PVKNS_22__cxx_atomic_base_implIS1_EENS_12memory_orderE (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -8054,7 +8070,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IiEET_PVKNS_22__cxx_atomic_base_implIS1_EE
 	br_table 	{1, 1, 0, 0, 2, 0}      # 1: down to label36
                                         # 0: down to label37
                                         # 2: down to label35
-.LBB103_1:
+.LBB103_1:                              # %monotonic
 	.loc	1 0 10 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label37:
 	.loc	1 311 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:311:10
@@ -8065,7 +8081,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IiEET_PVKNS_22__cxx_atomic_base_implIS1_EE
 	local.get	10
 	i32.store	4
 	br      	2                               # 2: down to label34
-.LBB103_2:
+.LBB103_2:                              # %acquire
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label36:
 	.loc	1 311 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:311:10
@@ -8076,7 +8092,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IiEET_PVKNS_22__cxx_atomic_base_implIS1_EE
 	local.get	11
 	i32.store	4
 	br      	1                               # 1: down to label34
-.LBB103_3:
+.LBB103_3:                              # %seqcst
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label35:
 	.loc	1 311 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:311:10
@@ -8086,7 +8102,7 @@ _ZNSt3__217__cxx_atomic_loadB8ne190106IiEET_PVKNS_22__cxx_atomic_base_implIS1_EE
 	local.get	4
 	local.get	12
 	i32.store	4
-.LBB103_4:
+.LBB103_4:                              # %atomic.continue
 	.loc	1 0 10                          # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:10
 	end_block                               # label34:
 	.loc	1 311 10                        # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:311:10
@@ -8109,7 +8125,7 @@ _ZNSt3__26chronomiB8ne190106IxNS_5ratioILx1ELx1000000000EEExS3_EENS_11common_typ
 	.loc	32 405 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h:405:0
 	.functype	_ZNSt3__26chronomiB8ne190106IxNS_5ratioILx1ELx1000000000EEExS3_EENS_11common_typeIJNS0_8durationIT_T0_EENS5_IT1_T2_EEEE4typeERKS8_RKSB_ (i32, i32) -> (i64)
 	.local  	i32, i32, i32, i32, i64, i32, i32, i32, i64, i32, i64, i32, i32, i32, i64, i64, i32, i32, i32, i32, i32, i32, i64, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	48
@@ -8230,7 +8246,7 @@ _ZNKSt3__26chrono10time_pointINS0_12steady_clockENS0_8durationIxNS_5ratioILx1ELx
 	.loc	37 58 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__chrono/time_point.h:58:0
 	.functype	_ZNKSt3__26chrono10time_pointINS0_12steady_clockENS0_8durationIxNS_5ratioILx1ELx1000000000EEEEEE16time_since_epochB8ne190106Ev (i32) -> (i64)
 	.local  	i32, i32, i32, i32, i64, i64
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8272,7 +8288,7 @@ _ZNKSt3__26chrono8durationIxNS_5ratioILx1ELx1000000000EEEE5countB8ne190106Ev: # 
 	.loc	32 224 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h:224:0
 	.functype	_ZNKSt3__26chrono8durationIxNS_5ratioILx1ELx1000000000EEEE5countB8ne190106Ev (i32) -> (i64)
 	.local  	i32, i32, i32, i32, i64
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8308,7 +8324,7 @@ _ZNSt3__26chrono8durationIxNS_5ratioILx1ELx1000000000EEEEC2B8ne190106IxTnNS_9ena
 	.loc	32 210 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h:210:0
 	.functype	_ZNSt3__26chrono8durationIxNS_5ratioILx1ELx1000000000EEEEC2B8ne190106IxTnNS_9enable_ifIXaasr14is_convertibleIRKT_xEE5valueooL_ZNS_17integral_constantIbLb0EE5valueEEntsr23treat_as_floating_pointIS7_EE5valueEiE4typeELi0EEES9_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i64
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -8354,7 +8370,7 @@ _ZNSt3__26chrono13duration_castB8ne190106INS0_8durationIdNS_5ratioILx1ELx1000000
 	.loc	32 106 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h:106:0
 	.functype	_ZNSt3__26chrono13duration_castB8ne190106INS0_8durationIdNS_5ratioILx1ELx1000000000EEEEExS4_TnNS_9enable_ifIXsr13__is_durationIT_EE5valueEiE4typeELi0EEES7_RKNS2_IT0_T1_EE (i32) -> (f64)
 	.local  	i32, i32, i32, i32, i32, i32, i32, f64, f64, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8416,7 +8432,7 @@ _ZNKSt3__26chrono15__duration_castINS0_8durationIxNS_5ratioILx1ELx1000000000EEEE
 	.loc	32 73 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h:73:0
 	.functype	_ZNKSt3__26chrono15__duration_castINS0_8durationIxNS_5ratioILx1ELx1000000000EEEEENS2_IdS4_EENS3_ILx1ELx1EEELb1ELb1EEclB8ne190106ERKS5_ (i32, i32) -> (f64)
 	.local  	i32, i32, i32, i32, i64, f64, i32, i32, i32, i32, i32, i32, f64, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	32
@@ -8498,7 +8514,7 @@ _ZNSt3__26chrono8durationIdNS_5ratioILx1ELx1000000000EEEEC2B8ne190106IdTnNS_9ena
 	.loc	32 210 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h:210:0
 	.functype	_ZNSt3__26chrono8durationIdNS_5ratioILx1ELx1000000000EEEEC2B8ne190106IdTnNS_9enable_ifIXaasr14is_convertibleIRKT_dEE5valueooL_ZNS_17integral_constantIbLb1EE5valueEEntsr23treat_as_floating_pointIS7_EE5valueEiE4typeELi0EEES9_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, f64
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -8542,7 +8558,7 @@ _ZNSt3__212__tuple_leafILm1EZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdE
 	.loc	30 382 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/tuple:382:0
 	.functype	_ZNSt3__212__tuple_leafILm1EZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0Lb0EE3getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8572,7 +8588,7 @@ _ZNKSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structEN
 	.loc	17 133 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:133:0
 	.functype	_ZNKSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS4_ISD_EEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8616,7 +8632,7 @@ _ZNKSt3__222__compressed_pair_elemIPNS_5tupleIJNS_10unique_ptrINS_15__thread_str
 	.loc	17 63 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:63:0
 	.functype	_ZNKSt3__222__compressed_pair_elemIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEELi0ELb0EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8646,7 +8662,7 @@ _ZNSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS
 	.loc	17 129 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:129:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS4_ISD_EEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8690,7 +8706,7 @@ _ZNSt3__222__compressed_pair_elemIPNS_5tupleIJNS_10unique_ptrINS_15__thread_stru
 	.loc	17 62 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:62:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEELi0ELb0EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8720,7 +8736,7 @@ _ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS
 	.loc	25 288 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:288:0
 	.functype	_ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS3_ISC_EEE5resetB8ne190106EPSC_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -8785,7 +8801,7 @@ _ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS
 	local.get	14
 	i32.eqz
 	br_if   	0                               # 0: down to label38
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	25 292 14                       # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:292:14
 	local.get	5
 	call	_ZNSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS4_ISD_EEE6secondB8ne190106Ev
@@ -8799,7 +8815,7 @@ _ZNSt3__210unique_ptrINS_5tupleIJNS0_INS_15__thread_structENS_14default_deleteIS
 	local.get	16
 	call	_ZNKSt3__214default_deleteINS_5tupleIJNS_10unique_ptrINS_15__thread_structENS0_IS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEEEclB8ne190106EPSC_
 .Ltmp283:
-.LBB116_2:
+.LBB116_2:                              # %if.end
 	.loc	25 0 7                          # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:0:7
 	end_block                               # label38:
 	.loc	25 293 3 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:293:3
@@ -8823,7 +8839,7 @@ _ZNSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS
 	.loc	17 137 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:137:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEENS4_ISD_EEE6secondB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8867,7 +8883,7 @@ _ZNKSt3__214default_deleteINS_5tupleIJNS_10unique_ptrINS_15__thread_structENS0_I
 	.loc	25 77 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:77:0
 	.functype	_ZNKSt3__214default_deleteINS_5tupleIJNS_10unique_ptrINS_15__thread_structENS0_IS3_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEEEclB8ne190106EPSC_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -8905,7 +8921,7 @@ _ZNKSt3__214default_deleteINS_5tupleIJNS_10unique_ptrINS_15__thread_structENS0_I
 	block   	
 	local.get	9
 	br_if   	0                               # 0: down to label39
-# %bb.1:
+# %bb.1:                                # %delete.notnull
 	local.get	5
 	call	_ZNSt3__25tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EED2Ev
 	drop
@@ -8914,7 +8930,7 @@ _ZNKSt3__214default_deleteINS_5tupleIJNS_10unique_ptrINS_15__thread_structENS0_I
 	local.get	5
 	local.get	10
 	call	_ZdlPvm
-.LBB118_2:
+.LBB118_2:                              # %delete.end
 	.loc	25 0 5                          # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:0:5
 	end_block                               # label39:
 	.loc	25 81 3 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:81:3
@@ -8938,7 +8954,7 @@ _ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_5tupleIJNS_10unique_ptr
 	.loc	17 91 0                         # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:91:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_14default_deleteINS_5tupleIJNS_10unique_ptrINS_15__thread_structENS1_IS4_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EEEEELi1ELb1EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -8968,7 +8984,7 @@ _ZNSt3__25tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEE
 	.loc	30 531 0                        # emscripten/cache/sysroot/include/c++/v1/tuple:531:0
 	.functype	_ZNSt3__25tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EED2Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -9013,7 +9029,7 @@ _ZNSt3__212__tuple_implINS_15__tuple_indicesIJLm0ELm1EEEEJNS_10unique_ptrINS_15_
 	.loc	30 458 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/tuple:458:0
 	.functype	_ZNSt3__212__tuple_implINS_15__tuple_indicesIJLm0ELm1EEEEJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS4_EEEEZ20benchmark_atomic_relRNS_6vectorIdNS_9allocatorIdEEEEE3$_0EED2Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -9060,7 +9076,7 @@ _ZNSt3__212__tuple_leafILm0ENS_10unique_ptrINS_15__thread_structENS_14default_de
 	.loc	30 300 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/tuple:300:0
 	.functype	_ZNSt3__212__tuple_leafILm0ENS_10unique_ptrINS_15__thread_structENS_14default_deleteIS2_EEEELb0EED2Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -9107,7 +9123,7 @@ _ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEE5resetB8ne1
 	.loc	25 288 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:288:0
 	.functype	_ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEE5resetB8ne190106EPS1_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -9172,7 +9188,7 @@ _ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEE5resetB8ne1
 	local.get	14
 	i32.eqz
 	br_if   	0                               # 0: down to label40
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	25 292 14                       # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:292:14
 	local.get	5
 	call	_ZNSt3__217__compressed_pairIPNS_15__thread_structENS_14default_deleteIS1_EEE6secondB8ne190106Ev
@@ -9186,7 +9202,7 @@ _ZNSt3__210unique_ptrINS_15__thread_structENS_14default_deleteIS1_EEE5resetB8ne1
 	local.get	16
 	call	_ZNKSt3__214default_deleteINS_15__thread_structEEclB8ne190106EPS1_
 .Ltmp302:
-.LBB123_2:
+.LBB123_2:                              # %if.end
 	.loc	25 0 7                          # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:0:7
 	end_block                               # label40:
 	.loc	25 293 3 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:293:3
@@ -9212,7 +9228,7 @@ _ZNKSt3__214default_deleteINS_15__thread_structEEclB8ne190106EPS1_: # @_ZNKSt3__
 	.loc	25 77 0                         # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:77:0
 	.functype	_ZNKSt3__214default_deleteINS_15__thread_structEEclB8ne190106EPS1_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -9250,7 +9266,7 @@ _ZNKSt3__214default_deleteINS_15__thread_structEEclB8ne190106EPS1_: # @_ZNKSt3__
 	block   	
 	local.get	9
 	br_if   	0                               # 0: down to label41
-# %bb.1:
+# %bb.1:                                # %delete.notnull
 	local.get	5
 	call	_ZNSt3__215__thread_structD1Ev
 	drop
@@ -9259,7 +9275,7 @@ _ZNKSt3__214default_deleteINS_15__thread_structEEclB8ne190106EPS1_: # @_ZNKSt3__
 	local.get	5
 	local.get	10
 	call	_ZdlPvm
-.LBB124_2:
+.LBB124_2:                              # %delete.end
 	.loc	25 0 5                          # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:0:5
 	end_block                               # label41:
 	.loc	25 81 3 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:81:3
@@ -9285,7 +9301,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE11__recommendB8ne190106Em: # @_
 	.loc	8 1113 0                        # emscripten/cache/sysroot/include/c++/v1/vector:1113:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE11__recommendB8ne190106Em (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	32
@@ -9338,13 +9354,13 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE11__recommendB8ne190106Em: # @_
 	local.get	11
 	i32.eqz
 	br_if   	0                               # 0: down to label42
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	8 1116 11 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/vector:1116:11
 	local.get	5
 	call	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE20__throw_length_errorB8ne190106Ev
 	unreachable
 .Ltmp308:
-.LBB125_2:
+.LBB125_2:                              # %if.end
 	.loc	8 0 11 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/vector:0:11
 	end_block                               # label42:
 	.loc	8 1117 27 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/vector:1117:27
@@ -9387,7 +9403,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE11__recommendB8ne190106Em: # @_
 	local.get	19
 	i32.eqz
 	br_if   	0                               # 0: down to label44
-# %bb.3:
+# %bb.3:                                # %if.then4
 	.loc	8 1119 12 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/vector:1119:12
 	local.get	4
 	i32.load	16
@@ -9398,7 +9414,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE11__recommendB8ne190106Em: # @_
 	i32.store	28
 	br      	1                               # 1: down to label43
 .Ltmp310:
-.LBB125_4:
+.LBB125_4:                              # %if.end5
 	.loc	8 0 5                           # emscripten/cache/sysroot/include/c++/v1/vector:0:5
 	end_block                               # label44:
 	.loc	8 1120 34 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/vector:1120:34
@@ -9444,7 +9460,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE11__recommendB8ne190106Em: # @_
 	local.get	4
 	local.get	31
 	i32.store	28
-.LBB125_5:
+.LBB125_5:                              # %return
 	.loc	8 0 3                           # emscripten/cache/sysroot/include/c++/v1/vector:0:3
 	end_block                               # label43:
 	.loc	8 1121 1 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:1121:1
@@ -9474,7 +9490,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE4sizeB8ne190106Ev: # @_ZNKSt3__
 	.loc	8 634 0                         # emscripten/cache/sysroot/include/c++/v1/vector:634:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE4sizeB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -9525,7 +9541,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEEC2EmmS4_: # @_ZNSt3__2
 	.loc	22 349 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__split_buffer:349:0
 	.functype	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEEC2EmmS4_ (i32, i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	4
 	i32.const	32
@@ -9596,7 +9612,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEEC2EmmS4_: # @_ZNSt3__2
 	block   	
 	local.get	15
 	br_if   	0                               # 0: down to label46
-# %bb.1:
+# %bb.1:                                # %if.then
 .Ltmp316:
 	.loc	22 351 14 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__split_buffer:351:14
 	i32.const	0
@@ -9607,7 +9623,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEEC2EmmS4_: # @_ZNSt3__2
 	.loc	22 352 3                        # emscripten/cache/sysroot/include/c++/v1/__split_buffer:352:3
 	br      	1                               # 1: down to label45
 .Ltmp317:
-.LBB127_2:
+.LBB127_2:                              # %if.else
 	.loc	22 0 3 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/__split_buffer:0:3
 	end_block                               # label46:
 .Ltmp318:
@@ -9643,7 +9659,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEEC2EmmS4_: # @_ZNSt3__2
 	local.get	21
 	i32.store	20
 .Ltmp319:
-.LBB127_3:
+.LBB127_3:                              # %if.end
 	.loc	22 0 23                         # emscripten/cache/sysroot/include/c++/v1/__split_buffer:0:23
 	end_block                               # label45:
 	.loc	22 357 23 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__split_buffer:357:23
@@ -9728,7 +9744,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE26__swap_out_circular_bufferERNS
 	.loc	8 1049 0                        # emscripten/cache/sysroot/include/c++/v1/vector:1049:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE26__swap_out_circular_bufferERNS_14__split_bufferIS1_RS3_EE (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -9954,7 +9970,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEED2Ev: # @_ZNSt3__214__
 	.loc	22 362 0                        # emscripten/cache/sysroot/include/c++/v1/__split_buffer:362:0
 	.functype	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEED2Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -9999,7 +10015,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEED2Ev: # @_ZNSt3__214__
 	local.get	9
 	i32.eqz
 	br_if   	0                               # 0: down to label47
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	22 365 32                       # emscripten/cache/sysroot/include/c++/v1/__split_buffer:365:32
 	local.get	4
 	call	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE7__allocB8ne190106Ev
@@ -10018,7 +10034,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEED2Ev: # @_ZNSt3__214__
 	local.get	12
 	call	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE10deallocateB8ne190106ERS3_PS2_m
 .Ltmp326:
-.LBB129_2:
+.LBB129_2:                              # %if.end
 	.loc	22 0 5                          # emscripten/cache/sysroot/include/c++/v1/__split_buffer:0:5
 	end_block                               # label47:
 	.loc	22 366 1 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__split_buffer:366:1
@@ -10048,7 +10064,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE8max_sizeEv: # @_ZNKSt3__26vect
 	.loc	8 1106 0                        # emscripten/cache/sysroot/include/c++/v1/vector:1106:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE8max_sizeEv (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -10131,7 +10147,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE20__throw_length_errorB8ne19010
 	.loc	8 999 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:999:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE20__throw_length_errorB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -10166,7 +10182,7 @@ _ZNSt3__23maxB8ne190106ImEERKT_S3_S3_:  # @_ZNSt3__23maxB8ne190106ImEERKT_S3_S3_
 	.loc	41 35 0                         # emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h:35:0
 	.functype	_ZNSt3__23maxB8ne190106ImEERKT_S3_S3_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -10222,7 +10238,7 @@ _ZNSt3__23minB8ne190106ImEERKT_S3_S3_:  # @_ZNSt3__23minB8ne190106ImEERKT_S3_S3_
 	.loc	42 35 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h:35:0
 	.functype	_ZNSt3__23minB8ne190106ImEERKT_S3_S3_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -10277,7 +10293,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE8max_sizeB8ne190106IS3_T
 	.loc	16 343 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:343:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE8max_sizeB8ne190106IS3_TnNS_9enable_ifIXsr14__has_max_sizeIKT_EE5valueEiE4typeELi0EEEmRKS3_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -10324,7 +10340,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE7__allocB8ne190106Ev: # @_ZNKSt
 	.loc	8 968 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:968:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE7__allocB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -10376,7 +10392,7 @@ _ZNSt3__214numeric_limitsIlE3maxB8ne190106Ev: # @_ZNSt3__214numeric_limitsIlE3ma
 .Lfunc_begin136:
 	.functype	_ZNSt3__214numeric_limitsIlE3maxB8ne190106Ev () -> (i32)
 	.local  	i32
-# %bb.0:
+# %bb.0:                                # %entry
 	.loc	10 469 98 prologue_end is_stmt 1 # emscripten/cache/sysroot/include/c++/v1/limits:469:98
 	call	_ZNSt3__223__libcpp_numeric_limitsIlLb1EE3maxB8ne190106Ev
 	local.set	0
@@ -10396,7 +10412,7 @@ _ZNSt3__23minB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_: # @_ZNSt3__23minB8ne190
 	.loc	42 29 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h:29:0
 	.functype	_ZNSt3__23minB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -10447,7 +10463,7 @@ _ZNSt3__23minB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_: # @_ZNSt3__23minB8ne190
 	local.get	12
 	i32.eqz
 	br_if   	0                               # 0: down to label49
-# %bb.1:
+# %bb.1:                                # %cond.true
 	.loc	42 30 29                        # emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h:30:29
 	local.get	4
 	i32.load	4
@@ -10456,7 +10472,7 @@ _ZNSt3__23minB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_: # @_ZNSt3__23minB8ne190
 	local.set	14
 	.loc	42 30 10                        # emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h:30:10
 	br      	1                               # 1: down to label48
-.LBB137_2:
+.LBB137_2:                              # %cond.false
 	.loc	42 0 10                         # emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h:0:10
 	end_block                               # label49:
 	.loc	42 30 35                        # emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h:30:35
@@ -10465,7 +10481,7 @@ _ZNSt3__23minB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_: # @_ZNSt3__23minB8ne190
 	local.set	15
 	local.get	15
 	local.set	14
-.LBB137_3:
+.LBB137_3:                              # %cond.end
 	.loc	42 0 35                         # emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h:0:35
 	end_block                               # label48:
 	.loc	42 30 10                        # emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h:30:10
@@ -10496,7 +10512,7 @@ _ZNKSt3__26__lessIvvEclB8ne190106ImmEEbRKT_RKT0_: # @_ZNKSt3__26__lessIvvEclB8ne
 	.loc	43 39 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__algorithm/comp.h:39:0
 	.functype	_ZNKSt3__26__lessIvvEclB8ne190106ImmEEbRKT_RKT0_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -10556,7 +10572,7 @@ _ZNKSt3__29allocatorINS_6threadEE8max_sizeB8ne190106Ev: # @_ZNKSt3__29allocatorI
 	.loc	15 159 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:159:0
 	.functype	_ZNKSt3__29allocatorINS_6threadEE8max_sizeB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -10587,7 +10603,7 @@ _ZNKSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEE6secondB8ne190106E
 	.loc	17 141 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:141:0
 	.functype	_ZNKSt3__217__compressed_pairIPNS_6threadENS_9allocatorIS1_EEE6secondB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -10633,7 +10649,7 @@ _ZNKSt3__222__compressed_pair_elemINS_9allocatorINS_6threadEEELi1ELb1EE5__getB8n
 	.loc	17 92 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:92:0
 	.functype	_ZNKSt3__222__compressed_pair_elemINS_9allocatorINS_6threadEEELi1ELb1EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -10664,7 +10680,7 @@ _ZNSt3__223__libcpp_numeric_limitsIlLb1EE3maxB8ne190106Ev: # @_ZNSt3__223__libcp
 .Lfunc_begin142:
 	.functype	_ZNSt3__223__libcpp_numeric_limitsIlLb1EE3maxB8ne190106Ev () -> (i32)
 	.local  	i32
-# %bb.0:
+# %bb.0:                                # %entry
 	.loc	10 202 91 prologue_end          # emscripten/cache/sysroot/include/c++/v1/limits:202:91
 	i32.const	2147483647
 	local.set	0
@@ -10684,7 +10700,7 @@ _ZNSt3__220__throw_length_errorB8ne190106EPKc: # @_ZNSt3__220__throw_length_erro
 	.loc	44 238 0                        # emscripten/cache/sysroot/include/c++/v1/stdexcept:238:0
 	.functype	_ZNSt3__220__throw_length_errorB8ne190106EPKc (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -10737,7 +10753,7 @@ _ZNSt12length_errorC2B8ne190106EPKc:    # @_ZNSt12length_errorC2B8ne190106EPKc
 	.loc	44 151 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/stdexcept:151:0
 	.functype	_ZNSt12length_errorC2B8ne190106EPKc (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -10803,7 +10819,7 @@ _ZNSt3__23maxB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_: # @_ZNSt3__23maxB8ne190
 	.loc	41 29 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h:29:0
 	.functype	_ZNSt3__23maxB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -10854,7 +10870,7 @@ _ZNSt3__23maxB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_: # @_ZNSt3__23maxB8ne190
 	local.get	12
 	i32.eqz
 	br_if   	0                               # 0: down to label51
-# %bb.1:
+# %bb.1:                                # %cond.true
 	.loc	41 30 29                        # emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h:30:29
 	local.get	4
 	i32.load	4
@@ -10863,7 +10879,7 @@ _ZNSt3__23maxB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_: # @_ZNSt3__23maxB8ne190
 	local.set	14
 	.loc	41 30 10                        # emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h:30:10
 	br      	1                               # 1: down to label50
-.LBB145_2:
+.LBB145_2:                              # %cond.false
 	.loc	41 0 10                         # emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h:0:10
 	end_block                               # label51:
 	.loc	41 30 35                        # emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h:30:35
@@ -10872,7 +10888,7 @@ _ZNSt3__23maxB8ne190106ImNS_6__lessIvvEEEERKT_S5_S5_T0_: # @_ZNSt3__23maxB8ne190
 	local.set	15
 	local.get	15
 	local.set	14
-.LBB145_3:
+.LBB145_3:                              # %cond.end
 	.loc	41 0 35                         # emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h:0:35
 	end_block                               # label50:
 	.loc	41 30 10                        # emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h:30:10
@@ -10902,7 +10918,7 @@ _ZNSt3__217__compressed_pairIPNS_6threadERNS_9allocatorIS1_EEEC2B8ne190106IDnS5_
 	.loc	17 119 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:119:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_6threadERNS_9allocatorIS1_EEEC2B8ne190106IDnS5_EEOT_OT0_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -10976,7 +10992,7 @@ _ZNSt3__219__allocate_at_leastB8ne190106INS_9allocatorINS_6threadEEEEENS_19__all
 	.loc	45 40 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/allocate_at_least.h:40:0
 	.functype	_ZNSt3__219__allocate_at_leastB8ne190106INS_9allocatorINS_6threadEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS6_m (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -11042,7 +11058,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE7__allocB8ne190106Ev: 
 	.loc	22 114 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__split_buffer:114:0
 	.functype	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE7__allocB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -11095,7 +11111,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE9__end_capB8ne190106Ev
 	.loc	22 119 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__split_buffer:119:0
 	.functype	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE9__end_capB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -11148,7 +11164,7 @@ _ZNSt3__222__compressed_pair_elemIRNS_9allocatorINS_6threadEEELi1ELb0EEC2B8ne190
 	.loc	17 53 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:53:0
 	.functype	_ZNSt3__222__compressed_pair_elemIRNS_9allocatorINS_6threadEEELi1ELb0EEC2B8ne190106IS4_TnNS_9enable_ifIXntsr7is_sameIS5_u7__decayIT_EEE5valueEiE4typeELi0EEEOS8_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -11191,7 +11207,7 @@ _ZNSt3__29allocatorINS_6threadEE8allocateB8ne190106Em: # @_ZNSt3__29allocatorINS
 	.loc	15 112 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:112:0
 	.functype	_ZNSt3__29allocatorINS_6threadEE8allocateB8ne190106Em (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -11235,12 +11251,12 @@ _ZNSt3__29allocatorINS_6threadEE8allocateB8ne190106Em: # @_ZNSt3__29allocatorINS
 	local.get	10
 	i32.eqz
 	br_if   	0                               # 0: down to label52
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	15 114 7 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:114:7
 	call	_ZSt28__throw_bad_array_new_lengthB8ne190106v
 	unreachable
 .Ltmp369:
-.LBB151_2:
+.LBB151_2:                              # %if.end
 	.loc	15 0 7 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:0:7
 	end_block                               # label52:
 .Ltmp370:
@@ -11285,7 +11301,7 @@ _ZSt28__throw_bad_array_new_lengthB8ne190106v: # @_ZSt28__throw_bad_array_new_le
 .Lfunc_begin152:
 	.functype	_ZSt28__throw_bad_array_new_lengthB8ne190106v () -> ()
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	.loc	9 173 3 prologue_end is_stmt 1  # emscripten/cache/sysroot/include/c++/v1/new:173:3
 	i32.const	4
 	local.set	0
@@ -11319,7 +11335,7 @@ _ZNSt3__217__libcpp_allocateB8ne190106Emm: # @_ZNSt3__217__libcpp_allocateB8ne19
 	.loc	9 280 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/new:280:0
 	.functype	_ZNSt3__217__libcpp_allocateB8ne190106Emm (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -11356,7 +11372,7 @@ _ZNSt3__217__libcpp_allocateB8ne190106Emm: # @_ZNSt3__217__libcpp_allocateB8ne19
 	local.get	8
 	i32.eqz
 	br_if   	0                               # 0: down to label54
-# %bb.1:
+# %bb.1:                                # %if.then
 .Ltmp374:
 	.loc	9 283 62 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/new:283:62
 	local.get	4
@@ -11385,7 +11401,7 @@ _ZNSt3__217__libcpp_allocateB8ne190106Emm: # @_ZNSt3__217__libcpp_allocateB8ne19
 	i32.store	12
 	br      	1                               # 1: down to label53
 .Ltmp375:
-.LBB153_2:
+.LBB153_2:                              # %if.end
 	.loc	9 0 5                           # emscripten/cache/sysroot/include/c++/v1/new:0:5
 	end_block                               # label54:
 	.loc	9 289 32 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/new:289:32
@@ -11400,7 +11416,7 @@ _ZNSt3__217__libcpp_allocateB8ne190106Emm: # @_ZNSt3__217__libcpp_allocateB8ne19
 	local.get	4
 	local.get	14
 	i32.store	12
-.LBB153_3:
+.LBB153_3:                              # %return
 	.loc	9 0 3                           # emscripten/cache/sysroot/include/c++/v1/new:0:3
 	end_block                               # label53:
 	.loc	9 290 1 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/new:290:1
@@ -11430,7 +11446,7 @@ _ZNSt3__221__libcpp_operator_newB8ne190106IJmSt11align_val_tEEEPvDpT_: # @_ZNSt3
 	.loc	9 263 0                         # emscripten/cache/sysroot/include/c++/v1/new:263:0
 	.functype	_ZNSt3__221__libcpp_operator_newB8ne190106IJmSt11align_val_tEEEPvDpT_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -11484,7 +11500,7 @@ _ZNSt3__221__libcpp_operator_newB8ne190106IJmEEEPvDpT_: # @_ZNSt3__221__libcpp_o
 	.loc	9 263 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/new:263:0
 	.functype	_ZNSt3__221__libcpp_operator_newB8ne190106IJmEEEPvDpT_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -11531,7 +11547,7 @@ _ZNSt3__217__compressed_pairIPNS_6threadERNS_9allocatorIS1_EEE6secondB8ne190106E
 	.loc	17 137 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:137:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_6threadERNS_9allocatorIS1_EEE6secondB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -11584,7 +11600,7 @@ _ZNSt3__222__compressed_pair_elemIRNS_9allocatorINS_6threadEEELi1ELb0EE5__getB8n
 	.loc	17 62 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:62:0
 	.functype	_ZNSt3__222__compressed_pair_elemIRNS_9allocatorINS_6threadEEELi1ELb0EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -11620,7 +11636,7 @@ _ZNSt3__217__compressed_pairIPNS_6threadERNS_9allocatorIS1_EEE5firstB8ne190106Ev
 	.loc	17 129 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:129:0
 	.functype	_ZNSt3__217__compressed_pairIPNS_6threadERNS_9allocatorIS1_EEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -11666,7 +11682,7 @@ _ZNSt3__234__uninitialized_allocator_relocateB8ne190106INS_9allocatorINS_6thread
 	.loc	33 623 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:623:0
 	.functype	_ZNSt3__234__uninitialized_allocator_relocateB8ne190106INS_9allocatorINS_6threadEEES2_EEvRT_PT0_S7_S7_ (i32, i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i64, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	4
 	i32.const	64
@@ -11787,7 +11803,8 @@ _ZNSt3__234__uninitialized_allocator_relocateB8ne190106INS_9allocatorINS_6thread
 	local.get	6
 	local.get	29
 	i32.store	12
-.LBB159_1:                              # =>This Inner Loop Header: Depth=1
+.LBB159_1:                              # %while.cond
+                                        # =>This Inner Loop Header: Depth=1
 	.loc	33 633 12 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:633:12
 	block   	
 	loop    	                                # label56:
@@ -11813,7 +11830,8 @@ _ZNSt3__234__uninitialized_allocator_relocateB8ne190106INS_9allocatorINS_6thread
 	local.get	34
 	i32.eqz
 	br_if   	1                               # 1: down to label55
-# %bb.2:                                #   in Loop: Header=BB159_1 Depth=1
+# %bb.2:                                # %while.body
+                                        #   in Loop: Header=BB159_1 Depth=1
 .Ltmp388:
 	.loc	33 635 43 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:635:43
 	local.get	6
@@ -11861,7 +11879,7 @@ _ZNSt3__234__uninitialized_allocator_relocateB8ne190106INS_9allocatorINS_6thread
 .Ltmp389:
 	.loc	33 633 5                        # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:633:5
 	br      	0                               # 0: up to label56
-.LBB159_3:
+.LBB159_3:                              # %while.end
 	end_loop
 	end_block                               # label55:
 	.loc	33 642 13                       # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:642:13
@@ -11930,7 +11948,7 @@ _ZNSt3__24swapB8ne190106IPNS_6threadEEENS_9enable_ifIXaasr21is_move_constructibl
 	.loc	46 41 0                         # emscripten/cache/sysroot/include/c++/v1/__utility/swap.h:41:0
 	.functype	_ZNSt3__24swapB8ne190106IPNS_6threadEEENS_9enable_ifIXaasr21is_move_constructibleIT_EE5valuesr18is_move_assignableIS4_EE5valueEvE4typeERS4_S7_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -12001,7 +12019,7 @@ _ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE14__annotate_newB8ne190106Em: #
 	.loc	8 906 0                         # emscripten/cache/sysroot/include/c++/v1/vector:906:0
 	.functype	_ZNKSt3__26vectorINS_6threadENS_9allocatorIS1_EEE14__annotate_newB8ne190106Em (i32, i32) -> ()
 	.local  	i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -12032,7 +12050,7 @@ _ZNSt3__222__make_exception_guardB8ne190106INS_29_AllocatorDestroyRangeReverseIN
 	.loc	34 136 0                        # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:136:0
 	.functype	_ZNSt3__222__make_exception_guardB8ne190106INS_29_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS3_EEEENS_28__exception_guard_exceptionsIT_EES8_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i64, i32, i32, i32, i32, i32, i32, i64, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	32
@@ -12133,7 +12151,7 @@ _ZNSt3__229_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS2_EC2B8ne1
 	.loc	33 526 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:526:0
 	.functype	_ZNSt3__229_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS2_EC2B8ne190106ERS3_RS4_S7_ (i32, i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	4
 	i32.const	16
@@ -12198,7 +12216,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE9constructB8ne190106IS2_
 	.loc	16 317 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:317:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE9constructB8ne190106IS2_JS2_ETnNS_9enable_ifIXsr15__has_constructIS3_PT_DpT0_EE5valueEiE4typeELi0EEEvRS3_S8_DpOS9_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -12259,7 +12277,7 @@ _ZNSt3__228__exception_guard_exceptionsINS_29_AllocatorDestroyRangeReverseINS_9a
 	.loc	34 82 0                         # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:82:0
 	.functype	_ZNSt3__228__exception_guard_exceptionsINS_29_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS3_EEE10__completeB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -12296,7 +12314,7 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEEPS2_S4_EEvRT
 	.loc	33 516 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:516:0
 	.functype	_ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEEPS2_S4_EEvRT_T0_T1_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -12316,7 +12334,8 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEEPS2_S4_EEvRT
 	local.get	5
 	local.get	2
 	i32.store	4
-.LBB166_1:                              # =>This Inner Loop Header: Depth=1
+.LBB166_1:                              # %for.cond
+                                        # =>This Inner Loop Header: Depth=1
 .Ltmp405:
 	.loc	33 517 10 prologue_end          # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:517:10
 	block   	
@@ -12344,7 +12363,8 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEEPS2_S4_EEvRT
 	local.get	10
 	i32.eqz
 	br_if   	1                               # 1: down to label57
-# %bb.2:                                #   in Loop: Header=BB166_1 Depth=1
+# %bb.2:                                # %for.body
+                                        #   in Loop: Header=BB166_1 Depth=1
 .Ltmp407:
 	.loc	33 518 39 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:518:39
 	local.get	5
@@ -12362,7 +12382,8 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEEPS2_S4_EEvRT
 	local.get	11
 	local.get	13
 	call	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE7destroyB8ne190106IS2_TnNS_9enable_ifIXsr13__has_destroyIS3_PT_EE5valueEiE4typeELi0EEEvRS3_S8_
-# %bb.3:                                #   in Loop: Header=BB166_1 Depth=1
+# %bb.3:                                # %for.inc
+                                        #   in Loop: Header=BB166_1 Depth=1
 	.loc	33 517 29 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:517:29
 	local.get	5
 	i32.load	8
@@ -12379,7 +12400,7 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEEPS2_S4_EEvRT
 	.loc	33 517 3 is_stmt 0              # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:517:3
 	br      	0                               # 0: up to label58
 .Ltmp408:
-.LBB166_4:
+.LBB166_4:                              # %for.end
 	.loc	33 517 3                        # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:517:3
 	end_loop
 	end_block                               # label57:
@@ -12407,7 +12428,7 @@ _ZNSt3__228__exception_guard_exceptionsINS_29_AllocatorDestroyRangeReverseINS_9a
 	.loc	34 84 0                         # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:84:0
 	.functype	_ZNSt3__228__exception_guard_exceptionsINS_29_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS3_EEED2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -12442,12 +12463,12 @@ _ZNSt3__228__exception_guard_exceptionsINS_29_AllocatorDestroyRangeReverseINS_9a
 	block   	
 	local.get	7
 	br_if   	0                               # 0: down to label59
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	34 86 7 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:86:7
 	local.get	4
 	call	_ZNKSt3__229_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS2_EclB8ne190106Ev
 .Ltmp412:
-.LBB167_2:
+.LBB167_2:                              # %if.end
 	.loc	34 0 7 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:0:7
 	end_block                               # label59:
 	.loc	34 87 3 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:87:3
@@ -12477,7 +12498,7 @@ _ZNSt3__228__exception_guard_exceptionsINS_29_AllocatorDestroyRangeReverseINS_9a
 	.loc	34 69 0                         # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:69:0
 	.functype	_ZNSt3__228__exception_guard_exceptionsINS_29_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS3_EEEC2B8ne190106ES6_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i64, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -12539,7 +12560,7 @@ _ZNSt3__29allocatorINS_6threadEE9constructB8ne190106IS1_JS1_EEEvPT_DpOT0_: # @_Z
 	.loc	15 164 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:164:0
 	.functype	_ZNSt3__29allocatorINS_6threadEE9constructB8ne190106IS1_JS1_EEEvPT_DpOT0_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -12596,7 +12617,7 @@ _ZNSt3__26threadC2B8ne190106EOS0_:      # @_ZNSt3__26threadC2B8ne190106EOS0_
 	.loc	7 167 0                         # emscripten/cache/sysroot/include/c++/v1/__thread/thread.h:167:0
 	.functype	_ZNSt3__26threadC2B8ne190106EOS0_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -12655,7 +12676,7 @@ _ZNKSt3__229_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS2_EclB8ne
 	.loc	33 528 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:528:0
 	.functype	_ZNKSt3__229_AllocatorDestroyRangeReverseINS_9allocatorINS_6threadEEEPS2_EclB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -12751,7 +12772,7 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEENS_16reverse
 	.loc	33 516 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:516:0
 	.functype	_ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEENS_16reverse_iteratorIPS2_EES6_EEvRT_T0_T1_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -12771,7 +12792,8 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEENS_16reverse
 	local.get	5
 	local.get	0
 	i32.store	4
-.LBB172_1:                              # =>This Inner Loop Header: Depth=1
+.LBB172_1:                              # %for.cond
+                                        # =>This Inner Loop Header: Depth=1
 .Ltmp424:
 	.loc	33 517 18 prologue_end          # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:517:18
 	block   	
@@ -12807,7 +12829,8 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEENS_16reverse
 	local.get	14
 	i32.eqz
 	br_if   	1                               # 1: down to label60
-# %bb.2:                                #   in Loop: Header=BB172_1 Depth=1
+# %bb.2:                                # %for.body
+                                        #   in Loop: Header=BB172_1 Depth=1
 .Ltmp426:
 	.loc	33 518 39 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:518:39
 	local.get	5
@@ -12829,7 +12852,8 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEENS_16reverse
 	local.get	15
 	local.get	19
 	call	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE7destroyB8ne190106IS2_TnNS_9enable_ifIXsr13__has_destroyIS3_PT_EE5valueEiE4typeELi0EEEvRS3_S8_
-# %bb.3:                                #   in Loop: Header=BB172_1 Depth=1
+# %bb.3:                                # %for.inc
+                                        #   in Loop: Header=BB172_1 Depth=1
 	.loc	33 517 29 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:517:29
 	i32.const	12
 	local.set	20
@@ -12845,7 +12869,7 @@ _ZNSt3__219__allocator_destroyB8ne190106INS_9allocatorINS_6threadEEENS_16reverse
 	.loc	33 517 3 is_stmt 0              # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:517:3
 	br      	0                               # 0: up to label61
 .Ltmp427:
-.LBB172_4:
+.LBB172_4:                              # %for.end
 	.loc	33 517 3                        # emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h:517:3
 	end_loop
 	end_block                               # label60:
@@ -12873,7 +12897,7 @@ _ZNSt3__216reverse_iteratorIPNS_6threadEEC2B8ne190106ES2_: # @_ZNSt3__216reverse
 	.loc	35 114 0                        # emscripten/cache/sysroot/include/c++/v1/__iterator/reverse_iterator.h:114:0
 	.functype	_ZNSt3__216reverse_iteratorIPNS_6threadEEC2B8ne190106ES2_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -12916,7 +12940,7 @@ _ZNSt3__2neB8ne190106IPNS_6threadES2_EEbRKNS_16reverse_iteratorIT_EERKNS3_IT0_EE
 	.loc	35 236 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__iterator/reverse_iterator.h:236:0
 	.functype	_ZNSt3__2neB8ne190106IPNS_6threadES2_EEbRKNS_16reverse_iteratorIT_EERKNS3_IT0_EE (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -12985,7 +13009,7 @@ _ZNSt3__212__to_addressB8ne190106INS_16reverse_iteratorIPNS_6threadEEETnNS_9enab
 	.loc	38 216 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/pointer_traits.h:216:0
 	.functype	_ZNSt3__212__to_addressB8ne190106INS_16reverse_iteratorIPNS_6threadEEETnNS_9enable_ifIXsr4_AndINS_8is_classIT_EENS_15_IsFancyPointerIS7_EEEE5valueEiE4typeELi0EEEu7__decayIDTclsr19__to_address_helperIS7_EE6__callclsr3stdE7declvalIRKS7_EEEEESE_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13032,7 +13056,7 @@ _ZNSt3__216reverse_iteratorIPNS_6threadEEppB8ne190106Ev: # @_ZNSt3__216reverse_i
 	.loc	35 149 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__iterator/reverse_iterator.h:149:0
 	.functype	_ZNSt3__216reverse_iteratorIPNS_6threadEEppB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13077,7 +13101,7 @@ _ZNKSt3__216reverse_iteratorIPNS_6threadEE4baseB8ne190106Ev: # @_ZNKSt3__216reve
 	.loc	35 129 0                        # emscripten/cache/sysroot/include/c++/v1/__iterator/reverse_iterator.h:129:0
 	.functype	_ZNKSt3__216reverse_iteratorIPNS_6threadEE4baseB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13113,7 +13137,7 @@ _ZNSt3__219__to_address_helperINS_16reverse_iteratorIPNS_6threadEEEvE6__callB8ne
 	.loc	38 224 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/pointer_traits.h:224:0
 	.functype	_ZNSt3__219__to_address_helperINS_16reverse_iteratorIPNS_6threadEEEvE6__callB8ne190106ERKS4_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13164,7 +13188,7 @@ _ZNKSt3__216reverse_iteratorIPNS_6threadEEptB8ne190106Ev: # @_ZNKSt3__216reverse
 	.loc	35 146 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__iterator/reverse_iterator.h:146:0
 	.functype	_ZNKSt3__216reverse_iteratorIPNS_6threadEEptB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13210,7 +13234,7 @@ _ZNKSt3__216reverse_iteratorIPNS_6threadEEdeB8ne190106Ev: # @_ZNKSt3__216reverse
 	.loc	35 130 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__iterator/reverse_iterator.h:130:0
 	.functype	_ZNKSt3__216reverse_iteratorIPNS_6threadEEdeB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13263,7 +13287,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE5clearB8ne190106Ev: # 
 	.loc	22 130 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__split_buffer:130:0
 	.functype	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE5clearB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13312,7 +13336,7 @@ _ZNKSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE8capacityB8ne190106Ev
 	.loc	22 138 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__split_buffer:138:0
 	.functype	_ZNKSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE8capacityB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13376,7 +13400,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE17__destruct_at_endB8n
 	.loc	22 193 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__split_buffer:193:0
 	.functype	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE17__destruct_at_endB8ne190106EPS1_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -13428,7 +13452,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE17__destruct_at_endB8n
 	.loc	22 335 0                        # emscripten/cache/sysroot/include/c++/v1/__split_buffer:335:0
 	.functype	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE17__destruct_at_endB8ne190106EPS1_NS_17integral_constantIbLb0EEE (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -13448,7 +13472,8 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE17__destruct_at_endB8n
 	local.get	4
 	i32.load	8
 	local.set	5
-.LBB184_1:                              # =>This Inner Loop Header: Depth=1
+.LBB184_1:                              # %while.cond
+                                        # =>This Inner Loop Header: Depth=1
 .Ltmp452:
 	.loc	22 336 10 prologue_end          # emscripten/cache/sysroot/include/c++/v1/__split_buffer:336:10
 	block   	
@@ -13475,7 +13500,8 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE17__destruct_at_endB8n
 	local.get	10
 	i32.eqz
 	br_if   	1                               # 1: down to label62
-# %bb.2:                                #   in Loop: Header=BB184_1 Depth=1
+# %bb.2:                                # %while.body
+                                        #   in Loop: Header=BB184_1 Depth=1
 	.loc	22 337 29 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/__split_buffer:337:29
 	local.get	5
 	call	_ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE7__allocB8ne190106Ev
@@ -13503,7 +13529,7 @@ _ZNSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE17__destruct_at_endB8n
 	call	_ZNSt3__216allocator_traitsINS_9allocatorINS_6threadEEEE7destroyB8ne190106IS2_TnNS_9enable_ifIXsr13__has_destroyIS3_PT_EE5valueEiE4typeELi0EEEvRS3_S8_
 	.loc	22 336 3 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__split_buffer:336:3
 	br      	0                               # 0: up to label63
-.LBB184_3:
+.LBB184_3:                              # %while.end
 	end_loop
 	end_block                               # label62:
 	.loc	22 338 1                        # emscripten/cache/sysroot/include/c++/v1/__split_buffer:338:1
@@ -13529,7 +13555,7 @@ _ZNKSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE9__end_capB8ne190106E
 	.loc	22 120 0                        # emscripten/cache/sysroot/include/c++/v1/__split_buffer:120:0
 	.functype	_ZNKSt3__214__split_bufferINS_6threadERNS_9allocatorIS1_EEE9__end_capB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13582,7 +13608,7 @@ _ZNKSt3__217__compressed_pairIPNS_6threadERNS_9allocatorIS1_EEE5firstB8ne190106E
 	.loc	17 133 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:133:0
 	.functype	_ZNKSt3__217__compressed_pairIPNS_6threadERNS_9allocatorIS1_EEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -13628,7 +13654,7 @@ _ZNSt3__213__atomic_baseIiLb0EE5storeB8ne190106EiNS_12memory_orderE: # @_ZNSt3__
 	.loc	2 50 0 is_stmt 1                # emscripten/cache/sysroot/include/c++/v1/__atomic/atomic_base.h:50:0
 	.functype	_ZNSt3__213__atomic_baseIiLb0EE5storeB8ne190106EiNS_12memory_orderE (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -13688,7 +13714,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	.loc	1 303 0                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:303:0
 	.functype	_ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPNS_22__cxx_atomic_base_implIT_EES2_NS_12memory_orderE (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -13742,7 +13768,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	local.get	10
 	br_table 	{1, 0, 2, 0}            # 0: down to label67
                                         # 2: down to label65
-.LBB188_1:
+.LBB188_1:                              # %monotonic
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label67:
 	.loc	1 304 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:304:3
@@ -13753,7 +13779,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	local.get	12
 	i32.atomic.store	0
 	br      	2                               # 2: down to label64
-.LBB188_2:
+.LBB188_2:                              # %release
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label66:
 	.loc	1 304 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:304:3
@@ -13764,7 +13790,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	local.get	13
 	i32.atomic.store	0
 	br      	1                               # 1: down to label64
-.LBB188_3:
+.LBB188_3:                              # %seqcst
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label65:
 	.loc	1 304 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:304:3
@@ -13774,7 +13800,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IiEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	local.get	6
 	local.get	14
 	i32.atomic.store	0
-.LBB188_4:
+.LBB188_4:                              # %atomic.continue
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label64:
 	.loc	1 305 1 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:305:1
@@ -13792,7 +13818,7 @@ _ZNSt3__213__atomic_baseIbLb0EE5storeB8ne190106EbNS_12memory_orderE: # @_ZNSt3__
 	.loc	2 50 0                          # emscripten/cache/sysroot/include/c++/v1/__atomic/atomic_base.h:50:0
 	.functype	_ZNSt3__213__atomic_baseIbLb0EE5storeB8ne190106EbNS_12memory_orderE (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -13860,7 +13886,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IbEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	.loc	1 303 0                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:303:0
 	.functype	_ZNSt3__218__cxx_atomic_storeB8ne190106IbEEvPNS_22__cxx_atomic_base_implIT_EES2_NS_12memory_orderE (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -13924,7 +13950,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IbEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	local.get	13
 	br_table 	{1, 0, 2, 0}            # 0: down to label71
                                         # 2: down to label69
-.LBB190_1:
+.LBB190_1:                              # %monotonic
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label71:
 	.loc	1 304 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:304:3
@@ -13935,7 +13961,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IbEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	local.get	15
 	i32.atomic.store8	0
 	br      	2                               # 2: down to label68
-.LBB190_2:
+.LBB190_2:                              # %release
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label70:
 	.loc	1 304 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:304:3
@@ -13946,7 +13972,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IbEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	local.get	16
 	i32.atomic.store8	0
 	br      	1                               # 1: down to label68
-.LBB190_3:
+.LBB190_3:                              # %seqcst
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label69:
 	.loc	1 304 3                         # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:304:3
@@ -13956,7 +13982,7 @@ _ZNSt3__218__cxx_atomic_storeB8ne190106IbEEvPNS_22__cxx_atomic_base_implIT_EES2_
 	local.get	8
 	local.get	17
 	i32.atomic.store8	0
-.LBB190_4:
+.LBB190_4:                              # %atomic.continue
 	.loc	1 0 3                           # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:0:3
 	end_block                               # label68:
 	.loc	1 305 1 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h:305:1
@@ -13974,7 +14000,7 @@ _ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE11__make_iterB8ne190106EPS1_: # 
 	.loc	8 839 0                         # emscripten/cache/sysroot/include/c++/v1/vector:839:0
 	.functype	_ZNSt3__26vectorINS_6threadENS_9allocatorIS1_EEE11__make_iterB8ne190106EPS1_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -14036,7 +14062,7 @@ _ZNSt3__211__wrap_iterIPNS_6threadEEC2B8ne190106ES2_: # @_ZNSt3__211__wrap_iterI
 	.loc	19 96 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__iterator/wrap_iter.h:96:0
 	.functype	_ZNSt3__211__wrap_iterIPNS_6threadEEC2B8ne190106ES2_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -14079,7 +14105,7 @@ _ZNSt3__217__compressed_pairIPdNS_9allocatorIdEEEC2B8ne190106IDnNS_18__default_i
 	.loc	17 119 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:119:0
 	.functype	_ZNSt3__217__compressed_pairIPdNS_9allocatorIdEEEC2B8ne190106IDnNS_18__default_init_tagEEEOT_OT0_ (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -14140,7 +14166,7 @@ _ZNSt3__222__make_exception_guardB8ne190106INS_6vectorIdNS_9allocatorIdEEE16__de
 	.loc	34 136 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:136:0
 	.functype	_ZNSt3__222__make_exception_guardB8ne190106INS_6vectorIdNS_9allocatorIdEEE16__destroy_vectorEEENS_28__exception_guard_exceptionsIT_EES7_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -14196,7 +14222,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE16__destroy_vectorC2B8ne190106ERS3_: # @_ZNS
 	.loc	8 526 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:526:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE16__destroy_vectorC2B8ne190106ERS3_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -14239,7 +14265,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE11__vallocateB8ne190106Em: # @_ZNSt3__26vect
 	.loc	8 778 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:778:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE11__vallocateB8ne190106Em (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -14283,13 +14309,13 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE11__vallocateB8ne190106Em: # @_ZNSt3__26vect
 	local.get	10
 	i32.eqz
 	br_if   	0                               # 0: down to label72
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	8 780 7 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:780:7
 	local.get	5
 	call	_ZNKSt3__26vectorIdNS_9allocatorIdEEE20__throw_length_errorB8ne190106Ev
 	unreachable
 .Ltmp477:
-.LBB196_2:
+.LBB196_2:                              # %if.end
 	.loc	8 0 7 is_stmt 0                 # emscripten/cache/sysroot/include/c++/v1/vector:0:7
 	end_block                               # label72:
 	.loc	8 781 50 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:781:50
@@ -14379,7 +14405,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE18__construct_at_endEmRKd: # @_ZNSt3__26vect
 	.loc	8 1145 0                        # emscripten/cache/sysroot/include/c++/v1/vector:1145:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE18__construct_at_endEmRKd (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	32
@@ -14438,7 +14464,8 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE18__construct_at_endEmRKd: # @_ZNSt3__26vect
 	local.get	5
 	local.get	12
 	i32.store	0
-.LBB197_1:                              # =>This Inner Loop Header: Depth=1
+.LBB197_1:                              # %for.cond
+                                        # =>This Inner Loop Header: Depth=1
 .Ltmp481:
 	.loc	8 1148 37                       # emscripten/cache/sysroot/include/c++/v1/vector:1148:37
 	block   	
@@ -14466,7 +14493,8 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE18__construct_at_endEmRKd: # @_ZNSt3__26vect
 	local.get	17
 	i32.eqz
 	br_if   	1                               # 1: down to label73
-# %bb.2:                                #   in Loop: Header=BB197_1 Depth=1
+# %bb.2:                                # %for.body
+                                        #   in Loop: Header=BB197_1 Depth=1
 .Ltmp483:
 	.loc	8 1149 37 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/vector:1149:37
 	local.get	6
@@ -14490,7 +14518,8 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE18__construct_at_endEmRKd: # @_ZNSt3__26vect
 	local.get	21
 	call	_ZNSt3__216allocator_traitsINS_9allocatorIdEEE9constructB8ne190106IdJRKdETnNS_9enable_ifIXsr15__has_constructIS2_PT_DpT0_EE5valueEiE4typeELi0EEEvRS2_S9_DpOSA_
 .Ltmp484:
-# %bb.3:                                #   in Loop: Header=BB197_1 Depth=1
+# %bb.3:                                # %for.inc
+                                        #   in Loop: Header=BB197_1 Depth=1
 	.loc	8 1148 71 is_stmt 1             # emscripten/cache/sysroot/include/c++/v1/vector:1148:71
 	local.get	5
 	i32.load	0
@@ -14511,7 +14540,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE18__construct_at_endEmRKd: # @_ZNSt3__26vect
 	.loc	8 1148 3                        # emscripten/cache/sysroot/include/c++/v1/vector:1148:3
 	br      	0                               # 0: up to label74
 .Ltmp485:
-.LBB197_4:
+.LBB197_4:                              # %for.end
 	.loc	8 1148 3                        # emscripten/cache/sysroot/include/c++/v1/vector:1148:3
 	end_loop
 	end_block                               # label73:
@@ -14550,7 +14579,7 @@ _ZNSt3__228__exception_guard_exceptionsINS_6vectorIdNS_9allocatorIdEEE16__destro
 	.loc	34 82 0                         # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:82:0
 	.functype	_ZNSt3__228__exception_guard_exceptionsINS_6vectorIdNS_9allocatorIdEEE16__destroy_vectorEE10__completeB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -14587,7 +14616,7 @@ _ZNSt3__228__exception_guard_exceptionsINS_6vectorIdNS_9allocatorIdEEE16__destro
 	.loc	34 84 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:84:0
 	.functype	_ZNSt3__228__exception_guard_exceptionsINS_6vectorIdNS_9allocatorIdEEE16__destroy_vectorEED2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -14622,12 +14651,12 @@ _ZNSt3__228__exception_guard_exceptionsINS_6vectorIdNS_9allocatorIdEEE16__destro
 	block   	
 	local.get	7
 	br_if   	0                               # 0: down to label75
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	34 86 7 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:86:7
 	local.get	4
 	call	_ZNSt3__26vectorIdNS_9allocatorIdEEE16__destroy_vectorclB8ne190106Ev
 .Ltmp491:
-.LBB199_2:
+.LBB199_2:                              # %if.end
 	.loc	34 0 7 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:0:7
 	end_block                               # label75:
 	.loc	34 87 3 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:87:3
@@ -14657,7 +14686,7 @@ _ZNSt3__222__compressed_pair_elemIPdLi0ELb0EEC2B8ne190106IDnTnNS_9enable_ifIXnts
 	.loc	17 53 0                         # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:53:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPdLi0ELb0EEC2B8ne190106IDnTnNS_9enable_ifIXntsr7is_sameIS2_u7__decayIT_EEE5valueEiE4typeELi0EEEOS5_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -14698,7 +14727,7 @@ _ZNSt3__222__compressed_pair_elemINS_9allocatorIdEELi1ELb1EEC2B8ne190106ENS_18__
 	.loc	17 77 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:77:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_9allocatorIdEELi1ELb1EEC2B8ne190106ENS_18__default_init_tagE (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -14744,7 +14773,7 @@ _ZNSt3__29allocatorIdEC2B8ne190106Ev:   # @_ZNSt3__29allocatorIdEC2B8ne190106Ev
 	.loc	15 107 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:107:0
 	.functype	_ZNSt3__29allocatorIdEC2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -14790,7 +14819,7 @@ _ZNSt3__216__non_trivial_ifILb1ENS_9allocatorIdEEEC2B8ne190106Ev: # @_ZNSt3__216
 	.loc	15 85 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:85:0
 	.functype	_ZNSt3__216__non_trivial_ifILb1ENS_9allocatorIdEEEC2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -14822,7 +14851,7 @@ _ZNSt3__228__exception_guard_exceptionsINS_6vectorIdNS_9allocatorIdEEE16__destro
 	.loc	34 69 0                         # emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h:69:0
 	.functype	_ZNSt3__228__exception_guard_exceptionsINS_6vectorIdNS_9allocatorIdEEE16__destroy_vectorEEC2B8ne190106ES5_ (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -14870,7 +14899,7 @@ _ZNKSt3__26vectorIdNS_9allocatorIdEEE8max_sizeEv: # @_ZNKSt3__26vectorIdNS_9allo
 	.loc	8 1106 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:1106:0
 	.functype	_ZNKSt3__26vectorIdNS_9allocatorIdEEE8max_sizeEv (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -14953,7 +14982,7 @@ _ZNKSt3__26vectorIdNS_9allocatorIdEEE20__throw_length_errorB8ne190106Ev: # @_ZNK
 	.loc	8 999 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:999:0
 	.functype	_ZNKSt3__26vectorIdNS_9allocatorIdEEE20__throw_length_errorB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -14987,7 +15016,7 @@ _ZNSt3__219__allocate_at_leastB8ne190106INS_9allocatorIdEEEENS_19__allocation_re
 	.loc	45 40 0                         # emscripten/cache/sysroot/include/c++/v1/__memory/allocate_at_least.h:40:0
 	.functype	_ZNSt3__219__allocate_at_leastB8ne190106INS_9allocatorIdEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -15053,7 +15082,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE7__allocB8ne190106Ev: # @_ZNSt3__26vectorIdN
 	.loc	8 965 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:965:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE7__allocB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15106,7 +15135,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE9__end_capB8ne190106Ev: # @_ZNSt3__26vectorI
 	.loc	8 971 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:971:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE9__end_capB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15159,7 +15188,7 @@ _ZNKSt3__26vectorIdNS_9allocatorIdEEE14__annotate_newB8ne190106Em: # @_ZNKSt3__2
 	.loc	8 906 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:906:0
 	.functype	_ZNKSt3__26vectorIdNS_9allocatorIdEEE14__annotate_newB8ne190106Em (i32, i32) -> ()
 	.local  	i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -15190,7 +15219,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorIdEEE8max_sizeB8ne190106IS2_TnNS_9enabl
 	.loc	16 343 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:343:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorIdEEE8max_sizeB8ne190106IS2_TnNS_9enable_ifIXsr14__has_max_sizeIKT_EE5valueEiE4typeELi0EEEmRKS2_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15237,7 +15266,7 @@ _ZNKSt3__26vectorIdNS_9allocatorIdEEE7__allocB8ne190106Ev: # @_ZNKSt3__26vectorI
 	.loc	8 968 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:968:0
 	.functype	_ZNKSt3__26vectorIdNS_9allocatorIdEEE7__allocB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15290,7 +15319,7 @@ _ZNKSt3__29allocatorIdE8max_sizeB8ne190106Ev: # @_ZNKSt3__29allocatorIdE8max_siz
 	.loc	15 159 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:159:0
 	.functype	_ZNKSt3__29allocatorIdE8max_sizeB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15321,7 +15350,7 @@ _ZNKSt3__217__compressed_pairIPdNS_9allocatorIdEEE6secondB8ne190106Ev: # @_ZNKSt
 	.loc	17 141 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:141:0
 	.functype	_ZNKSt3__217__compressed_pairIPdNS_9allocatorIdEEE6secondB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15367,7 +15396,7 @@ _ZNKSt3__222__compressed_pair_elemINS_9allocatorIdEELi1ELb1EE5__getB8ne190106Ev:
 	.loc	17 92 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:92:0
 	.functype	_ZNKSt3__222__compressed_pair_elemINS_9allocatorIdEELi1ELb1EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15399,7 +15428,7 @@ _ZNSt3__29allocatorIdE8allocateB8ne190106Em: # @_ZNSt3__29allocatorIdE8allocateB
 	.loc	15 112 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:112:0
 	.functype	_ZNSt3__29allocatorIdE8allocateB8ne190106Em (i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -15443,12 +15472,12 @@ _ZNSt3__29allocatorIdE8allocateB8ne190106Em: # @_ZNSt3__29allocatorIdE8allocateB
 	local.get	10
 	i32.eqz
 	br_if   	0                               # 0: down to label76
-# %bb.1:
+# %bb.1:                                # %if.then
 	.loc	15 114 7 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:114:7
 	call	_ZSt28__throw_bad_array_new_lengthB8ne190106v
 	unreachable
 .Ltmp526:
-.LBB216_2:
+.LBB216_2:                              # %if.end
 	.loc	15 0 7 is_stmt 0                # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:0:7
 	end_block                               # label76:
 .Ltmp527:
@@ -15494,7 +15523,7 @@ _ZNSt3__217__compressed_pairIPdNS_9allocatorIdEEE6secondB8ne190106Ev: # @_ZNSt3_
 	.loc	17 137 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:137:0
 	.functype	_ZNSt3__217__compressed_pairIPdNS_9allocatorIdEEE6secondB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15540,7 +15569,7 @@ _ZNSt3__222__compressed_pair_elemINS_9allocatorIdEELi1ELb1EE5__getB8ne190106Ev: 
 	.loc	17 91 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:91:0
 	.functype	_ZNSt3__222__compressed_pair_elemINS_9allocatorIdEELi1ELb1EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15572,7 +15601,7 @@ _ZNSt3__217__compressed_pairIPdNS_9allocatorIdEEE5firstB8ne190106Ev: # @_ZNSt3__
 	.loc	17 129 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:129:0
 	.functype	_ZNSt3__217__compressed_pairIPdNS_9allocatorIdEEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15618,7 +15647,7 @@ _ZNSt3__222__compressed_pair_elemIPdLi0ELb0EE5__getB8ne190106Ev: # @_ZNSt3__222_
 	.loc	17 62 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:62:0
 	.functype	_ZNSt3__222__compressed_pair_elemIPdLi0ELb0EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15650,7 +15679,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE21_ConstructTransactionC2B8ne190106ERS3_m: #
 	.loc	8 935 0                         # emscripten/cache/sysroot/include/c++/v1/vector:935:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE21_ConstructTransactionC2B8ne190106ERS3_m (i32, i32, i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -15735,7 +15764,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorIdEEE9constructB8ne190106IdJRKdETnNS_9e
 	.loc	16 317 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:317:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorIdEEE9constructB8ne190106IdJRKdETnNS_9enable_ifIXsr15__has_constructIS2_PT_DpT0_EE5valueEiE4typeELi0EEEvRS2_S9_DpOSA_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -15796,7 +15825,7 @@ _ZNSt3__212__to_addressB8ne190106IdEEPT_S2_: # @_ZNSt3__212__to_addressB8ne19010
 	.loc	38 189 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/pointer_traits.h:189:0
 	.functype	_ZNSt3__212__to_addressB8ne190106IdEEPT_S2_ (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15829,7 +15858,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE21_ConstructTransactionD2B8ne190106Ev: # @_Z
 	.loc	8 941 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:941:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE21_ConstructTransactionD2B8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15874,7 +15903,7 @@ _ZNSt3__29allocatorIdE9constructB8ne190106IdJRKdEEEvPT_DpOT0_: # @_ZNSt3__29allo
 	.loc	15 164 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:164:0
 	.functype	_ZNSt3__29allocatorIdE9constructB8ne190106IdJRKdEEEvPT_DpOT0_ (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, f64
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -15924,7 +15953,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE16__destroy_vectorclB8ne190106Ev: # @_ZNSt3_
 	.loc	8 528 0                         # emscripten/cache/sysroot/include/c++/v1/vector:528:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE16__destroy_vectorclB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -15967,7 +15996,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE16__destroy_vectorclB8ne190106Ev: # @_ZNSt3_
 	local.get	10
 	i32.eqz
 	br_if   	0                               # 0: down to label77
-# %bb.1:
+# %bb.1:                                # %if.then
 .Ltmp549:
 	.loc	8 530 9 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:530:9
 	local.get	4
@@ -16013,7 +16042,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE16__destroy_vectorclB8ne190106Ev: # @_ZNSt3_
 	local.get	18
 	call	_ZNSt3__216allocator_traitsINS_9allocatorIdEEE10deallocateB8ne190106ERS2_Pdm
 .Ltmp550:
-.LBB226_2:
+.LBB226_2:                              # %if.end
 	.loc	8 0 9                           # emscripten/cache/sysroot/include/c++/v1/vector:0:9
 	end_block                               # label77:
 	.loc	8 534 5 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:534:5
@@ -16039,7 +16068,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE7__clearB8ne190106Ev: # @_ZNSt3__26vectorIdN
 	.loc	8 978 0                         # emscripten/cache/sysroot/include/c++/v1/vector:978:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE7__clearB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -16088,7 +16117,7 @@ _ZNKSt3__26vectorIdNS_9allocatorIdEEE17__annotate_deleteB8ne190106Ev: # @_ZNKSt3
 	.loc	8 913 0                         # emscripten/cache/sysroot/include/c++/v1/vector:913:0
 	.functype	_ZNKSt3__26vectorIdNS_9allocatorIdEEE17__annotate_deleteB8ne190106Ev (i32) -> ()
 	.local  	i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -16116,7 +16145,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorIdEEE10deallocateB8ne190106ERS2_Pdm: # 
 	.loc	16 311 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:311:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorIdEEE10deallocateB8ne190106ERS2_Pdm (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -16177,7 +16206,7 @@ _ZNKSt3__26vectorIdNS_9allocatorIdEEE8capacityB8ne190106Ev: # @_ZNKSt3__26vector
 	.loc	8 637 0                         # emscripten/cache/sysroot/include/c++/v1/vector:637:0
 	.functype	_ZNKSt3__26vectorIdNS_9allocatorIdEEE8capacityB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -16241,7 +16270,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE22__base_destruct_at_endB8ne190106EPd: # @_Z
 	.loc	8 982 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:982:0
 	.functype	_ZNSt3__26vectorIdNS_9allocatorIdEEE22__base_destruct_at_endB8ne190106EPd (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -16270,7 +16299,8 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE22__base_destruct_at_endB8ne190106EPd: # @_Z
 	local.get	4
 	local.get	6
 	i32.store	4
-.LBB231_1:                              # =>This Inner Loop Header: Depth=1
+.LBB231_1:                              # %while.cond
+                                        # =>This Inner Loop Header: Depth=1
 	.loc	8 984 12 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:984:12
 	block   	
 	loop    	                                # label79:
@@ -16296,7 +16326,8 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE22__base_destruct_at_endB8ne190106EPd: # @_Z
 	local.get	11
 	i32.eqz
 	br_if   	1                               # 1: down to label78
-# %bb.2:                                #   in Loop: Header=BB231_1 Depth=1
+# %bb.2:                                # %while.body
+                                        #   in Loop: Header=BB231_1 Depth=1
 	.loc	8 985 31 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/vector:985:31
 	local.get	5
 	call	_ZNSt3__26vectorIdNS_9allocatorIdEEE7__allocB8ne190106Ev
@@ -16324,7 +16355,7 @@ _ZNSt3__26vectorIdNS_9allocatorIdEEE22__base_destruct_at_endB8ne190106EPd: # @_Z
 	call	_ZNSt3__216allocator_traitsINS_9allocatorIdEEE7destroyB8ne190106IdTnNS_9enable_ifIXsr13__has_destroyIS2_PT_EE5valueEiE4typeELi0EEEvRS2_S7_
 	.loc	8 984 5 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/vector:984:5
 	br      	0                               # 0: up to label79
-.LBB231_3:
+.LBB231_3:                              # %while.end
 	end_loop
 	end_block                               # label78:
 	.loc	8 986 20                        # emscripten/cache/sysroot/include/c++/v1/vector:986:20
@@ -16358,7 +16389,7 @@ _ZNSt3__216allocator_traitsINS_9allocatorIdEEE7destroyB8ne190106IdTnNS_9enable_i
 	.loc	16 332 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:332:0
 	.functype	_ZNSt3__216allocator_traitsINS_9allocatorIdEEE7destroyB8ne190106IdTnNS_9enable_ifIXsr13__has_destroyIS2_PT_EE5valueEiE4typeELi0EEEvRS2_S7_ (i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -16411,7 +16442,7 @@ _ZNSt3__29allocatorIdE7destroyB8ne190106EPd: # @_ZNSt3__29allocatorIdE7destroyB8
 	.loc	15 168 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:168:0
 	.functype	_ZNSt3__29allocatorIdE7destroyB8ne190106EPd (i32, i32) -> ()
 	.local  	i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	2
 	i32.const	16
@@ -16442,7 +16473,7 @@ _ZNSt3__29allocatorIdE10deallocateB8ne190106EPdm: # @_ZNSt3__29allocatorIdE10dea
 	.loc	15 128 0                        # emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h:128:0
 	.functype	_ZNSt3__29allocatorIdE10deallocateB8ne190106EPdm (i32, i32, i32) -> ()
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	3
 	i32.const	16
@@ -16509,7 +16540,7 @@ _ZNKSt3__26vectorIdNS_9allocatorIdEEE9__end_capB8ne190106Ev: # @_ZNKSt3__26vecto
 	.loc	8 974 0                         # emscripten/cache/sysroot/include/c++/v1/vector:974:0
 	.functype	_ZNKSt3__26vectorIdNS_9allocatorIdEEE9__end_capB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -16562,7 +16593,7 @@ _ZNKSt3__217__compressed_pairIPdNS_9allocatorIdEEE5firstB8ne190106Ev: # @_ZNKSt3
 	.loc	17 133 0 is_stmt 1              # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:133:0
 	.functype	_ZNKSt3__217__compressed_pairIPdNS_9allocatorIdEEE5firstB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -16608,7 +16639,7 @@ _ZNKSt3__222__compressed_pair_elemIPdLi0ELb0EE5__getB8ne190106Ev: # @_ZNKSt3__22
 	.loc	17 63 0 is_stmt 1               # emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h:63:0
 	.functype	_ZNKSt3__222__compressed_pair_elemIPdLi0ELb0EE5__getB8ne190106Ev (i32) -> (i32)
 	.local  	i32, i32, i32, i32
-# %bb.0:
+# %bb.0:                                # %entry
 	global.get	__stack_pointer
 	local.set	1
 	i32.const	16
@@ -16639,7 +16670,7 @@ main:                                   # @main
 .Lfunc_begin238:
 	.functype	main (i32, i32) -> (i32)
 	.local  	i32
-# %bb.0:
+# %bb.0:                                # %body
 	call	__original_main
 	local.set	2
 	local.get	2
@@ -16722,7 +16753,7 @@ threads_ready:
 	.file	56 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/wchar.h"
 	.file	57 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/wchar.h"
 	.file	58 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/cstddef"
-	.file	59 "/home/kay/Documents/Code/toolchain-wasm" "llvm-project/build/lib/clang/20/include/__stddef_max_align_t.h"
+	.file	59 "/home/kay/Documents/Code/toolchain-wasm" "llvm-project/build_llvm/lib/clang/20/include/__stddef_max_align_t.h"
 	.file	60 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/cstdint"
 	.file	61 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/stdint.h"
 	.file	62 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/bits/stdint.h"
@@ -16740,7 +16771,7 @@ threads_ready:
 	.file	74 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/cstdio"
 	.file	75 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/stdio.h"
 	.file	76 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/ctime"
-	.file	77 "/home/kay/Documents/Code/toolchain-wasm" "llvm-project/build/lib/clang/20/include/__stdarg_va_list.h"
+	.file	77 "/home/kay/Documents/Code/toolchain-wasm" "llvm-project/build_llvm/lib/clang/20/include/__stdarg_va_list.h"
 	.file	78 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/cstdarg"
 	.file	79 "<stdin>"
 	.file	80 "/home/kay/Documents/Code/toolchain-wasm" "emscripten/cache/sysroot/include/c++/v1/__type_traits/enable_if.h"
@@ -45961,7 +45992,7 @@ threads_ready:
 	.int32	0
 	.section	.debug_str,"S",@
 .Linfo_string0:
-	.asciz	"clang version 20.0.0git (https://github.com/KayTeo/llvm-project de7f5311061d50ef54ec56a783aa6147c5d09526)" # string offset=0
+	.asciz	"clang version 20.0.0git (https://github.com/KayTeo/llvm-project db319246a933964ba9f2870639f31d4fd3709cbe)" # string offset=0
 .Linfo_string1:
 	.asciz	"1_StoreRelThread.cpp"          # string offset=106
 .Linfo_string2:
@@ -49290,7 +49321,7 @@ threads_ready:
 	.asciz	"__new_end"                     # string offset=74478
 .Linfo_string1664:
 	.asciz	"__pos"                         # string offset=74488
-	.ident	"clang version 20.0.0git (https://github.com/KayTeo/llvm-project de7f5311061d50ef54ec56a783aa6147c5d09526)"
+	.ident	"clang version 20.0.0git (https://github.com/KayTeo/llvm-project db319246a933964ba9f2870639f31d4fd3709cbe)"
 	.no_dead_strip	__indirect_function_table
 	.size	_ZTISt12length_error, 4
 	.size	_ZTVSt12length_error, 20
@@ -49309,7 +49340,7 @@ threads_ready:
 	.int8	5
 	.ascii	"clang"
 	.int8	91
-	.ascii	"20.0.0git (https://github.com/KayTeo/llvm-project de7f5311061d50ef54ec56a783aa6147c5d09526)"
+	.ascii	"20.0.0git (https://github.com/KayTeo/llvm-project db319246a933964ba9f2870639f31d4fd3709cbe)"
 	.section	.debug_str,"S",@
 	.section	.custom_section.target_features,"",@
 	.int8	9

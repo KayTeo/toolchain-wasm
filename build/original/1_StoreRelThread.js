@@ -326,13 +326,6 @@ function assert(condition, text) {
 
 // We used to include malloc/free by default in the past. Show a helpful error in
 // builds with assertions.
-function _malloc() {
-  abort('malloc() called but not included in the build - add `_malloc` to EXPORTED_FUNCTIONS');
-}
-function _free() {
-  // Show a helpful error since we used to include free by default in the past.
-  abort('free() called but not included in the build - add `_free` to EXPORTED_FUNCTIONS');
-}
 
 // Memory management
 
@@ -2097,6 +2090,9 @@ async function createWasm() {
   
     };
 
+
+  var _emscripten_err = (str) => err(UTF8ToString(str));
+
   var runtimeKeepalivePush = () => {
       runtimeKeepaliveCounter += 1;
     };
@@ -2202,6 +2198,31 @@ async function createWasm() {
   }
   
 
+  var initRandomFill = () => {
+      if (typeof crypto == 'object' && typeof crypto.getRandomValues == 'function') {
+        // like with most Web APIs, we can't use Web Crypto API directly on shared memory,
+        // so we need to create an intermediate buffer and copy it to the destination
+        return (view) => view.set(crypto.getRandomValues(new Uint8Array(view.byteLength)));
+      }
+  
+      if (ENVIRONMENT_IS_NODE) {
+        return (view) => require('crypto').randomFillSync(view);
+      }
+  
+      // we couldn't find a proper implementation, as Math.random() is not
+      // suitable for /dev/random, see emscripten-core/emscripten/pull/7096
+      abort('no cryptographic support found for random function. consider polyfilling it if you want to use something insecure like Math.random(), e.g. put this in a --pre-js: var crypto = { getRandomValues: (array) => { for (var i = 0; i < array.length; i++) array[i] = (Math.random()*256)|0 } };');
+    };
+  var randomFill = (view) => {
+      // Lazily init on the first invocation.
+      (randomFill = initRandomFill())(view);
+    };
+  var _random_get = (buffer, size) => {
+      randomFill(HEAPU8.subarray(buffer, buffer + size));
+      return 0;
+    };
+
+
 
 PThread.init();;
 
@@ -2249,6 +2270,10 @@ function assignWasmImports() {
     /** @export */
     emscripten_check_blocking_allowed: _emscripten_check_blocking_allowed,
     /** @export */
+    emscripten_date_now: _emscripten_date_now,
+    /** @export */
+    emscripten_err: _emscripten_err,
+    /** @export */
     emscripten_exit_with_live_runtime: _emscripten_exit_with_live_runtime,
     /** @export */
     emscripten_get_now: _emscripten_get_now,
@@ -2263,13 +2288,17 @@ function assignWasmImports() {
     /** @export */
     fd_write: _fd_write,
     /** @export */
-    memory: wasmMemory
+    memory: wasmMemory,
+    /** @export */
+    random_get: _random_get
   };
 }
 var wasmExports;
 createWasm();
 var ___wasm_call_ctors = createExportWrapper('__wasm_call_ctors', 0);
+var __ZdlPvm = Module['__ZdlPvm'] = createExportWrapper('_ZdlPvm', 2);
 var _main = Module['_main'] = createExportWrapper('main', 2);
+var _emscripten_builtin_free = Module['_emscripten_builtin_free'] = createExportWrapper('emscripten_builtin_free', 1);
 var __emscripten_tls_init = createExportWrapper('_emscripten_tls_init', 0);
 var _pthread_self = () => (_pthread_self = wasmExports['pthread_self'])();
 var __emscripten_thread_init = createExportWrapper('_emscripten_thread_init', 6);
@@ -2278,10 +2307,33 @@ var _fflush = createExportWrapper('fflush', 1);
 var __emscripten_run_on_main_thread_js = createExportWrapper('_emscripten_run_on_main_thread_js', 5);
 var __emscripten_thread_free_data = createExportWrapper('_emscripten_thread_free_data', 1);
 var __emscripten_thread_exit = createExportWrapper('_emscripten_thread_exit', 1);
+var _malloc = createExportWrapper('malloc', 1);
+var _free = createExportWrapper('free', 1);
+var _realloc = createExportWrapper('realloc', 2);
 var _emscripten_stack_get_base = () => (_emscripten_stack_get_base = wasmExports['emscripten_stack_get_base'])();
 var _emscripten_stack_get_end = () => (_emscripten_stack_get_end = wasmExports['emscripten_stack_get_end'])();
+var _emscripten_builtin_malloc = Module['_emscripten_builtin_malloc'] = createExportWrapper('emscripten_builtin_malloc', 1);
+var _strdup = Module['_strdup'] = createExportWrapper('strdup', 1);
 var _strerror = createExportWrapper('strerror', 1);
+var _strndup = Module['_strndup'] = createExportWrapper('strndup', 2);
 var __emscripten_check_mailbox = createExportWrapper('_emscripten_check_mailbox', 0);
+var __ZdaPv = Module['__ZdaPv'] = createExportWrapper('_ZdaPv', 1);
+var __ZdaPvm = Module['__ZdaPvm'] = createExportWrapper('_ZdaPvm', 2);
+var __ZdlPv = Module['__ZdlPv'] = createExportWrapper('_ZdlPv', 1);
+var __Znaj = Module['__Znaj'] = createExportWrapper('_Znaj', 1);
+var __ZnajSt11align_val_t = Module['__ZnajSt11align_val_t'] = createExportWrapper('_ZnajSt11align_val_t', 2);
+var __Znwj = Module['__Znwj'] = createExportWrapper('_Znwj', 1);
+var __ZnwjSt11align_val_t = Module['__ZnwjSt11align_val_t'] = createExportWrapper('_ZnwjSt11align_val_t', 2);
+var ___libc_calloc = Module['___libc_calloc'] = createExportWrapper('__libc_calloc', 2);
+var ___libc_free = Module['___libc_free'] = createExportWrapper('__libc_free', 1);
+var ___libc_malloc = Module['___libc_malloc'] = createExportWrapper('__libc_malloc', 1);
+var ___libc_realloc = Module['___libc_realloc'] = createExportWrapper('__libc_realloc', 2);
+var _calloc = createExportWrapper('calloc', 2);
+var _emscripten_builtin_calloc = Module['_emscripten_builtin_calloc'] = createExportWrapper('emscripten_builtin_calloc', 2);
+var _emscripten_builtin_realloc = Module['_emscripten_builtin_realloc'] = createExportWrapper('emscripten_builtin_realloc', 2);
+var _malloc_size = Module['_malloc_size'] = createExportWrapper('malloc_size', 1);
+var _malloc_usable_size = Module['_malloc_usable_size'] = createExportWrapper('malloc_usable_size', 1);
+var _reallocf = Module['_reallocf'] = createExportWrapper('reallocf', 2);
 var _emscripten_stack_init = () => (_emscripten_stack_init = wasmExports['emscripten_stack_init'])();
 var _emscripten_stack_set_limits = (a0, a1) => (_emscripten_stack_set_limits = wasmExports['emscripten_stack_set_limits'])(a0, a1);
 var _emscripten_stack_get_free = () => (_emscripten_stack_get_free = wasmExports['emscripten_stack_get_free'])();
@@ -2417,8 +2469,6 @@ var missingLibrarySymbols = [
   'getEnvStrings',
   'wasiRightsToMuslOFlags',
   'wasiOFlagsToMuslOFlags',
-  'initRandomFill',
-  'randomFill',
   'safeSetTimeout',
   'setImmediateWrapped',
   'safeRequestAnimationFrame',
@@ -2542,6 +2592,8 @@ var unexportedSymbols = [
   'ExitStatus',
   'checkWasiClock',
   'flush_NO_FILESYSTEM',
+  'initRandomFill',
+  'randomFill',
   'emSetImmediate',
   'emClearImmediate_deps',
   'emClearImmediate',
